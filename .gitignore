@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.astro/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.production
+
+# AI workspace - temporary work
+ai-workspace/
+ai/
+
+# OS
+Thumbs.db

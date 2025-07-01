@@ -540,4 +540,4 @@ pnpm check
 ```
 
 ## Next Step
-→ [Step 2: Design System](./02-design-system.md) - Implement MONKCODE visual identity WITH TESTS FIRST. We'll create the color palette, typography, and spacing system that reflects the Monk/Rhythm duality.
+→ [Step 2: Design System](./02-design-system.md) - Implement MONKCODE visual identity WITH TESTS FIRST. We'll create the color palette, typography, and spacing system that reflects the Monk/Rhythm duality.n

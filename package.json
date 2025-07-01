@@ -1,12 +1,48 @@
 {
-  "name": "website",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "monkcode-website",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "pnpm run check && astro build",
+    "preview": "astro preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
+    "types:check": "tsc --noEmit",
+    "astro:check": "astro check",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "check": "pnpm run types:check && pnpm run astro:check && pnpm run lint && pnpm run test:run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "engines": {
+    "node": ">=18.20.8"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@biomejs/biome": "^2.0.6",
+    "@mswjs/data": "^0.16.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.6.1",
+    "@testing-library/vue": "^8.1.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^18.0.1",
+    "jsdom": "^26.1.0",
+    "msw": "^2.10.2",
+    "tailwindcss": "^3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/vue": "^5.1.0",
+    "astro": "^5.10.2",
+    "vue": "^3.5.17"
+  }
 }
