@@ -1,17 +1,14 @@
 import { defineConfig } from 'astro/config'
 import vue from '@astrojs/vue'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     vue({
       jsx: false, // We use templates, not JSX
-      devtools: true, // Enable Vue DevTools in development
+      devtools: false, // Temporarily disabled due to conflict with Tailwind CSS v4
     }),
-    tailwind({
-      applyBaseStyles: false, // We'll control base styles for MONKCODE brand
-    })
   ],
   output: 'static', // Portfolio site is static
   build: {
@@ -19,6 +16,7 @@ export default defineConfig({
     inlineStylesheets: 'auto'
   },
   vite: {
+    plugins: [tailwindcss()],
     // Merge with Vitest config
     resolve: {
       alias: {
