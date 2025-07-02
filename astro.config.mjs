@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config'
 import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
   output: 'static', // Portfolio site is static
   build: {
     format: 'directory',
-    inlineStylesheets: 'auto'
+    inlineStylesheets: 'auto',
   },
   vite: {
     plugins: [tailwindcss()],
@@ -23,8 +23,8 @@ export default defineConfig({
         '@': '/src',
         '@components': '/src/components',
         '@layouts': '/src/layouts',
-        '@lib': '/src/lib'
-      }
-    }
-  }
+        '@lib': '/src/lib',
+      },
+    },
+  },
 })

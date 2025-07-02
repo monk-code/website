@@ -1,16 +1,33 @@
 ---
-// Minimal implementation to pass tests
-// import '@/styles/global.css'
+import Hero from '@components/Hero.astro'
+import Layout from '@layouts/Layout.astro'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MONKCODE</title>
-  </head>
-  <body>
-    <h1 class="text-4xl font-bold">MONKCODE</h1>
-  </body>
-</html>
+<Layout>
+  <!-- Hero Section -->
+  <Hero />
+  
+  <!-- Projects Section (placeholder) -->
+  <section id="projects" class="py-20 fade-in">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-heading text-center mb-8">Selected Work</h2>
+      <p class="text-center text-text-secondary">Projects section coming soon...</p>
+    </div>
+  </section>
+  
+  <!-- About Section (placeholder) -->
+  <section id="about" class="py-20 fade-in bg-background-light">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-heading text-center mb-8">The Monk & The Rhythm</h2>
+      <p class="text-center text-text-secondary">About section coming soon...</p>
+    </div>
+  </section>
+  
+  <!-- Contact Section (placeholder) -->
+  <section id="contact" class="py-20 fade-in">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-heading text-center mb-8">Let's Build Something Together</h2>
+      <p class="text-center text-text-secondary">Contact section coming soon...</p>
+    </div>
+  </section>
+</Layout>

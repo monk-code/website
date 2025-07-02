@@ -209,7 +209,7 @@ export default {
 - Title: `Let's Build Something Together`.
 - Text: `Have a project in mind, or just want to talk code? I'm always open to new opportunities and collaborations. Reach out and let's get the conversation started.`
 - Links: Display three prominent, large, and easily clickable links for:
-  - Email: `mailto:monkcode@pm.me`
+  - Email: `mailto:your-email@example.com`
   - GitHub: `https://github.com/orgs/monk-code/repositories`
   - LinkedIn: `https://be.linkedin.com/in/gregorydeseck`
   - Style these as clear call-to-action buttons or highly visible links.
