@@ -1,0 +1,57 @@
+---
+export interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+  noindex?: boolean
+}
+
+const {
+  title,
+  description = 'Freelance frontend developer creating fast, beautiful, and maintainable web experiences with Vue.js and modern Jamstack architecture.',
+  ogImage = '/og-default.png',
+  noindex = false,
+} = Astro.props
+
+// Build full title
+const fullTitle = title ? `${title} | MONKCODE` : 'MONKCODE | Gregory Deseck - Frontend Developer'
+
+// Build canonical URL
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://monkcode.dev')
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Robots -->
+{noindex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow" />
+)}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(ogImage, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+
+<!-- Additional SEO -->
+<meta name="author" content="Gregory Deseck" />
+<meta name="keywords" content="frontend developer, Vue.js, Jamstack, web development, JavaScript, TypeScript, freelance developer" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#121212" />
+<meta name="theme-color" content="#FFDE0A" media="(prefers-color-scheme: dark)" />
