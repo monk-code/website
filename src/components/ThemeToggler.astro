@@ -10,9 +10,9 @@ const { class: className = '' } = Astro.props
   <button 
     id="theme-toggle"
     class={`group inline-flex h-10 w-10 items-center justify-center rounded-md border 
-            border-neutral-200 bg-white hover:bg-neutral-50 
-            dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 
-            transition-all duration-200 ${className}`}
+            border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-900
+            dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-100
+            transition-all duration-200 cursor-pointer ${className}`}
     aria-label="Toggle color theme"
     aria-live="polite"
     data-theme-toggle

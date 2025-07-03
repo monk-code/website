@@ -30,13 +30,13 @@ const colorContrast = {
     <!-- Quick Navigation -->
     <nav class="mb-12" aria-label="Design system sections">
       <ul class="flex flex-wrap gap-2">
-        <li><a href="#principles" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Principles</a></li>
-        <li><a href="#colors" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Colors</a></li>
-        <li><a href="#typography" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Typography</a></li>
-        <li><a href="#components" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Components</a></li>
-        <li><a href="#accessibility" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Accessibility</a></li>
-        <li><a href="#animations" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Animations</a></li>
-        <li><a href="#container-queries" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-colors">Container Queries</a></li>
+        <li><a href="#principles" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Principles</a></li>
+        <li><a href="#colors" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Colors</a></li>
+        <li><a href="#typography" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Typography</a></li>
+        <li><a href="#components" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Components</a></li>
+        <li><a href="#accessibility" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Accessibility</a></li>
+        <li><a href="#animations" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Animations</a></li>
+        <li><a href="#container-queries" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Container Queries</a></li>
       </ul>
     </nav>
 
@@ -48,7 +48,7 @@ const colorContrast = {
           <h3 class="text-xl font-heading mb-3">Tailwind-First</h3>
           <p class="text-neutral-600 dark:text-neutral-400">
             We leverage Tailwind's comprehensive design system, only extending with brand-specific tokens.
-            Use <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-sm">text-lg</code> not custom sizes.
+            Use <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-sm text-neutral-900 dark:text-neutral-100">text-lg</code> not custom sizes.
           </p>
         </div>
         <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
@@ -82,7 +82,7 @@ const colorContrast = {
         
         <!-- Code Black -->
         <div class="space-y-3">
-          <div class="h-24 bg-code-black rounded-lg shadow-sm flex items-end p-4">
+          <div class="h-24 bg-code-black rounded-lg shadow-sm flex items-end p-4 dark:border dark:border-neutral-800">
             <span class="text-silent-white font-mono text-sm">#121212</span>
           </div>
           <div>
@@ -189,7 +189,7 @@ const colorContrast = {
       <div class="space-y-4 mb-8">
         <!-- Primary Button -->
         <div class="flex items-start gap-4">
-          <button class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity">
+          <button class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
             Primary Action
           </button>
           <div class="flex-1">
@@ -202,7 +202,7 @@ const colorContrast = {
         
         <!-- Secondary Button -->
         <div class="flex items-start gap-4">
-          <button class="px-6 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+          <button class="px-6 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
             Secondary Action
           </button>
           <div class="flex-1">
@@ -215,7 +215,7 @@ const colorContrast = {
         
         <!-- Disabled State -->
         <div class="flex items-start gap-4">
-          <button class="px-6 py-2 bg-neutral-200 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-600 rounded-md cursor-not-allowed" disabled>
+          <button class="px-6 py-2 bg-neutral-200 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400 rounded-md cursor-not-allowed" disabled>
             Disabled
           </button>
           <div class="flex-1">
@@ -231,7 +231,7 @@ const colorContrast = {
       <h3 class="text-xl font-heading mb-4">Form Elements</h3>
       <div class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg mb-4">
         <p class="text-sm">
-          <strong>Note:</strong> These examples use the <code class="px-1 bg-blue-100 dark:bg-blue-800 rounded">@tailwindcss/forms</code> plugin for consistent styling.
+          <strong>Note:</strong> These examples use the <code class="px-1 bg-blue-600 text-white rounded">@tailwindcss/forms</code> plugin for consistent styling.
         </p>
       </div>
       
@@ -245,9 +245,9 @@ const colorContrast = {
             type="text" 
             id="example-input"
             placeholder="Enter text..."
-            class="w-full rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 focus:border-accent focus:ring-accent"
+            class="w-full rounded-md border-gray-300 bg-gray-50 text-gray-900 placeholder-gray-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:focus:border-accent dark:focus:ring-accent transition-colors"
           />
-          <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-400">
+          <p class="mt-1 text-xs text-gray-700 dark:text-neutral-400">
             Styled by @tailwindcss/forms with custom focus colors
           </p>
         </div>
@@ -259,7 +259,7 @@ const colorContrast = {
           </label>
           <select 
             id="example-select"
-            class="w-full rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 focus:border-accent focus:ring-accent"
+            class="w-full rounded-md border-gray-300 bg-gray-50 text-gray-900 appearance-none dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:focus:border-accent dark:focus:ring-accent transition-colors pr-10"
           >
             <option>Option 1</option>
             <option>Option 2</option>
@@ -276,7 +276,7 @@ const colorContrast = {
             id="example-textarea"
             rows="3"
             placeholder="Enter your message..."
-            class="w-full rounded-md border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 focus:border-accent focus:ring-accent"
+            class="w-full rounded-md border-gray-300 bg-gray-50 text-gray-900 placeholder-gray-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:focus:border-accent dark:focus:ring-accent transition-colors resize-none"
           ></textarea>
         </div>
         
@@ -285,7 +285,7 @@ const colorContrast = {
           <input 
             id="example-checkbox"
             type="checkbox"
-            class="rounded border-neutral-300 text-accent focus:ring-accent"
+            class="rounded border-gray-300 bg-gray-50 dark:border-neutral-600 dark:bg-neutral-800 text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-accent transition-colors"
           />
           <label for="example-checkbox" class="ml-2 text-sm">
             I agree to the terms
@@ -309,7 +309,7 @@ const colorContrast = {
             </li>
             <li class="flex items-start">
               <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
-              Focus rings use <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">ring-accent</code>
+              Focus rings use <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">ring-accent</code>
             </li>
             <li class="flex items-start">
               <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
@@ -332,7 +332,7 @@ const colorContrast = {
             </li>
             <li class="flex items-start">
               <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
-              <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">sr-only</code> for screen reader only content
+              <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">sr-only</code> for screen reader only content
             </li>
           </ul>
         </div>
@@ -343,7 +343,7 @@ const colorContrast = {
           <ul class="space-y-2 text-sm">
             <li class="flex items-start">
               <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
-              Respect <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">prefers-reduced-motion</code>
+              Respect <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prefers-reduced-motion</code>
             </li>
             <li class="flex items-start">
               <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
@@ -393,7 +393,7 @@ const colorContrast = {
         
         <!-- Spin -->
         <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
-          <div class="h-12 w-12 border-4 border-neutral-200 border-t-accent rounded-full animate-spin mb-4"></div>
+          <div class="h-12 w-12 border-4 border-transparent border-t-accent rounded-full animate-spin mb-4"></div>
           <p class="font-medium mb-1">Spin</p>
           <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-spin</code>
           <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Loading indicators</p>
@@ -425,7 +425,7 @@ const colorContrast = {
       
       <h3 class="text-xl font-heading mb-4 mt-8">Custom Keyframes</h3>
       <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-        <pre class="text-sm font-mono overflow-x-auto"><code>{`/* Add to global.css */
+        <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>{`/* Add to global.css */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -480,7 +480,7 @@ const colorContrast = {
       </div>
       
       <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-        <pre class="text-sm font-mono overflow-x-auto"><code>{`/* Component with container queries */
+        <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>{`/* Component with container queries */
 .project-card {
   container-type: inline-size;
 }
@@ -521,7 +521,7 @@ const colorContrast = {
       <h2 class="text-3xl font-heading mb-6">Typography Plugin</h2>
       
       <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
-        The <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded">@tailwindcss/typography</code> plugin provides beautiful typographic defaults for HTML content you don't control, like blog posts or documentation.
+        The <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">@tailwindcss/typography</code> plugin provides beautiful typographic defaults for HTML content you don't control, like blog posts or documentation.
       </p>
       
       <h3 class="text-xl font-heading mb-4">Prose Classes</h3>
@@ -538,13 +538,13 @@ const colorContrast = {
         <blockquote>
           Blockquotes are styled beautifully with proper indentation and styling.
         </blockquote>
-        <pre><code>// Code blocks are also styled
+        <pre class="text-neutral-900 dark:text-neutral-100"><code>// Code blocks are also styled
 const greeting = 'Hello, World!';</code></pre>
       </div>
       
       <h3 class="text-xl font-heading mb-4 mt-8">Usage</h3>
       <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-        <pre class="text-sm font-mono overflow-x-auto"><code>&lt;!-- Basic prose --&gt;
+        <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>&lt;!-- Basic prose --&gt;
 &lt;article class="prose dark:prose-invert"&gt;
   &lt;h1&gt;Blog Post Title&lt;/h1&gt;
   &lt;p&gt;Your content here...&lt;/p&gt;
@@ -566,10 +566,10 @@ const greeting = 'Hello, World!';</code></pre>
         The typography plugin respects your color scheme and can be customized with modifiers:
       </p>
       <ul class="space-y-2 text-sm">
-        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded">prose-sm</code> - Smaller text size</li>
-        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded">prose-lg</code> - Larger text size</li>
-        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded">prose-headings:font-heading</code> - Use your heading font</li>
-        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded">prose-a:text-accent</code> - Custom link colors</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-sm</code> - Smaller text size</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-lg</code> - Larger text size</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-headings:font-heading</code> - Use your heading font</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-a:text-accent</code> - Custom link colors</li>
       </ul>
     </section>
 
@@ -578,13 +578,13 @@ const greeting = 'Hello, World!';</code></pre>
       <h2 class="text-3xl font-heading mb-6">Usage Guidelines</h2>
       
       <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
-        <h3 class="text-lg font-heading mb-3 flex items-center">
+        <h3 class="text-lg font-heading mb-3 flex items-center text-yellow-800 dark:text-yellow-100">
           <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
           </svg>
           Important: Tailwind-First Development
         </h3>
-        <ul class="space-y-2 text-sm">
+        <ul class="space-y-2 text-sm text-yellow-800 dark:text-yellow-100">
           <li>• Use Tailwind's built-in utilities whenever possible</li>
           <li>• Only create custom components when truly needed</li>
           <li>• Prefer composition over abstraction</li>

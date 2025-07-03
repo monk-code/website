@@ -14,8 +14,8 @@
 
   /* SEMANTIC THEME TOKENS */
   /* These will generate text-primary, bg-primary, border-primary, etc. */
-  --color-primary: var(--color-code-black);
-  --color-primary-foreground: var(--color-silent-white);
+  --color-primary: var(--color-monk-yellow);
+  --color-primary-foreground: var(--color-code-black);
   --color-accent: var(--color-monk-yellow);
   --color-accent-foreground: var(--color-code-black);
   
@@ -51,6 +51,35 @@
     font-family: var(--font-family-mono);
   }
   
+  /* Form element defaults */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    @apply px-3 py-2;
+  }
+  
+  /* Better select chevron styling */
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25em 1.25em;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Dark mode select chevron */
+  :root.dark select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  }
+  
   /* Use Tailwind's selection: variant instead */
   
   /* Let Tailwind handle focus styles with focus-visible: utilities */
@@ -70,6 +99,11 @@
   /* Smooth theme transitions */
   .transition-theme {
     @apply transition-[color,background-color,border-color] duration-150 ease-in-out;
+  }
+  
+  /* Custom focus utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black;
   }
 }
 
