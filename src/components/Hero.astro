@@ -1,8 +1,414 @@
 ---
-// Hero component placeholder
+import { Image } from 'astro:assets'
+import meImage from '@/assets/images/me-no-background.webp'
+import CTAButton from './CTAButton.vue'
 ---
 
-<section class="min-h-screen flex flex-col items-center justify-center text-center">
-  <h1>Welcome to MONKCODE</h1>
-  <p>Building modern web experiences</p>
+<section id="hero" class="min-h-screen flex items-center pt-20 pb-24 md:pb-32 lg:pb-20 relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <!-- Animated Geometric Shapes -->
+    <div class="absolute top-1/4 -left-20 w-32 h-32 border border-primary/20 rounded-lg animate-geometric-float transform rotate-12"></div>
+    <div class="absolute top-1/2 -right-16 w-24 h-24 bg-primary/5 rounded-full animate-geometric-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-16 h-16 border-2 border-primary/15 transform rotate-45 animate-geometric-rotate"></div>
+    <!-- Subtle Gradient Background -->
+    <div class="absolute top-20 -left-40 w-96 h-96 bg-primary/8 rounded-full filter blur-3xl animate-pulse opacity-60"></div>
+    <div class="absolute bottom-20 -right-40 w-96 h-96 bg-primary/4 rounded-full filter blur-3xl animate-pulse opacity-40" style="animation-delay: 3s;"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Content Column -->
+      <div class="text-center lg:text-left space-y-8">
+        <!-- Headline -->
+        <h1 class="text-5xl md:text-6xl xl:text-7xl font-heading font-bold leading-tight">
+          <span class="block text-foreground">Large-Scale Frontend.</span>
+          <span class="block text-primary mt-2">Built for Enterprise Growth.</span>
+        </h1>
+        
+        <!-- Sub-headline -->
+        <p class="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          I'm Gregory, a senior frontend developer specializing in enterprise-grade applications and complex Vue.js ecosystems. 10+ years building scalable, performant web experiences that handle millions of users.
+        </p>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <CTAButton 
+            href="#projects" 
+            variant="primary" 
+            size="lg"
+            client:load
+          >
+            View My Work
+          </CTAButton>
+          <CTAButton 
+            href="#contact" 
+            variant="secondary" 
+            size="lg"
+            client:load
+          >
+            Get In Touch
+          </CTAButton>
+        </div>
+        
+        <!-- Social Proof / Quick Stats -->
+        <div class="flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-muted-foreground pt-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" style="color: var(--color-monk-yellow)" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <span>10+ Years Experience</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" style="color: var(--color-monk-yellow)" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <span>3 Large-Scale Projects</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" style="color: var(--color-monk-yellow)" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+              <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/>
+            </svg>
+            <span>Vue.js & Jamstack Expert</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Image Column -->
+      <div class="relative">
+        <!-- Enhanced Portrait Container with brand-themed design -->
+        <div class="relative mx-auto lg:mx-0 max-w-md lg:max-w-lg p-6 enhanced-image-container">
+          
+          <!-- Floating geometric accents around the image -->
+          <div class="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-lg geometric-accent animate-gentle-float" style="animation-delay: 0.5s;"></div>
+          <div class="absolute -top-2 -right-6 w-6 h-6 bg-primary/10 rounded-full geometric-accent animate-gentle-pulse" style="animation-delay: 1.5s;"></div>
+          <div class="absolute -bottom-4 -left-6 w-4 h-4 border border-primary/20 rotate-45 geometric-accent animate-gentle-rotate" style="animation-delay: 2s;"></div>
+          <div class="absolute -bottom-2 -right-4 w-10 h-10 border-2 border-primary/15 rounded-lg geometric-accent animate-gentle-float" style="animation-delay: 2.5s;"></div>
+          
+          <!-- Brand pattern overlay behind the image -->
+          <div class="absolute inset-0 rounded-2xl brand-pattern-overlay opacity-40 dark:opacity-20"></div>
+          
+          <!-- Main Image with sophisticated styling -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] group gradient-border">
+            <!-- Enhanced gradient border with glow effect -->
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 glow-effect"></div>
+            
+            <!-- Tech-themed pattern overlay -->
+            <div class="absolute inset-0 tech-pattern opacity-5 dark:opacity-10 rounded-2xl"></div>
+            
+            <!-- Enhanced image container with brand integration -->
+            <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-background to-emphasis-bg dark:from-background dark:to-emphasis-bg image-container">
+              <Image 
+                src={meImage}
+                alt="Gregory Deseck - Frontend Developer in monk's robes"
+                width={500}
+                height={600}
+                loading="eager"
+                class="w-full h-auto object-cover transition-transform duration-300 ease-out"
+              />
+            </div>
+            
+            <!-- Code accent elements -->
+            <div class="absolute top-4 left-4 w-16 h-0.5 bg-primary/30 code-accent animate-gentle-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-6 left-4 w-12 h-0.5 bg-primary/20 code-accent animate-gentle-pulse" style="animation-delay: 1.3s;"></div>
+            <div class="absolute bottom-4 right-4 w-20 h-0.5 bg-primary/25 code-accent animate-gentle-pulse" style="animation-delay: 1.8s;"></div>
+          </div>
+          
+          <!-- Floating Badge - improved positioning and styling -->
+          <div class="absolute -bottom-2 -right-2 bg-background/95 backdrop-blur-sm border border-card-border rounded-xl px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-200 dark:bg-neutral-900/95 dark:border-neutral-700 floating-element">
+            <div class="flex items-center gap-2">
+              <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-xs font-semibold text-foreground tracking-wide">Available for Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-12 md:bottom-16 lg:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#projects" class="text-muted-foreground hover:text-primary transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </a>
+  </div>
 </section>
+
+<style>
+  /* Sophisticated geometric animations */
+  @keyframes geometric-float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotate(12deg);
+    }
+    33% {
+      transform: translateY(-15px) translateX(5px) rotate(15deg);
+    }
+    66% {
+      transform: translateY(-5px) translateX(-5px) rotate(9deg);
+    }
+  }
+  
+  @keyframes geometric-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes geometric-rotate {
+    0% {
+      transform: rotate(45deg);
+    }
+    100% {
+      transform: rotate(405deg);
+    }
+  }
+  
+  @keyframes subtle-parallax {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  /* Apply custom animation classes */
+  .animate-geometric-float {
+    animation: geometric-float 8s ease-in-out infinite;
+  }
+  
+  .animate-geometric-pulse {
+    animation: geometric-pulse 4s ease-in-out infinite;
+  }
+  
+  .animate-geometric-rotate {
+    animation: geometric-rotate 20s linear infinite;
+  }
+  
+  /* Enhanced gentle animations for image container elements */
+  @keyframes gentle-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes gentle-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes gentle-rotate {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(0.5deg);
+    }
+  }
+  
+  /* Gentle animation classes */
+  .animate-gentle-float {
+    animation: gentle-float 6s ease-in-out infinite;
+  }
+  
+  .animate-gentle-pulse {
+    animation: gentle-pulse 4s ease-in-out infinite;
+  }
+  
+  .animate-gentle-rotate {
+    animation: gentle-rotate 20s linear infinite;
+  }
+  
+  /* Enhanced image container styling */
+  .enhanced-image-container {
+    position: relative;
+  }
+  
+  .enhanced-image-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle at 30% 30%, var(--color-light-neutral-300, #d4d4d8) 0%, transparent 70%);
+    opacity: 0.08;
+    border-radius: 2rem;
+    z-index: -1;
+  }
+
+  /* Dark mode override for enhanced image container */
+  [data-theme="dark"] .enhanced-image-container::before {
+    background: radial-gradient(circle at 30% 30%, var(--color-monk-yellow, #FFDE0A) 0%, transparent 70%);
+    opacity: 0.03;
+  }
+  
+  /* Brand pattern overlay with monk-themed geometric pattern */
+  .brand-pattern-overlay {
+    background-image: 
+      radial-gradient(circle at 25% 25%, var(--color-light-neutral-400, #a1a1aa) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, var(--color-light-neutral-300, #d4d4d8) 1px, transparent 1px);
+    background-size: 40px 40px, 20px 20px;
+    background-position: 0 0, 20px 20px;
+  }
+
+  /* Dark mode override for brand pattern */
+  [data-theme="dark"] .brand-pattern-overlay {
+    background-image: 
+      radial-gradient(circle at 25% 25%, var(--color-monk-yellow, #FFDE0A) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, var(--color-monk-yellow, #FFDE0A) 1px, transparent 1px);
+  }
+  
+  /* Tech-themed pattern overlay */
+  .tech-pattern {
+    background-image: 
+      linear-gradient(45deg, var(--color-light-neutral-300, #d4d4d8) 1px, transparent 1px),
+      linear-gradient(-45deg, var(--color-light-neutral-300, #d4d4d8) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+
+  /* Dark mode override for tech pattern */
+  [data-theme="dark"] .tech-pattern {
+    background-image: 
+      linear-gradient(45deg, var(--color-monk-yellow, #FFDE0A) 1px, transparent 1px),
+      linear-gradient(-45deg, var(--color-monk-yellow, #FFDE0A) 1px, transparent 1px);
+  }
+  
+  /* Gradient border with enhanced glow effect */
+  .gradient-border {
+    position: relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    background: linear-gradient(
+      45deg,
+      var(--color-light-neutral-200, #e4e4e7) 0%,
+      transparent 20%,
+      var(--color-monk-yellow, #FFDE0A) 50%,
+      transparent 80%,
+      var(--color-light-neutral-200, #e4e4e7) 100%
+    );
+    opacity: 0.6;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gradient-border:hover::before {
+    opacity: 0.8;
+  }
+
+  /* Dark mode override for gradient border */
+  [data-theme="dark"] .gradient-border::before {
+    background: linear-gradient(
+      45deg,
+      var(--color-monk-yellow, #FFDE0A) 0%,
+      transparent 30%,
+      transparent 70%,
+      var(--color-monk-yellow, #FFDE0A) 100%
+    );
+    opacity: 0.4;
+  }
+
+  [data-theme="dark"] .gradient-border:hover::before {
+    opacity: 0.6;
+  }
+  
+  /* Glow effect enhancement */
+  .glow-effect {
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1)) drop-shadow(0 0 10px var(--color-light-neutral-400, #a1a1aa));
+    transition: filter 0.3s ease;
+  }
+  
+  .group:hover .glow-effect {
+    filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 15px var(--color-light-neutral-400, #a1a1aa));
+  }
+
+  /* Dark mode override for glow effect */
+  [data-theme="dark"] .glow-effect {
+    filter: drop-shadow(0 0 20px var(--color-monk-yellow, #FFDE0A));
+  }
+  
+  [data-theme="dark"] .group:hover .glow-effect {
+    filter: drop-shadow(0 0 30px var(--color-monk-yellow, #FFDE0A));
+  }
+  
+  /* Geometric accent styling */
+  .geometric-accent {
+    backdrop-filter: blur(10px);
+    background: rgba(161, 161, 170, 0.1);
+    border-color: var(--color-light-neutral-400, #a1a1aa);
+  }
+
+  /* Dark mode override for geometric accents */
+  [data-theme="dark"] .geometric-accent {
+    background: rgba(255, 222, 10, 0.05);
+    border-color: var(--color-monk-yellow, #FFDE0A);
+  }
+  
+  /* Code accent styling */
+  .code-accent {
+    background: var(--color-monk-yellow, #FFDE0A);
+    border-radius: 1px;
+    box-shadow: 0 0 10px rgba(255, 222, 10, 0.3);
+  }
+  
+  /* Floating element enhancement */
+  .floating-element {
+    transform: translateY(0px);
+    transition: transform 0.3s ease;
+  }
+  
+  .floating-element:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Enhanced hover effects for image container */
+  @media (min-width: 1024px) {
+    .group:hover .image-container {
+      animation: gentle-rotate 4s ease-in-out infinite;
+    }
+  }
+  
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-geometric-float,
+    .animate-geometric-pulse,
+    .animate-geometric-rotate,
+    .animate-gentle-float,
+    .animate-gentle-pulse,
+    .animate-gentle-rotate,
+    .group:hover .image-container,
+    .hover\\:scale-\\[1\\.02\\]:hover,
+    .floating-element:hover {
+      animation: none !important;
+      transform: none !important;
+    }
+    
+    .glow-effect,
+    .group:hover .glow-effect {
+      filter: none !important;
+    }
+  }
+</style>

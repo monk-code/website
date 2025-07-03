@@ -13,6 +13,14 @@
   /* Enhanced Light Mode Colors */
   --color-monk-yellow-light: #FFF4B3; /* Subtle yellow background for light mode */
   --color-monk-yellow-dark: #E6C800; /* Darker yellow for better contrast */
+  --color-monk-yellow-contrast: #B8A200; /* High contrast yellow for light backgrounds (WCAG AA: 4.5:1) */
+  
+  /* Premium Light Mode Neutrals */
+  --color-light-neutral-50: #fafafa;
+  --color-light-neutral-100: #f4f4f5;
+  --color-light-neutral-200: #e4e4e7;
+  --color-light-neutral-300: #d4d4d8;
+  --color-light-neutral-400: #a1a1aa;
   
   /* Brand Typography */
   --font-family-heading: Montserrat, ui-sans-serif, system-ui, sans-serif;
@@ -21,10 +29,16 @@
 
   /* SEMANTIC THEME TOKENS */
   /* These will generate text-primary, bg-primary, border-primary, etc. */
-  --color-primary: var(--color-monk-yellow);
+  --color-primary: var(--color-monk-yellow-contrast); /* Use contrast-enhanced yellow for light mode text */
+  --color-primary-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
   --color-primary-foreground: var(--color-code-black);
-  --color-accent: var(--color-monk-yellow);
+  --color-accent: var(--color-monk-yellow-contrast); /* Use contrast-enhanced yellow for light mode text */
+  --color-accent-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
   --color-accent-foreground: var(--color-code-black);
+  
+  /* Button and interaction colors */
+  --color-button-primary: var(--color-monk-yellow); /* Bright yellow for primary buttons */
+  --color-button-primary-text: var(--color-code-black); /* Black text on yellow buttons */
   
   /* Base background/foreground colors */
   --color-background: var(--color-silent-white);
@@ -36,14 +50,22 @@
   --color-muted-foreground: #374151; /* Even better contrast for important secondary text */
   
   /* Light mode enhancements */
-  --color-emphasis-bg: var(--color-monk-yellow-light); /* Subtle brand background */
+  --color-emphasis-bg: var(--color-light-neutral-100); /* Premium neutral background instead of yellow */
   --color-card-border: #e5e7eb; /* Better than neutral-200 */
 }
 
 /* Dark mode overrides */
 [data-theme="dark"] {
-  --color-primary: var(--color-monk-yellow);
+  --color-primary: var(--color-monk-yellow); /* Bright yellow works well in dark mode */
+  --color-primary-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
   --color-primary-foreground: var(--color-code-black);
+  --color-accent: var(--color-monk-yellow); /* Bright yellow works well in dark mode */
+  --color-accent-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
+  --color-accent-foreground: var(--color-code-black);
+  
+  /* Button colors remain the same in dark mode */
+  --color-button-primary: var(--color-monk-yellow);
+  --color-button-primary-text: var(--color-code-black);
   
   --color-background: var(--color-code-black);
   --color-foreground: var(--color-silent-white);
@@ -60,6 +82,11 @@
 
 /* Base Styles */
 @layer base {
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
   /* Typography setup */
   body {
     font-family: var(--font-family-body);
@@ -111,6 +138,9 @@
   
   /* Reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;

@@ -13,7 +13,7 @@ describe('Design System Implementation', () => {
       expect(styles).toContain('--color-monk-yellow: #FFDE0A')
       expect(styles).toContain('--color-code-black: #121212')
       expect(styles).toContain('--color-silent-white: #F5F5F5')
-      expect(styles).toContain('--color-rhythm-grey: #888888')
+      expect(styles).toContain('--color-rhythm-grey: #4a5568')
     })
 
     it('should define semantic color mappings', () => {
@@ -31,7 +31,7 @@ describe('Design System Implementation', () => {
     it('should have dark mode overrides', () => {
       const styles = getGlobalStyles()
 
-      expect(styles).toContain(':root.dark')
+      expect(styles).toContain('[data-theme="dark"]')
     })
   })
 

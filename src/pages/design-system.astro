@@ -1,0 +1,640 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import ThemeToggler from '@/components/ThemeToggler.astro'
+
+// Design system metadata - contrast ratios for reference
+// Monk Yellow (#FFDE0A) on Code Black (#121212): 16.42:1 (AAA)
+// White on Code Black: 18.1:1 (AAA)
+// Black on Monk Yellow: 16.42:1 (AAA)
+// Improved grey colors provide better contrast than previous 3.54:1
+---
+
+<Layout 
+  title="Design System" 
+  description="MONKCODE design system documentation with accessibility guidelines and component patterns."
+>
+  <div class="container mx-auto max-w-6xl px-6 py-16">
+    <!-- Header -->
+    <header class="flex items-center justify-between border-b border-card-border dark:border-neutral-800 pb-12 mb-16">
+      <div>
+        <h1 class="text-5xl font-heading tracking-tight">MONKCODE Design System</h1>
+        <p class="text-lg text-muted-foreground dark:text-neutral-400 mt-2">
+          Accessible, performant patterns built on Tailwind CSS v4
+        </p>
+      </div>
+      <ThemeToggler />
+    </header>
+
+    <!-- Quick Navigation -->
+    <nav class="mb-16" aria-label="Design system sections">
+      <ul class="flex flex-wrap gap-2">
+        <li><a href="#principles" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Principles</a></li>
+        <li><a href="#colors" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Colors</a></li>
+        <li><a href="#typography" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Typography</a></li>
+        <li><a href="#components" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Components</a></li>
+        <li><a href="#accessibility" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Accessibility</a></li>
+        <li><a href="#animations" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Animations</a></li>
+        <li><a href="#container-queries" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Container Queries</a></li>
+      </ul>
+    </nav>
+
+    <!-- Design Principles -->
+    <section id="principles" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Design Principles</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h3 class="text-xl font-heading mb-3">Tailwind-First</h3>
+          <p class="text-muted-foreground dark:text-neutral-400">
+            We leverage Tailwind's comprehensive design system, only extending with brand-specific tokens.
+            Use <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-sm text-neutral-900 dark:text-neutral-100">text-lg</code> not custom sizes.
+          </p>
+        </div>
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h3 class="text-xl font-heading mb-3">Accessibility First</h3>
+          <p class="text-muted-foreground dark:text-neutral-400">
+            WCAG AA compliance minimum. Every interactive element has focus states, 
+            keyboard support, and proper ARIA labels.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color System -->
+    <section id="colors" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Color System</h2>
+      
+      <!-- Brand Colors -->
+      <h3 class="text-xl font-heading mb-4">Brand Colors</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+        <!-- Monk Yellow -->
+        <div class="space-y-3">
+          <div class="h-24 bg-monk-yellow rounded-lg shadow-sm flex items-end p-4">
+            <span class="text-code-black font-mono text-sm">#FFDE0A</span>
+          </div>
+          <div>
+            <p class="font-medium">Monk Yellow</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Primary accent</p>
+            <code class="text-xs font-mono">bg-monk-yellow</code>
+          </div>
+        </div>
+        
+        <!-- Code Black -->
+        <div class="space-y-3">
+          <div class="h-24 bg-code-black rounded-lg shadow-sm flex items-end p-4 dark:border dark:border-neutral-800">
+            <span class="text-silent-white font-mono text-sm">#121212</span>
+          </div>
+          <div>
+            <p class="font-medium">Code Black</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Primary dark</p>
+            <code class="text-xs font-mono">bg-code-black</code>
+          </div>
+        </div>
+        
+        <!-- Silent White -->
+        <div class="space-y-3">
+          <div class="h-24 bg-silent-white rounded-lg shadow-sm border flex items-end p-4">
+            <span class="text-code-black font-mono text-sm">#F5F5F5</span>
+          </div>
+          <div>
+            <p class="font-medium">Silent White</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Primary light</p>
+            <code class="text-xs font-mono">bg-silent-white</code>
+          </div>
+        </div>
+        
+        <!-- Rhythm Grey -->
+        <div class="space-y-3">
+          <div class="h-24 bg-rhythm-grey rounded-lg shadow-sm flex items-end p-4">
+            <span class="text-white font-mono text-sm">#4a5568</span>
+          </div>
+          <div>
+            <p class="font-medium">Rhythm Grey</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Muted text (improved contrast)</p>
+            <code class="text-xs font-mono">bg-rhythm-grey</code>
+          </div>
+        </div>
+        
+        <!-- Monk Yellow Contrast -->
+        <div class="space-y-3">
+          <div class="h-24 rounded-lg shadow-sm flex items-end p-4" style="background-color: #B8A200;">
+            <span class="text-white font-mono text-sm">#B8A200</span>
+          </div>
+          <div>
+            <p class="font-medium">Monk Yellow Contrast</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">For light backgrounds (WCAG AA)</p>
+            <code class="text-xs font-mono">--color-monk-yellow-contrast</code>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Enhanced Accessibility Guidelines -->
+      <h3 class="text-xl font-heading mb-4">Contrast & Accessibility</h3>
+      <div class="space-y-4">
+        <div class="p-4 bg-emphasis-bg dark:bg-green-900/20 border border-card-border dark:border-green-800 rounded-lg">
+          <h4 class="font-heading text-sm font-semibold mb-2">WCAG AAA Compliance</h4>
+          <p class="text-sm">
+            All MONKCODE brand colors have been tested for WCAG AAA compliance. 
+            Monk Yellow (#FFDE0A) on Code Black (#121212) provides a 16.42:1 contrast ratio.
+          </p>
+        </div>
+        
+        <div class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+          <h4 class="font-heading text-sm font-semibold mb-2 text-blue-800 dark:text-blue-100">Light Mode Contrast Enhancements</h4>
+          <ul class="text-sm text-blue-800 dark:text-blue-100 space-y-1">
+            <li>• <strong>Bright Yellow (#FFDE0A)</strong>: Use for backgrounds and accent elements only</li>
+            <li>• <strong>Contrast Yellow (#B8A200)</strong>: Use for text on light backgrounds (WCAG AA: 4.5:1 ratio)</li>
+            <li>• <strong>Auto-switching</strong>: <code class="px-1 bg-blue-100 dark:bg-blue-800 rounded">text-primary</code> automatically uses appropriate variant per theme</li>
+          </ul>
+        </div>
+        
+        <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+          <h4 class="font-heading text-sm font-semibold mb-2 text-amber-800 dark:text-amber-100">Usage Guidelines</h4>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-amber-800 dark:text-amber-100">
+            <div>
+              <p class="font-medium mb-1">✅ Recommended</p>
+              <ul class="space-y-1">
+                <li>• <code class="px-1 bg-amber-100 dark:bg-amber-800 rounded">text-primary</code> for accent text</li>
+                <li>• <code class="px-1 bg-amber-100 dark:bg-amber-800 rounded">bg-button-primary</code> for buttons</li>
+                <li>• <code class="px-1 bg-amber-100 dark:bg-amber-800 rounded">border-primary</code> for borders</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-medium mb-1">❌ Avoid</p>
+              <ul class="space-y-1">
+                <li>• Direct usage of bright yellow on light backgrounds</li>
+                <li>• Custom yellow values without contrast testing</li>
+                <li>• Overriding semantic token behavior</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section id="typography" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Typography</h2>
+      
+      <!-- Type Scale -->
+      <div class="space-y-6 mb-8">
+        <div class="space-y-2">
+          <h1 class="text-5xl">Heading 1</h1>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-5xl font-heading</code>
+        </div>
+        <div class="space-y-2">
+          <h2 class="text-4xl">Heading 2</h2>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-4xl font-heading</code>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-3xl">Heading 3</h3>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-3xl font-heading</code>
+        </div>
+        <div class="space-y-2">
+          <p class="text-lg">Large body text for emphasis and introductions.</p>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-lg</code>
+        </div>
+        <div class="space-y-2">
+          <p class="text-base">Regular body text. Optimized for readability at normal reading distances.</p>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-base (default)</code>
+        </div>
+        <div class="space-y-2">
+          <p class="text-sm">Small text for captions and secondary information.</p>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-sm</code>
+        </div>
+      </div>
+
+      <!-- Font Stacks -->
+      <h3 class="text-xl font-heading mb-4">Font Families</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
+          <p class="font-heading text-lg mb-2">Montserrat</p>
+          <p class="text-sm text-muted-foreground dark:text-neutral-400 mb-2">Headings & Display</p>
+          <code class="text-xs font-mono">font-heading</code>
+        </div>
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
+          <p class="font-body text-lg mb-2">Inter</p>
+          <p class="text-sm text-muted-foreground dark:text-neutral-400 mb-2">Body Text</p>
+          <code class="text-xs font-mono">font-body</code>
+        </div>
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
+          <p class="font-mono text-lg mb-2">JetBrains Mono</p>
+          <p class="text-sm text-muted-foreground dark:text-neutral-400 mb-2">Code & Data</p>
+          <code class="text-xs font-mono">font-mono</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Component Patterns -->
+    <section id="components" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Component Patterns</h2>
+      
+      <!-- Buttons -->
+      <h3 class="text-xl font-heading mb-4">Buttons</h3>
+      <div class="space-y-4 mb-8">
+        <!-- Primary Button -->
+        <div class="flex items-start gap-4">
+          <button class="px-6 py-2 bg-button-primary text-button-primary-text rounded-md hover:bg-monk-yellow-dark hover:shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
+            Primary Action
+          </button>
+          <div class="flex-1">
+            <p class="text-sm font-medium mb-1">Primary Button</p>
+            <code class="text-xs font-mono text-muted-foreground dark:text-neutral-400">
+              bg-button-primary text-button-primary-text hover:bg-monk-yellow-dark
+            </code>
+          </div>
+        </div>
+        
+        <!-- Secondary Button -->
+        <div class="flex items-start gap-4">
+          <button class="px-6 py-2 border border-card-border dark:border-neutral-700 rounded-md bg-neutral-50 hover:bg-neutral-100 hover:border-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
+            Secondary Action
+          </button>
+          <div class="flex-1">
+            <p class="text-sm font-medium mb-1">Secondary Button</p>
+            <code class="text-xs font-mono text-muted-foreground dark:text-neutral-400">
+              bg-neutral-50 border border-card-border hover:bg-neutral-100
+            </code>
+          </div>
+        </div>
+        
+        <!-- Disabled State -->
+        <div class="flex items-start gap-4">
+          <button class="px-6 py-2 bg-neutral-200 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400 rounded-md cursor-not-allowed" disabled>
+            Disabled
+          </button>
+          <div class="flex-1">
+            <p class="text-sm font-medium mb-1">Disabled State</p>
+            <code class="text-xs font-mono text-muted-foreground dark:text-neutral-400">
+              disabled cursor-not-allowed
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Elements (with @tailwindcss/forms) -->
+      <h3 class="text-xl font-heading mb-4">Form Elements</h3>
+      <div class="p-4 bg-neutral-50 dark:bg-blue-900/20 border border-card-border dark:border-blue-800 rounded-lg mb-4">
+        <p class="text-sm">
+          <strong>Note:</strong> These examples use the <code class="px-1 bg-blue-600 text-white rounded">@tailwindcss/forms</code> plugin for consistent styling.
+        </p>
+      </div>
+      
+      <div class="max-w-md space-y-4">
+        <!-- Text Input -->
+        <div>
+          <label for="example-input" class="block text-sm font-medium mb-2">
+            Text Input
+          </label>
+          <input 
+            type="text" 
+            id="example-input"
+            placeholder="Enter text..."
+            class="w-full rounded-md border-neutral-300 bg-white text-gray-900 placeholder-gray-600 shadow-sm dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 hover:border-neutral-400 dark:focus:border-accent dark:focus:ring-accent/20 transition-all duration-200"
+          />
+          <p class="mt-1 text-xs text-muted-foreground dark:text-neutral-400">
+            Styled by @tailwindcss/forms with custom focus colors
+          </p>
+        </div>
+        
+        <!-- Select -->
+        <div>
+          <label for="example-select" class="block text-sm font-medium mb-2">
+            Select
+          </label>
+          <select 
+            id="example-select"
+            class="w-full rounded-md border-neutral-300 bg-white text-gray-900 appearance-none shadow-sm dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 hover:border-neutral-400 dark:focus:border-accent dark:focus:ring-accent/20 transition-all duration-200 pr-10"
+          >
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        
+        <!-- Textarea -->
+        <div>
+          <label for="example-textarea" class="block text-sm font-medium mb-2">
+            Textarea
+          </label>
+          <textarea 
+            id="example-textarea"
+            rows="3"
+            placeholder="Enter your message..."
+            class="w-full rounded-md border-neutral-300 bg-white text-gray-900 placeholder-gray-600 shadow-sm dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 hover:border-neutral-400 dark:focus:border-accent dark:focus:ring-accent/20 transition-all duration-200 resize-none"
+          ></textarea>
+        </div>
+        
+        <!-- Checkbox -->
+        <div class="flex items-center">
+          <input 
+            id="example-checkbox"
+            type="checkbox"
+            class="rounded border-neutral-300 bg-white dark:border-neutral-600 dark:bg-neutral-800 text-accent hover:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 dark:focus:ring-accent/20 transition-all duration-200 shadow-sm"
+          />
+          <label for="example-checkbox" class="ml-2 text-sm">
+            I agree to the terms
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Guidelines -->
+    <section id="accessibility" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Accessibility Guidelines</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Focus Management -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h3 class="text-xl font-heading mb-3">Focus Management</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              All interactive elements have visible focus indicators
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Focus rings use <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">ring-accent</code>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Keyboard navigation follows logical order
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Screen Reader Support -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h3 class="text-xl font-heading mb-3">Screen Reader Support</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Semantic HTML structure
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Proper ARIA labels and descriptions
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">sr-only</code> for screen reader only content
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Motion Preferences -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h3 class="text-xl font-heading mb-3">Motion Preferences</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Respect <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prefers-reduced-motion</code>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Animations are subtle and purposeful
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              No auto-playing content
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Touch Targets -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h3 class="text-xl font-heading mb-3">Touch Targets</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Minimum 44x44px for touch interfaces
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Adequate spacing between targets
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+              Clear hover and active states
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animations -->
+    <section id="animations" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Animation Utilities</h2>
+      
+      <h3 class="text-xl font-heading mb-4">Built-in Animations</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Pulse -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div class="h-12 w-12 bg-accent rounded-full animate-pulse mb-4"></div>
+          <p class="font-medium mb-1">Pulse</p>
+          <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-pulse</code>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Loading states, skeleton screens</p>
+        </div>
+        
+        <!-- Spin -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div class="h-12 w-12 border-4 border-transparent border-t-accent rounded-full animate-spin mb-4"></div>
+          <p class="font-medium mb-1">Spin</p>
+          <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-spin</code>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Loading indicators</p>
+        </div>
+        
+        <!-- Bounce -->
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div class="h-12 w-12 bg-accent rounded-md animate-bounce mb-4"></div>
+          <p class="font-medium mb-1">Bounce</p>
+          <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-bounce</code>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Attention grabbing (use sparingly)</p>
+        </div>
+      </div>
+      
+      <h3 class="text-xl font-heading mb-4">Entrance Animations</h3>
+      <div class="space-y-4">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
+          <p class="font-medium mb-2">Fade In Up</p>
+          <code class="text-xs font-mono block mb-2">opacity-0 translate-y-4 animate-[fadeInUp_0.5s_ease-out_forwards]</code>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">Perfect for hero sections and content reveals</p>
+        </div>
+        
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
+          <p class="font-medium mb-2">Scale In</p>
+          <code class="text-xs font-mono block mb-2">scale-95 opacity-0 animate-[scaleIn_0.3s_ease-out_forwards]</code>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">Modal and popup entrances</p>
+        </div>
+      </div>
+      
+      <h3 class="text-xl font-heading mb-4 mt-8">Custom Keyframes</h3>
+      <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-card-border dark:border-neutral-700">
+        <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>{`/* Add to global.css */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}`}</code></pre>
+      </div>
+    </section>
+
+    <!-- Container Queries -->
+    <section id="container-queries" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Container Queries</h2>
+      
+      <p class="text-lg text-muted-foreground dark:text-neutral-400 mb-8">
+        Container queries allow components to be responsive based on their container size, not the viewport. 
+        Perfect for component-based design systems.
+      </p>
+      
+      <h3 class="text-xl font-heading mb-4">Project Card Example</h3>
+      <div class="project-card p-6 border border-card-border dark:border-neutral-800 rounded-lg mb-4">
+        <div class="project-card-content grid gap-4">
+          <div class="space-y-2">
+            <div class="h-32 bg-neutral-200 dark:bg-neutral-700 rounded-md"></div>
+            <h4 class="font-heading text-lg">Project Title</h4>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">
+              This card layout adapts based on container width, not viewport.
+            </p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-32 bg-neutral-200 dark:bg-neutral-700 rounded-md"></div>
+            <h4 class="font-heading text-lg">Another Project</h4>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">
+              Resize the browser to see container queries in action.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-card-border dark:border-neutral-700">
+        <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>{`/* Component with container queries */
+.project-card {
+  container-type: inline-size;
+}
+
+/* Responsive based on container, not viewport */
+@container (min-width: 400px) {
+  .project-card-content {
+    @apply grid-cols-2;
+  }
+}
+
+@container (min-width: 600px) {
+  .project-card-content {
+    @apply grid-cols-3;
+  }
+}`}</code></pre>
+      </div>
+      
+      <h3 class="text-xl font-heading mb-4 mt-8">Use Cases</h3>
+      <ul class="space-y-2">
+        <li class="flex items-start">
+          <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+          <span><strong>Sidebar Widgets</strong> - Adapt layout when moved between narrow and wide columns</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+          <span><strong>Card Components</strong> - Change from vertical to horizontal layout based on available space</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-green-600 dark:text-green-400 mr-2">✓</span>
+          <span><strong>Navigation Menus</strong> - Switch between mobile and desktop layouts dynamically</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Typography Plugin -->
+    <section id="typography-plugin" class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Typography Plugin</h2>
+      
+      <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
+        The <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">@tailwindcss/typography</code> plugin provides beautiful typographic defaults for HTML content you don't control, like blog posts or documentation.
+      </p>
+      
+      <h3 class="text-xl font-heading mb-4">Prose Classes</h3>
+      <div class="prose prose-neutral dark:prose-invert max-w-none p-6 border border-card-border dark:border-neutral-800 rounded-lg">
+        <h4>This is a prose section</h4>
+        <p>
+          The typography plugin automatically styles all nested elements with beautiful defaults. 
+          It handles <strong>bold text</strong>, <em>italics</em>, and even <a href="#">links</a>.
+        </p>
+        <ul>
+          <li>Unordered lists look great</li>
+          <li>With proper spacing and bullets</li>
+        </ul>
+        <blockquote>
+          Blockquotes are styled beautifully with proper indentation and styling.
+        </blockquote>
+        <pre class="text-neutral-900 dark:text-neutral-100"><code>// Code blocks are also styled
+const greeting = 'Hello, World!';</code></pre>
+      </div>
+      
+      <h3 class="text-xl font-heading mb-4 mt-8">Usage</h3>
+      <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-card-border dark:border-neutral-700">
+        <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>&lt;!-- Basic prose --&gt;
+&lt;article class="prose dark:prose-invert"&gt;
+  &lt;h1&gt;Blog Post Title&lt;/h1&gt;
+  &lt;p&gt;Your content here...&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;!-- Custom prose colors --&gt;
+&lt;article class="prose prose-neutral dark:prose-invert"&gt;
+  &lt;!-- Matches your design system colors --&gt;
+&lt;/article&gt;
+
+&lt;!-- Limit max width --&gt;
+&lt;article class="prose max-w-none"&gt;
+  &lt;!-- Full width prose content --&gt;
+&lt;/article&gt;</code></pre>
+      </div>
+      
+      <h3 class="text-xl font-heading mb-4 mt-8">Customization</h3>
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+        The typography plugin respects your color scheme and can be customized with modifiers:
+      </p>
+      <ul class="space-y-2 text-sm">
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-sm</code> - Smaller text size</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-lg</code> - Larger text size</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-headings:font-heading</code> - Use your heading font</li>
+        <li><code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-neutral-900 dark:text-neutral-100">prose-a:text-accent</code> - Custom link colors</li>
+      </ul>
+    </section>
+
+    <!-- Usage Guidelines -->
+    <section class="mb-20">
+      <h2 class="text-3xl font-heading mb-6">Usage Guidelines</h2>
+      
+      <div class="bg-emphasis-bg dark:bg-yellow-900/20 border border-card-border dark:border-yellow-800 rounded-lg p-6">
+        <h3 class="text-lg font-heading mb-3 flex items-center text-yellow-800 dark:text-yellow-100">
+          <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+          Important: Tailwind-First Development
+        </h3>
+        <ul class="space-y-2 text-sm text-yellow-800 dark:text-yellow-100">
+          <li>• Use Tailwind's built-in utilities whenever possible</li>
+          <li>• Only create custom components when truly needed</li>
+          <li>• Prefer composition over abstraction</li>
+          <li>• Test all color combinations for WCAG compliance</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>

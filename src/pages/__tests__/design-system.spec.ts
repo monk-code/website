@@ -1,11 +1,11 @@
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
 import { describe, expect, it } from 'vitest'
-import Index from '../index.astro'
+import DesignSystem from '../design-system.astro'
 
-describe('Design System Showcase Page', () => {
+describe('Design System Page', () => {
   it('should use the Layout component', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     // Should be wrapped in Layout with proper meta tags
     expect(result).toContain('Design System')
@@ -14,14 +14,14 @@ describe('Design System Showcase Page', () => {
 
   it('should include theme toggler component', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     expect(result).toContain('theme-toggle')
   })
 
   it('should have navigation for design system sections', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     expect(result).toContain('href="#principles"')
     expect(result).toContain('href="#colors"')
@@ -32,7 +32,7 @@ describe('Design System Showcase Page', () => {
 
   it('should display brand colors', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     expect(result).toContain('Monk Yellow')
     expect(result).toContain('#FFDE0A')
@@ -41,12 +41,12 @@ describe('Design System Showcase Page', () => {
     expect(result).toContain('Silent White')
     expect(result).toContain('#F5F5F5')
     expect(result).toContain('Rhythm Grey')
-    expect(result).toContain('#888888')
+    expect(result).toContain('#4a5568')
   })
 
   it('should show typography examples', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     expect(result).toContain('Montserrat')
     expect(result).toContain('Inter')
@@ -55,7 +55,7 @@ describe('Design System Showcase Page', () => {
 
   it('should include button examples', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     expect(result).toContain('Primary Action')
     expect(result).toContain('Secondary Action')
@@ -64,7 +64,7 @@ describe('Design System Showcase Page', () => {
 
   it('should have accessibility guidelines section', async () => {
     const container = await AstroContainer.create()
-    const result = await container.renderToString(Index)
+    const result = await container.renderToString(DesignSystem)
 
     expect(result).toContain('Accessibility Guidelines')
     expect(result).toContain('Focus Management')
