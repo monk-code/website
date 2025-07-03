@@ -55,7 +55,6 @@ const { title, description, ogImage, noindex = false } = Astro.props
       const theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       
       // Apply theme immediately
-      root.classList.toggle('dark', theme === 'dark');
       root.setAttribute('data-theme', theme);
       
       // Add transition class after initial render
@@ -82,9 +81,9 @@ const { title, description, ogImage, noindex = false } = Astro.props
   <script>
     // Persist theme changes
     window.addEventListener('theme-change', (e) => {
-      const theme = e.detail.theme;
+      const customEvent = e as CustomEvent;
+      const theme = customEvent.detail.theme;
       localStorage.setItem('theme', theme);
-      document.documentElement.classList.toggle('dark', theme === 'dark');
       document.documentElement.setAttribute('data-theme', theme);
     });
   </script>

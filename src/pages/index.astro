@@ -2,25 +2,23 @@
 import Layout from '@/layouts/Layout.astro'
 import ThemeToggler from '@/components/ThemeToggler.astro'
 
-// Design system metadata
-const colorContrast = {
-  'monk-yellow-on-black': { ratio: '16.42:1', level: 'AAA' },
-  'white-on-black': { ratio: '18.1:1', level: 'AAA' },
-  'black-on-yellow': { ratio: '16.42:1', level: 'AAA' },
-  'grey-on-white': { ratio: '3.54:1', level: 'AA' },
-}
+// Design system metadata - contrast ratios for reference
+// Monk Yellow (#FFDE0A) on Code Black (#121212): 16.42:1 (AAA)
+// White on Code Black: 18.1:1 (AAA)
+// Black on Monk Yellow: 16.42:1 (AAA)
+// Improved grey colors provide better contrast than previous 3.54:1
 ---
 
 <Layout 
   title="Design System" 
   description="MONKCODE design system documentation with accessibility guidelines and component patterns."
 >
-  <div class="container mx-auto max-w-6xl px-6 py-12">
+  <div class="container mx-auto max-w-6xl px-6 py-16">
     <!-- Header -->
-    <header class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-8 mb-12">
+    <header class="flex items-center justify-between border-b border-card-border dark:border-neutral-800 pb-12 mb-16">
       <div>
-        <h1 class="text-4xl font-heading">MONKCODE Design System</h1>
-        <p class="text-lg text-neutral-600 dark:text-neutral-400 mt-2">
+        <h1 class="text-5xl font-heading tracking-tight">MONKCODE Design System</h1>
+        <p class="text-lg text-muted-foreground dark:text-neutral-400 mt-2">
           Accessible, performant patterns built on Tailwind CSS v4
         </p>
       </div>
@@ -28,32 +26,32 @@ const colorContrast = {
     </header>
 
     <!-- Quick Navigation -->
-    <nav class="mb-12" aria-label="Design system sections">
+    <nav class="mb-16" aria-label="Design system sections">
       <ul class="flex flex-wrap gap-2">
-        <li><a href="#principles" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Principles</a></li>
-        <li><a href="#colors" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Colors</a></li>
-        <li><a href="#typography" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Typography</a></li>
-        <li><a href="#components" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Components</a></li>
-        <li><a href="#accessibility" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Accessibility</a></li>
-        <li><a href="#animations" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Animations</a></li>
-        <li><a href="#container-queries" class="px-4 py-2 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 transition-colors">Container Queries</a></li>
+        <li><a href="#principles" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Principles</a></li>
+        <li><a href="#colors" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Colors</a></li>
+        <li><a href="#typography" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Typography</a></li>
+        <li><a href="#components" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Components</a></li>
+        <li><a href="#accessibility" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Accessibility</a></li>
+        <li><a href="#animations" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Animations</a></li>
+        <li><a href="#container-queries" class="px-4 py-2 rounded-md bg-neutral-50 hover:bg-emphasis-bg border border-card-border hover:border-accent/20 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100 dark:border-neutral-700 transition-all duration-200">Container Queries</a></li>
       </ul>
     </nav>
 
     <!-- Design Principles -->
-    <section id="principles" class="mb-16">
+    <section id="principles" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Design Principles</h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h3 class="text-xl font-heading mb-3">Tailwind-First</h3>
-          <p class="text-neutral-600 dark:text-neutral-400">
+          <p class="text-muted-foreground dark:text-neutral-400">
             We leverage Tailwind's comprehensive design system, only extending with brand-specific tokens.
             Use <code class="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded text-sm text-neutral-900 dark:text-neutral-100">text-lg</code> not custom sizes.
           </p>
         </div>
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h3 class="text-xl font-heading mb-3">Accessibility First</h3>
-          <p class="text-neutral-600 dark:text-neutral-400">
+          <p class="text-muted-foreground dark:text-neutral-400">
             WCAG AA compliance minimum. Every interactive element has focus states, 
             keyboard support, and proper ARIA labels.
           </p>
@@ -62,7 +60,7 @@ const colorContrast = {
     </section>
 
     <!-- Color System -->
-    <section id="colors" class="mb-16">
+    <section id="colors" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Color System</h2>
       
       <!-- Brand Colors -->
@@ -75,7 +73,7 @@ const colorContrast = {
           </div>
           <div>
             <p class="font-medium">Monk Yellow</p>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Primary accent</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Primary accent</p>
             <code class="text-xs font-mono">bg-monk-yellow</code>
           </div>
         </div>
@@ -87,7 +85,7 @@ const colorContrast = {
           </div>
           <div>
             <p class="font-medium">Code Black</p>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Primary dark</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Primary dark</p>
             <code class="text-xs font-mono">bg-code-black</code>
           </div>
         </div>
@@ -99,7 +97,7 @@ const colorContrast = {
           </div>
           <div>
             <p class="font-medium">Silent White</p>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Primary light</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Primary light</p>
             <code class="text-xs font-mono">bg-silent-white</code>
           </div>
         </div>
@@ -111,7 +109,7 @@ const colorContrast = {
           </div>
           <div>
             <p class="font-medium">Rhythm Grey</p>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">Muted text</p>
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">Muted text</p>
             <code class="text-xs font-mono">bg-rhythm-grey</code>
           </div>
         </div>
@@ -119,7 +117,7 @@ const colorContrast = {
       
       <!-- Simple Accessibility Note -->
       <h3 class="text-xl font-heading mb-4">Accessibility Note</h3>
-      <div class="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+      <div class="p-4 bg-emphasis-bg dark:bg-green-900/20 border border-card-border dark:border-green-800 rounded-lg">
         <p class="text-sm">
           All MONKCODE brand colors have been tested for WCAG AAA compliance. 
           Monk Yellow (#FFDE0A) on Code Black (#121212) provides a 16.42:1 contrast ratio.
@@ -128,60 +126,60 @@ const colorContrast = {
     </section>
 
     <!-- Typography -->
-    <section id="typography" class="mb-16">
+    <section id="typography" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Typography</h2>
       
       <!-- Type Scale -->
       <div class="space-y-6 mb-8">
         <div class="space-y-2">
           <h1 class="text-5xl">Heading 1</h1>
-          <code class="text-sm text-neutral-600 dark:text-neutral-400">text-5xl font-heading</code>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-5xl font-heading</code>
         </div>
         <div class="space-y-2">
           <h2 class="text-4xl">Heading 2</h2>
-          <code class="text-sm text-neutral-600 dark:text-neutral-400">text-4xl font-heading</code>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-4xl font-heading</code>
         </div>
         <div class="space-y-2">
           <h3 class="text-3xl">Heading 3</h3>
-          <code class="text-sm text-neutral-600 dark:text-neutral-400">text-3xl font-heading</code>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-3xl font-heading</code>
         </div>
         <div class="space-y-2">
           <p class="text-lg">Large body text for emphasis and introductions.</p>
-          <code class="text-sm text-neutral-600 dark:text-neutral-400">text-lg</code>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-lg</code>
         </div>
         <div class="space-y-2">
           <p class="text-base">Regular body text. Optimized for readability at normal reading distances.</p>
-          <code class="text-sm text-neutral-600 dark:text-neutral-400">text-base (default)</code>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-base (default)</code>
         </div>
         <div class="space-y-2">
           <p class="text-sm">Small text for captions and secondary information.</p>
-          <code class="text-sm text-neutral-600 dark:text-neutral-400">text-sm</code>
+          <code class="text-sm text-muted-foreground dark:text-neutral-400">text-sm</code>
         </div>
       </div>
 
       <!-- Font Stacks -->
       <h3 class="text-xl font-heading mb-4">Font Families</h3>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
           <p class="font-heading text-lg mb-2">Montserrat</p>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Headings & Display</p>
+          <p class="text-sm text-muted-foreground dark:text-neutral-400 mb-2">Headings & Display</p>
           <code class="text-xs font-mono">font-heading</code>
         </div>
-        <div class="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
           <p class="font-body text-lg mb-2">Inter</p>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Body Text</p>
+          <p class="text-sm text-muted-foreground dark:text-neutral-400 mb-2">Body Text</p>
           <code class="text-xs font-mono">font-body</code>
         </div>
-        <div class="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
           <p class="font-mono text-lg mb-2">JetBrains Mono</p>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Code & Data</p>
+          <p class="text-sm text-muted-foreground dark:text-neutral-400 mb-2">Code & Data</p>
           <code class="text-xs font-mono">font-mono</code>
         </div>
       </div>
     </section>
 
     <!-- Component Patterns -->
-    <section id="components" class="mb-16">
+    <section id="components" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Component Patterns</h2>
       
       <!-- Buttons -->
@@ -189,26 +187,26 @@ const colorContrast = {
       <div class="space-y-4 mb-8">
         <!-- Primary Button -->
         <div class="flex items-start gap-4">
-          <button class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
+          <button class="px-6 py-2 bg-primary text-primary-foreground rounded-md hover:bg-monk-yellow-dark hover:shadow-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
             Primary Action
           </button>
           <div class="flex-1">
             <p class="text-sm font-medium mb-1">Primary Button</p>
-            <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">
-              bg-primary text-primary-foreground hover:opacity-90
+            <code class="text-xs font-mono text-muted-foreground dark:text-neutral-400">
+              bg-primary hover:bg-monk-yellow-dark hover:shadow-sm
             </code>
           </div>
         </div>
         
         <!-- Secondary Button -->
         <div class="flex items-start gap-4">
-          <button class="px-6 py-2 border border-neutral-300 dark:border-neutral-700 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
+          <button class="px-6 py-2 border border-card-border dark:border-neutral-700 rounded-md bg-neutral-50 hover:bg-neutral-100 hover:border-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black">
             Secondary Action
           </button>
           <div class="flex-1">
             <p class="text-sm font-medium mb-1">Secondary Button</p>
-            <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">
-              border border-neutral-300 hover:bg-neutral-50
+            <code class="text-xs font-mono text-muted-foreground dark:text-neutral-400">
+              bg-neutral-50 border border-card-border hover:bg-neutral-100
             </code>
           </div>
         </div>
@@ -220,7 +218,7 @@ const colorContrast = {
           </button>
           <div class="flex-1">
             <p class="text-sm font-medium mb-1">Disabled State</p>
-            <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">
+            <code class="text-xs font-mono text-muted-foreground dark:text-neutral-400">
               disabled cursor-not-allowed
             </code>
           </div>
@@ -229,7 +227,7 @@ const colorContrast = {
 
       <!-- Form Elements (with @tailwindcss/forms) -->
       <h3 class="text-xl font-heading mb-4">Form Elements</h3>
-      <div class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg mb-4">
+      <div class="p-4 bg-neutral-50 dark:bg-blue-900/20 border border-card-border dark:border-blue-800 rounded-lg mb-4">
         <p class="text-sm">
           <strong>Note:</strong> These examples use the <code class="px-1 bg-blue-600 text-white rounded">@tailwindcss/forms</code> plugin for consistent styling.
         </p>
@@ -245,9 +243,9 @@ const colorContrast = {
             type="text" 
             id="example-input"
             placeholder="Enter text..."
-            class="w-full rounded-md border-gray-300 bg-gray-50 text-gray-900 placeholder-gray-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:focus:border-accent dark:focus:ring-accent transition-colors"
+            class="w-full rounded-md border-neutral-300 bg-white text-gray-900 placeholder-gray-600 shadow-sm dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 hover:border-neutral-400 dark:focus:border-accent dark:focus:ring-accent/20 transition-all duration-200"
           />
-          <p class="mt-1 text-xs text-gray-700 dark:text-neutral-400">
+          <p class="mt-1 text-xs text-muted-foreground dark:text-neutral-400">
             Styled by @tailwindcss/forms with custom focus colors
           </p>
         </div>
@@ -259,7 +257,7 @@ const colorContrast = {
           </label>
           <select 
             id="example-select"
-            class="w-full rounded-md border-gray-300 bg-gray-50 text-gray-900 appearance-none dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:focus:border-accent dark:focus:ring-accent transition-colors pr-10"
+            class="w-full rounded-md border-neutral-300 bg-white text-gray-900 appearance-none shadow-sm dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 hover:border-neutral-400 dark:focus:border-accent dark:focus:ring-accent/20 transition-all duration-200 pr-10"
           >
             <option>Option 1</option>
             <option>Option 2</option>
@@ -276,7 +274,7 @@ const colorContrast = {
             id="example-textarea"
             rows="3"
             placeholder="Enter your message..."
-            class="w-full rounded-md border-gray-300 bg-gray-50 text-gray-900 placeholder-gray-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:focus:border-accent dark:focus:ring-accent transition-colors resize-none"
+            class="w-full rounded-md border-neutral-300 bg-white text-gray-900 placeholder-gray-600 shadow-sm dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 hover:border-neutral-400 dark:focus:border-accent dark:focus:ring-accent/20 transition-all duration-200 resize-none"
           ></textarea>
         </div>
         
@@ -285,7 +283,7 @@ const colorContrast = {
           <input 
             id="example-checkbox"
             type="checkbox"
-            class="rounded border-gray-300 bg-gray-50 dark:border-neutral-600 dark:bg-neutral-800 text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-accent transition-colors"
+            class="rounded border-neutral-300 bg-white dark:border-neutral-600 dark:bg-neutral-800 text-accent hover:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 dark:focus:ring-accent/20 transition-all duration-200 shadow-sm"
           />
           <label for="example-checkbox" class="ml-2 text-sm">
             I agree to the terms
@@ -295,12 +293,12 @@ const colorContrast = {
     </section>
 
     <!-- Accessibility Guidelines -->
-    <section id="accessibility" class="mb-16">
+    <section id="accessibility" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Accessibility Guidelines</h2>
       
       <div class="grid md:grid-cols-2 gap-6">
         <!-- Focus Management -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h3 class="text-xl font-heading mb-3">Focus Management</h3>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start">
@@ -319,7 +317,7 @@ const colorContrast = {
         </div>
         
         <!-- Screen Reader Support -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h3 class="text-xl font-heading mb-3">Screen Reader Support</h3>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start">
@@ -338,7 +336,7 @@ const colorContrast = {
         </div>
         
         <!-- Motion Preferences -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h3 class="text-xl font-heading mb-3">Motion Preferences</h3>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start">
@@ -357,7 +355,7 @@ const colorContrast = {
         </div>
         
         <!-- Touch Targets -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <h3 class="text-xl font-heading mb-3">Touch Targets</h3>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start">
@@ -378,13 +376,13 @@ const colorContrast = {
     </section>
 
     <!-- Animations -->
-    <section id="animations" class="mb-16">
+    <section id="animations" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Animation Utilities</h2>
       
       <h3 class="text-xl font-heading mb-4">Built-in Animations</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <!-- Pulse -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <div class="h-12 w-12 bg-accent rounded-full animate-pulse mb-4"></div>
           <p class="font-medium mb-1">Pulse</p>
           <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-pulse</code>
@@ -392,7 +390,7 @@ const colorContrast = {
         </div>
         
         <!-- Spin -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <div class="h-12 w-12 border-4 border-transparent border-t-accent rounded-full animate-spin mb-4"></div>
           <p class="font-medium mb-1">Spin</p>
           <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-spin</code>
@@ -400,7 +398,7 @@ const colorContrast = {
         </div>
         
         <!-- Bounce -->
-        <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-6 border border-card-border dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-shadow duration-200">
           <div class="h-12 w-12 bg-accent rounded-md animate-bounce mb-4"></div>
           <p class="font-medium mb-1">Bounce</p>
           <code class="text-xs font-mono text-neutral-600 dark:text-neutral-400">animate-bounce</code>
@@ -410,13 +408,13 @@ const colorContrast = {
       
       <h3 class="text-xl font-heading mb-4">Entrance Animations</h3>
       <div class="space-y-4">
-        <div class="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
           <p class="font-medium mb-2">Fade In Up</p>
           <code class="text-xs font-mono block mb-2">opacity-0 translate-y-4 animate-[fadeInUp_0.5s_ease-out_forwards]</code>
           <p class="text-sm text-neutral-600 dark:text-neutral-400">Perfect for hero sections and content reveals</p>
         </div>
         
-        <div class="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+        <div class="p-4 border border-card-border dark:border-neutral-800 rounded-lg">
           <p class="font-medium mb-2">Scale In</p>
           <code class="text-xs font-mono block mb-2">scale-95 opacity-0 animate-[scaleIn_0.3s_ease-out_forwards]</code>
           <p class="text-sm text-neutral-600 dark:text-neutral-400">Modal and popup entrances</p>
@@ -424,7 +422,7 @@ const colorContrast = {
       </div>
       
       <h3 class="text-xl font-heading mb-4 mt-8">Custom Keyframes</h3>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+      <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-card-border dark:border-neutral-700">
         <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>{`/* Add to global.css */
 @keyframes fadeInUp {
   from {
@@ -451,35 +449,35 @@ const colorContrast = {
     </section>
 
     <!-- Container Queries -->
-    <section id="container-queries" class="mb-16">
+    <section id="container-queries" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Container Queries</h2>
       
-      <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
+      <p class="text-lg text-muted-foreground dark:text-neutral-400 mb-8">
         Container queries allow components to be responsive based on their container size, not the viewport. 
         Perfect for component-based design systems.
       </p>
       
       <h3 class="text-xl font-heading mb-4">Project Card Example</h3>
-      <div class="project-card p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg mb-4">
+      <div class="project-card p-6 border border-card-border dark:border-neutral-800 rounded-lg mb-4">
         <div class="project-card-content grid gap-4">
           <div class="space-y-2">
             <div class="h-32 bg-neutral-200 dark:bg-neutral-700 rounded-md"></div>
             <h4 class="font-heading text-lg">Project Title</h4>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">
               This card layout adapts based on container width, not viewport.
             </p>
           </div>
           <div class="space-y-2">
             <div class="h-32 bg-neutral-200 dark:bg-neutral-700 rounded-md"></div>
             <h4 class="font-heading text-lg">Another Project</h4>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            <p class="text-sm text-muted-foreground dark:text-neutral-400">
               Resize the browser to see container queries in action.
             </p>
           </div>
         </div>
       </div>
       
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+      <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-card-border dark:border-neutral-700">
         <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>{`/* Component with container queries */
 .project-card {
   container-type: inline-size;
@@ -517,7 +515,7 @@ const colorContrast = {
     </section>
 
     <!-- Typography Plugin -->
-    <section id="typography-plugin" class="mb-16">
+    <section id="typography-plugin" class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Typography Plugin</h2>
       
       <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
@@ -525,7 +523,7 @@ const colorContrast = {
       </p>
       
       <h3 class="text-xl font-heading mb-4">Prose Classes</h3>
-      <div class="prose prose-neutral dark:prose-invert max-w-none p-6 border border-neutral-200 dark:border-neutral-800 rounded-lg">
+      <div class="prose prose-neutral dark:prose-invert max-w-none p-6 border border-card-border dark:border-neutral-800 rounded-lg">
         <h4>This is a prose section</h4>
         <p>
           The typography plugin automatically styles all nested elements with beautiful defaults. 
@@ -543,7 +541,7 @@ const greeting = 'Hello, World!';</code></pre>
       </div>
       
       <h3 class="text-xl font-heading mb-4 mt-8">Usage</h3>
-      <div class="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+      <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-card-border dark:border-neutral-700">
         <pre class="text-sm font-mono overflow-x-auto text-neutral-900 dark:text-neutral-100"><code>&lt;!-- Basic prose --&gt;
 &lt;article class="prose dark:prose-invert"&gt;
   &lt;h1&gt;Blog Post Title&lt;/h1&gt;
@@ -574,10 +572,10 @@ const greeting = 'Hello, World!';</code></pre>
     </section>
 
     <!-- Usage Guidelines -->
-    <section class="mb-16">
+    <section class="mb-20">
       <h2 class="text-3xl font-heading mb-6">Usage Guidelines</h2>
       
-      <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
+      <div class="bg-emphasis-bg dark:bg-yellow-900/20 border border-card-border dark:border-yellow-800 rounded-lg p-6">
         <h3 class="text-lg font-heading mb-3 flex items-center text-yellow-800 dark:text-yellow-100">
           <svg class="w-5 h-5 mr-2 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>

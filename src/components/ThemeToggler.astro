@@ -70,13 +70,13 @@ const { class: className = '' } = Astro.props
     };
     
     // Initialize
-    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     updateAnnouncement(currentTheme);
     
     // Handle click
     button.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      const newTheme = isDark ? 'light' : 'dark';
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
       // Dispatch custom event for theme persistence
       window.dispatchEvent(new CustomEvent('theme-change', { 
@@ -89,9 +89,10 @@ const { class: className = '' } = Astro.props
     
     // Keyboard navigation hint
     button.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        button.click();
+      const keyEvent = e as KeyboardEvent;
+      if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+        keyEvent.preventDefault();
+        (button as HTMLButtonElement).click();
       }
     });
   }

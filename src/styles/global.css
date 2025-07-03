@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
+/* Configure Tailwind to use data-theme instead of media queries */
+@variant dark ([data-theme="dark"] &);
+
 @theme {
   /* Brand Colors - Raw Tokens */
   --color-monk-yellow: #FFDE0A;
   --color-code-black: #121212;
   --color-silent-white: #F5F5F5;
-  --color-rhythm-grey: #888888;
+  --color-rhythm-grey: #4a5568; /* Improved contrast: was #888888, now darker for better readability */
+  
+  /* Enhanced Light Mode Colors */
+  --color-monk-yellow-light: #FFF4B3; /* Subtle yellow background for light mode */
+  --color-monk-yellow-dark: #E6C800; /* Darker yellow for better contrast */
   
   /* Brand Typography */
   --font-family-heading: Montserrat, ui-sans-serif, system-ui, sans-serif;
@@ -22,15 +29,33 @@
   /* Base background/foreground colors */
   --color-background: var(--color-silent-white);
   --color-foreground: var(--color-code-black);
+  
+  /* Enhanced semantic colors for better accessibility */
+  --color-secondary: var(--color-rhythm-grey); /* Now uses the improved contrast grey */
+  --color-muted: #6b7280; /* Better contrast than neutral-500 for light mode */
+  --color-muted-foreground: #374151; /* Even better contrast for important secondary text */
+  
+  /* Light mode enhancements */
+  --color-emphasis-bg: var(--color-monk-yellow-light); /* Subtle brand background */
+  --color-card-border: #e5e7eb; /* Better than neutral-200 */
 }
 
 /* Dark mode overrides */
-:root.dark {
+[data-theme="dark"] {
   --color-primary: var(--color-monk-yellow);
   --color-primary-foreground: var(--color-code-black);
   
   --color-background: var(--color-code-black);
   --color-foreground: var(--color-silent-white);
+  
+  /* Dark mode semantic colors */
+  --color-secondary: #9ca3af; /* Lighter grey for dark mode */
+  --color-muted: #6b7280; /* Same as light mode */
+  --color-muted-foreground: #d1d5db; /* Light grey for dark mode secondary text */
+  
+  /* Dark mode enhancements */
+  --color-emphasis-bg: rgba(255, 222, 10, 0.1); /* Subtle yellow glow for dark mode */
+  --color-card-border: #374151; /* Darker border for dark mode */
 }
 
 /* Base Styles */
@@ -76,7 +101,7 @@
   }
   
   /* Dark mode select chevron */
-  :root.dark select {
+  [data-theme="dark"] select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   }
   
@@ -103,7 +128,11 @@
   
   /* Custom focus utilities */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-code-black;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+  
+  [data-theme="dark"] .focus-ring {
+    --tw-ring-offset-color: var(--color-code-black);
   }
 }
 
