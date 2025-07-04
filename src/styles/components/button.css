@@ -1,0 +1,106 @@
+/* Button Component Styles */
+
+@layer components {
+  /* Base button styles */
+  .btn {
+    @apply inline-flex items-center justify-center font-semibold rounded-md relative overflow-hidden;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Button sizes */
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-md {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-button-primary text-button-primary-text;
+    @apply hover:shadow-lg hover:shadow-primary/20;
+    @apply hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-primary border-2 border-primary;
+    @apply hover:bg-button-primary hover:text-button-primary-text;
+    @apply hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-muted-foreground;
+    @apply hover:text-primary underline-offset-4 hover:underline;
+  }
+
+  /* Button states */
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn:disabled:hover {
+    @apply transform-none shadow-none;
+  }
+
+  /* Button effects */
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+  }
+
+  .btn-primary:hover::before {
+    transform: scale(2);
+  }
+
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: var(--color-monk-yellow);
+    border-radius: inherit;
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 150ms ease;
+    z-index: -1;
+  }
+
+  .btn-primary:hover::after {
+    opacity: 0.3;
+  }
+
+  /* Ensure button content stays on top */
+  .btn > * {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .btn:focus {
+  --tw-ring-offset-color: var(--color-code-black);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::before,
+  .btn-primary::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .btn-primary:hover::before,
+  .btn-primary:hover::after {
+    transform: none !important;
+    opacity: 0 !important;
+  }
+}

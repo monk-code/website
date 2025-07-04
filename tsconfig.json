@@ -32,6 +32,6 @@
       "@tests/*": ["test/*"]
     }
   },
-  "include": ["src/**/*", "test/**/*"],
-  "exclude": ["node_modules", "dist", ".astro"]
+  "include": ["src/**/*", "test/**/*", "src/types/astro.d.ts"],
+  "exclude": ["node_modules", "dist", ".astro", "**/*.spec.ts"]
 }

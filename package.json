@@ -16,8 +16,10 @@
     "types:check": "tsc --noEmit",
     "astro:check": "astro check",
     "lint": "biome check .",
+    "lint:fix": "pnpm lint --write",
     "format": "biome format --write .",
-    "check": "pnpm run types:check && pnpm run astro:check && pnpm run lint && pnpm run test:run"
+    "check": "pnpm run types:check && pnpm run astro:check && pnpm run lint && pnpm run test:run",
+    "quick-fix": "pnpm lint:fix && pnpm format"
   },
   "engines": {
     "node": ">=18.20.8"

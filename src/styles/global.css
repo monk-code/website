@@ -1,31 +1,39 @@
 @import "tailwindcss";
 
+/* Import style utilities */
+@import "./utils/animations.css";
+@import "./utils/transitions.css";
+
+/* Import component styles */
+/* @import "./components/button.css"; */
+/* @import "./components/card.css"; */
+
 /* Configure Tailwind to use data-theme instead of media queries */
 @variant dark ([data-theme="dark"] &);
 
 @theme {
   /* Brand Colors - Raw Tokens */
-  --color-monk-yellow: #FFDE0A;
+  --color-monk-yellow: #ffde0a;
   --color-code-black: #121212;
-  --color-silent-white: #F5F5F5;
+  --color-silent-white: #f5f5f5;
   --color-rhythm-grey: #4a5568; /* Improved contrast: was #888888, now darker for better readability */
-  
+
   /* Enhanced Light Mode Colors */
-  --color-monk-yellow-light: #FFF4B3; /* Subtle yellow background for light mode */
-  --color-monk-yellow-dark: #E6C800; /* Darker yellow for better contrast */
-  --color-monk-yellow-contrast: #B8A200; /* High contrast yellow for light backgrounds (WCAG AA: 4.5:1) */
-  
+  --color-monk-yellow-light: #fff4b3; /* Subtle yellow background for light mode */
+  --color-monk-yellow-dark: #e6c800; /* Darker yellow for better contrast */
+  --color-monk-yellow-contrast: #b8a200; /* High contrast yellow for light backgrounds (WCAG AA: 4.5:1) */
+
   /* Premium Light Mode Neutrals */
   --color-light-neutral-50: #fafafa;
   --color-light-neutral-100: #f4f4f5;
   --color-light-neutral-200: #e4e4e7;
   --color-light-neutral-300: #d4d4d8;
   --color-light-neutral-400: #a1a1aa;
-  
+
   /* Brand Typography */
   --font-family-heading: Montserrat, ui-sans-serif, system-ui, sans-serif;
   --font-family-body: Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-family-mono: "JetBrains Mono", ui-monospace, monospace;
 
   /* SEMANTIC THEME TOKENS */
   /* These will generate text-primary, bg-primary, border-primary, etc. */
@@ -35,22 +43,22 @@
   --color-accent: var(--color-monk-yellow-dark); /* Use contrast-enhanced yellow for light mode text */
   --color-accent-bg: var(--color-monk-yellow-dark); /* Bright yellow for backgrounds */
   --color-accent-foreground: var(--color-code-black);
-  
+
   /* Button and interaction colors */
   --color-button-primary: var(--color-monk-yellow-dark); /* Lighter yellow for better visual appeal in light mode */
   --color-button-primary-text: var(--color-code-black); /* Black text on yellow buttons */
-  
+
   /* Base background/foreground colors */
   --color-background: var(--color-silent-white);
   --color-foreground: var(--color-code-black);
-  
+
   /* Enhanced semantic colors for better accessibility */
   --color-secondary: var(--color-rhythm-grey); /* Now uses the improved contrast grey */
   --color-muted: #6b7280; /* Better contrast than neutral-500 for light mode */
   --color-muted-foreground: #374151; /* Even better contrast for important secondary text */
-  
+
   /* Light mode enhancements */
-  --color-emphasis-bg: #F5E6D3; /* Warm sand - complements monk yellow */
+  --color-emphasis-bg: #f5e6d3; /* Warm sand - complements monk yellow */
   --color-card-border: #e5e7eb; /* Better than neutral-200 */
 }
 
@@ -62,19 +70,19 @@
   --color-accent: var(--color-monk-yellow); /* Bright yellow works well in dark mode */
   --color-accent-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
   --color-accent-foreground: var(--color-code-black);
-  
+
   /* Button colors remain the same in dark mode */
   --color-button-primary: var(--color-monk-yellow);
   --color-button-primary-text: var(--color-code-black);
-  
+
   --color-background: var(--color-code-black);
   --color-foreground: var(--color-silent-white);
-  
+
   /* Dark mode semantic colors */
   --color-secondary: #9ca3af; /* Lighter grey for dark mode */
   --color-muted: #6b7280; /* Same as light mode */
   --color-muted-foreground: #d1d5db; /* Light grey for dark mode secondary text */
-  
+
   /* Dark mode enhancements */
   --color-emphasis-bg: rgba(255, 222, 10, 0.1); /* Subtle yellow glow for dark mode */
   --color-card-border: #374151; /* Darker border for dark mode */
@@ -86,23 +94,29 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Typography setup */
   body {
     font-family: var(--font-family-body);
     /* Apply semantic background/foreground colors */
     @apply bg-background text-foreground antialiased;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-family-heading);
     @apply font-bold;
   }
-  
-  code, pre {
+
+  code,
+  pre {
     font-family: var(--font-family-mono);
   }
-  
+
   /* Form element defaults */
   input[type="text"],
   input[type="email"],
@@ -114,7 +128,7 @@
   select {
     @apply px-3 py-2;
   }
-  
+
   /* Better select chevron styling */
   select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
@@ -126,22 +140,24 @@
     -moz-appearance: none;
     appearance: none;
   }
-  
+
   /* Dark mode select chevron */
   [data-theme="dark"] select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   }
-  
+
   /* Use Tailwind's selection: variant instead */
-  
+
   /* Let Tailwind handle focus styles with focus-visible: utilities */
-  
+
   /* Reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -155,12 +171,12 @@
   .transition-theme {
     @apply transition-[color,background-color,border-color] duration-150 ease-in-out;
   }
-  
+
   /* Custom focus utilities */
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
   }
-  
+
   [data-theme="dark"] .focus-ring {
     --tw-ring-offset-color: var(--color-code-black);
   }
@@ -171,7 +187,7 @@
   .project-card {
     container-type: inline-size;
   }
-  
+
   /* Responsive without media queries */
   @container (min-width: 20rem) {
     .project-card-content {

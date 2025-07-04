@@ -6,7 +6,7 @@
   },
   "linter": {
     "enabled": true,
-    "includes": ["**", "!**/*.astro", "!**/*.vue"],
+    "includes": ["**", "!**/*.astro", "!**/*.vue", "!coverage/**/*"],
     "rules": {
       "recommended": true,
       "suspicious": {

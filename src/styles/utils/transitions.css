@@ -1,0 +1,194 @@
+/* Reusable Transition Utilities */
+
+@layer utilities {
+  /* Duration utilities */
+  .transition-fast {
+    transition-duration: 150ms;
+  }
+
+  .transition-base {
+    transition-duration: 200ms;
+  }
+
+  .transition-slow {
+    transition-duration: 300ms;
+  }
+
+  .transition-slower {
+    transition-duration: 500ms;
+  }
+
+  /* Easing utilities */
+  .ease-smooth {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ease-bounce {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Common transition combinations */
+  .transition-colors-fast {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .transition-colors-base {
+    transition:
+      color 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease;
+  }
+
+  .transition-transform-fast {
+    transition: transform 150ms ease;
+  }
+
+  .transition-transform-base {
+    transition: transform 200ms ease;
+  }
+
+  .transition-opacity-fast {
+    transition: opacity 150ms ease;
+  }
+
+  .transition-opacity-base {
+    transition: opacity 200ms ease;
+  }
+
+  /* Interactive element transitions */
+  .transition-interactive {
+    transition:
+      color 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease,
+      transform 200ms ease,
+      box-shadow 200ms ease,
+      opacity 200ms ease;
+  }
+
+  .transition-button {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease,
+      transform 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .transition-card {
+    transition:
+      transform 200ms ease,
+      box-shadow 200ms ease,
+      border-color 200ms ease;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 200ms ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-lift-sm {
+    transition: transform 150ms ease;
+  }
+
+  .hover-lift-sm:hover {
+    transform: translateY(-1px);
+  }
+
+  .hover-lift-lg {
+    transition: transform 250ms ease;
+  }
+
+  .hover-lift-lg:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-scale {
+    transition: transform 200ms ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  .hover-scale-sm {
+    transition: transform 150ms ease;
+  }
+
+  .hover-scale-sm:hover {
+    transform: scale(1.01);
+  }
+
+  .hover-scale-lg {
+    transition: transform 250ms ease;
+  }
+
+  .hover-scale-lg:hover {
+    transform: scale(1.05);
+  }
+
+  /* Focus utilities */
+  .focus-ring {
+    transition: box-shadow 150ms ease;
+  }
+
+  .focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+
+  .focus-ring-offset {
+    transition: box-shadow 150ms ease;
+  }
+
+  .focus-ring-offset:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--color-background),
+      0 0 0 4px var(--color-accent);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .transition-fast,
+  .transition-base,
+  .transition-slow,
+  .transition-slower,
+  .transition-colors-fast,
+  .transition-colors-base,
+  .transition-transform-fast,
+  .transition-transform-base,
+  .transition-opacity-fast,
+  .transition-opacity-base,
+  .transition-interactive,
+  .transition-button,
+  .transition-card,
+  .hover-lift,
+  .hover-lift-sm,
+  .hover-lift-lg,
+  .hover-scale,
+  .hover-scale-sm,
+  .hover-scale-lg,
+  .focus-ring,
+  .focus-ring-offset {
+    transition: none !important;
+  }
+
+  /* Remove hover effects for reduced motion */
+  .hover-lift:hover,
+  .hover-lift-sm:hover,
+  .hover-lift-lg:hover,
+  .hover-scale:hover,
+  .hover-scale-sm:hover,
+  .hover-scale-lg:hover {
+    transform: none !important;
+  }
+}

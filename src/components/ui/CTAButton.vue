@@ -14,16 +14,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-
-type ButtonVariant = 'primary' | 'secondary' | 'ghost'
-type ButtonSize = 'sm' | 'md' | 'lg'
+import type { ButtonSize, ButtonVariant } from '@/types/index.js'
 
 interface Props {
   variant?: ButtonVariant
   size?: ButtonSize
   href?: string
   to?: string
-  onClick?: (event: Event) => void
+  onClick?: (event: MouseEvent) => void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,19 +29,19 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
 })
 
-const tag = computed(() => {
+const tag = computed((): string => {
   if (props.href) return 'a'
   if (props.to) return 'router-link'
   return 'button'
 })
 
-const handleClick = (event: Event) => {
+const handleClick = (event: MouseEvent): void => {
   if (props.onClick) {
     props.onClick(event)
   }
 }
 
-const buttonClasses = computed(() => {
+const buttonClasses = computed((): string => {
   const baseClasses =
     'inline-flex items-center justify-center font-semibold transition-all duration-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-md relative overflow-hidden group'
 

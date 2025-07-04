@@ -1,6 +1,6 @@
 ---
 import '@/styles/global.css'
-import SEO from '@/components/SEO.astro'
+import SEO from '@/components/ui/SEO.astro'
 
 export interface Props {
   title?: string
@@ -89,9 +89,9 @@ const { title, description, ogImage, noindex = false } = Astro.props
   </script>
   
   <!-- Fade-in Animation Script -->
-  <script src="/fade-in.js" defer></script>
+  <script src="/fade-in.js" defer is:inline></script>
   
   <!-- Smooth Scrolling Script -->
-  <script src="/smooth-scroll.js" defer></script>
+  <script src="/smooth-scroll.js" defer is:inline></script>
 </body>
 </html>

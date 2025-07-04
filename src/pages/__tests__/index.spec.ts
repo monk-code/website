@@ -1,7 +1,7 @@
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
 import { loadRenderers } from 'astro:container'
 import { getContainerRenderer as getVueRenderer } from '@astrojs/vue'
-import { describe, expect, it, beforeAll } from 'vitest'
+import { experimental_AstroContainer as AstroContainer } from 'astro/container'
+import { beforeAll, describe, expect, it } from 'vitest'
 import Index from '../index.astro'
 
 describe('Homepage', () => {
@@ -32,7 +32,7 @@ describe('Homepage', () => {
 
     expect(result).toContain('Selected Work')
     expect(result).toContain('The Monk & The Rhythm')
-    expect(result).toContain('Let\'s Build Something Together')
+    expect(result).toContain("Let's Build Something Together")
     expect(result).not.toContain('Design System Showcase')
   })
 })

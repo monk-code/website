@@ -1,5 +1,5 @@
 // Using path alias - no relative imports
-import Header from '@components/header.vue'
+import Header from '@components/layout/Header.vue'
 import { render, screen } from '@testing-library/vue'
 import { describe, expect, it } from 'vitest'
 

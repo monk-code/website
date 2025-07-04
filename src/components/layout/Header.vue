@@ -4,14 +4,19 @@
       <div class="flex items-center justify-between h-16">
         <!-- Brand -->
         <a href="/" class="font-montserrat font-bold text-xl text-primary hover:opacity-80 transition-opacity">
-          MONKCODE
+          {{ SITE_CONFIG.name }}
         </a>
         
         <!-- Navigation -->
         <nav class="hidden md:flex items-center gap-8">
-          <a href="#projects" class="text-foreground hover:text-primary transition-colors">Projects</a>
-          <a href="#about" class="text-foreground hover:text-primary transition-colors">About</a>
-          <a href="#contact" class="text-foreground hover:text-primary transition-colors">Contact</a>
+          <a 
+            v-for="item in NAVIGATION_ITEMS" 
+            :key="item.href"
+            :href="item.href" 
+            class="text-foreground hover:text-primary transition-colors"
+          >
+            {{ item.label }}
+          </a>
         </nav>
         
         <!-- Mobile Menu Button -->
@@ -35,25 +40,13 @@
         class="md:hidden py-4 border-t border-neutral-800"
       >
         <a 
-          href="#projects" 
+          v-for="item in NAVIGATION_ITEMS"
+          :key="`mobile-${item.href}`"
+          :href="item.href" 
           class="block py-2 text-foreground hover:text-primary transition-colors"
           @click="closeMobileMenu"
         >
-          Projects
-        </a>
-        <a 
-          href="#about" 
-          class="block py-2 text-foreground hover:text-primary transition-colors"
-          @click="closeMobileMenu"
-        >
-          About
-        </a>
-        <a 
-          href="#contact" 
-          class="block py-2 text-foreground hover:text-primary transition-colors"
-          @click="closeMobileMenu"
-        >
-          Contact
+          {{ item.label }}
         </a>
       </nav>
     </div>
@@ -61,15 +54,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useMobileMenu } from '@/composables/useMobileMenu.js'
+import { NAVIGATION_ITEMS, SITE_CONFIG } from '@/utils/constants.js'
 
-const isMobileMenuOpen = ref(false)
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
-}
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false
-}
+const {
+  isOpen: isMobileMenuOpen,
+  toggle: toggleMobileMenu,
+  close: closeMobileMenu,
+} = useMobileMenu()
 </script>
