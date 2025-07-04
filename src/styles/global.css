@@ -29,15 +29,15 @@
 
   /* SEMANTIC THEME TOKENS */
   /* These will generate text-primary, bg-primary, border-primary, etc. */
-  --color-primary: var(--color-monk-yellow-contrast); /* Use contrast-enhanced yellow for light mode text */
-  --color-primary-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
+  --color-primary: var(--color-monk-yellow-dark); /* Use contrast-enhanced yellow for light mode text */
+  --color-primary-bg: var(--color-monk-yellow-dark); /* Bright yellow for backgrounds */
   --color-primary-foreground: var(--color-code-black);
-  --color-accent: var(--color-monk-yellow-contrast); /* Use contrast-enhanced yellow for light mode text */
-  --color-accent-bg: var(--color-monk-yellow); /* Bright yellow for backgrounds */
+  --color-accent: var(--color-monk-yellow-dark); /* Use contrast-enhanced yellow for light mode text */
+  --color-accent-bg: var(--color-monk-yellow-dark); /* Bright yellow for backgrounds */
   --color-accent-foreground: var(--color-code-black);
   
   /* Button and interaction colors */
-  --color-button-primary: var(--color-monk-yellow); /* Bright yellow for primary buttons */
+  --color-button-primary: var(--color-monk-yellow-dark); /* Lighter yellow for better visual appeal in light mode */
   --color-button-primary-text: var(--color-code-black); /* Black text on yellow buttons */
   
   /* Base background/foreground colors */

@@ -1,29 +1,38 @@
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import { describe, expect, it } from 'vitest'
+import { loadRenderers } from 'astro:container'
+import { getContainerRenderer as getVueRenderer } from '@astrojs/vue'
+import { describe, expect, it, beforeAll } from 'vitest'
 import Index from '../index.astro'
 
 describe('Homepage', () => {
+  let container: AstroContainer
+
+  beforeAll(async () => {
+    const renderers = await loadRenderers([getVueRenderer()])
+    container = await AstroContainer.create({ renderers })
+  })
+
   it('should use the Layout component', async () => {
-    const container = await AstroContainer.create()
     const result = await container.renderToString(Index)
 
     expect(result).toContain('MONKCODE')
-    expect(result).toContain('Portfolio')
+    expect(result).toContain('Digital Craftsmanship')
   })
 
-  it('should include theme toggler component', async () => {
-    const container = await AstroContainer.create()
+  it('should include Hero component with main content', async () => {
     const result = await container.renderToString(Index)
 
-    expect(result).toContain('theme-toggle')
+    expect(result).toContain('Gregory')
+    expect(result).toContain('senior frontend developer')
+    expect(result).toContain('View My Work')
   })
 
-  it('should have minimal clean structure ready for portfolio development', async () => {
-    const container = await AstroContainer.create()
+  it('should have portfolio structure with placeholder sections', async () => {
     const result = await container.renderToString(Index)
 
-    expect(result).toContain('Welcome to MONKCODE')
+    expect(result).toContain('Selected Work')
+    expect(result).toContain('The Monk & The Rhythm')
+    expect(result).toContain('Let\'s Build Something Together')
     expect(result).not.toContain('Design System Showcase')
-    expect(result).not.toContain('href="#principles"')
   })
 })
