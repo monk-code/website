@@ -50,7 +50,7 @@
   --color-muted-foreground: #374151; /* Even better contrast for important secondary text */
   
   /* Light mode enhancements */
-  --color-emphasis-bg: var(--color-light-neutral-100); /* Premium neutral background instead of yellow */
+  --color-emphasis-bg: #F5E6D3; /* Warm sand - complements monk yellow */
   --color-card-border: #e5e7eb; /* Better than neutral-200 */
 }
 
