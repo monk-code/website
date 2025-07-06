@@ -1,5 +1,5 @@
 // Astro component type declarations for testing
 declare module '*.astro' {
-  const component: any
+  const component: unknown
   export default component
 }

@@ -90,7 +90,7 @@ export const copyToClipboard = async (text: string): Promise<boolean> => {
       await navigator.clipboard.writeText(text)
       return true
     }
-    
+
     // If clipboard API is not available, return false
     return false
   } catch {
@@ -114,7 +114,7 @@ export const isValidUrl = (url: string): boolean => {
 }
 
 // Debounce utility
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number,
 ): ((...args: Parameters<T>) => void) => {
@@ -127,7 +127,7 @@ export const debounce = <T extends (...args: any[]) => any>(
 }
 
 // Throttle utility
-export const throttle = <T extends (...args: any[]) => any>(
+export const throttle = <T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number,
 ): ((...args: Parameters<T>) => void) => {

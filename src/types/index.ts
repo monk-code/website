@@ -83,3 +83,21 @@ export interface ThemeState {
   setTheme: (theme: Theme) => void
   isDark: boolean
 }
+
+// Component Props
+export type TechPillProps = object
+
+export interface IconLinkProps {
+  href: string
+  ariaLabel: string
+  external?: boolean
+}
+
+export interface ProjectCardProps {
+  title: string
+  description: string
+  imageUrl: string
+  techStack: string[]
+  liveUrl?: string
+  repoUrl?: string
+}
