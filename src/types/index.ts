@@ -1,3 +1,5 @@
+import type { ImageMetadata } from 'astro'
+
 // Theme types
 export type Theme = 'light' | 'dark'
 
@@ -13,7 +15,7 @@ export interface Project {
   id: string
   title: string
   description: string
-  imageUrl: string
+  imageUrl: ImageMetadata
   techStack: string[]
   liveUrl?: string
   repoUrl?: string
@@ -96,7 +98,7 @@ export interface IconLinkProps {
 export interface ProjectCardProps {
   title: string
   description: string
-  imageUrl: string
+  imageUrl: ImageMetadata
   techStack: string[]
   liveUrl?: string
   repoUrl?: string

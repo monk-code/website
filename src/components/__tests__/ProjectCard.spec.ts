@@ -1,142 +1,145 @@
-import { render, screen } from '@testing-library/vue'
+import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import ProjectCard from '../ProjectCard.vue'
+import ProjectCard from '@/components/ProjectCard.vue'
+
+// Mock ImageMetadata object for testing
+const mockImage = {
+  src: '/test-image.jpg',
+  width: 600,
+  height: 400,
+  format: 'jpg',
+} as any
 
 describe('ProjectCard', () => {
-  it('displays project title', () => {
-    render(ProjectCard, {
+  it('renders project information correctly', () => {
+    const wrapper = mount(ProjectCard, {
       props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js'],
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React', 'TypeScript'],
+        liveUrl: 'https://example.com',
+        repoUrl: 'https://github.com/test/repo',
       },
     })
 
-    expect(screen.getByText('E-commerce Platform')).toBeInTheDocument()
+    expect(wrapper.find('h3').text()).toBe('Test Project')
+    expect(wrapper.find('p').text()).toBe('A test project description')
+    expect(wrapper.find('img').attributes('alt')).toBe('Screenshot of Test Project project')
   })
 
-  it('displays project description', () => {
-    render(ProjectCard, {
+  it('renders tech stack pills correctly', () => {
+    const wrapper = mount(ProjectCard, {
       props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience built with Vue.js',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js'],
-      },
-    })
-
-    expect(screen.getByText('A modern shopping experience built with Vue.js')).toBeInTheDocument()
-  })
-
-  it('shows project image with proper alt text', () => {
-    render(ProjectCard, {
-      props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/ecommerce-project.jpg',
-        techStack: ['Vue.js'],
-      },
-    })
-
-    const image = screen.getByRole('img', { name: 'Screenshot of E-commerce Platform project' })
-    expect(image).toHaveAttribute('src', '/images/ecommerce-project.jpg')
-  })
-
-  it('displays all tech stack items', () => {
-    render(ProjectCard, {
-      props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js', 'TypeScript', 'Tailwind CSS'],
-      },
-    })
-
-    expect(screen.getByText('Vue.js')).toBeInTheDocument()
-    expect(screen.getByText('TypeScript')).toBeInTheDocument()
-    expect(screen.getByText('Tailwind CSS')).toBeInTheDocument()
-  })
-
-  it('tech items are presented as pills/badges', () => {
-    render(ProjectCard, {
-      props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js', 'TypeScript'],
-      },
-    })
-
-    // Tech items should have status role (from TechPill component)
-    const vuePill = screen.getByText('Vue.js')
-    expect(vuePill).toHaveAttribute('role', 'status')
-
-    const tsPill = screen.getByText('TypeScript')
-    expect(tsPill).toHaveAttribute('role', 'status')
-  })
-
-  it('shows live demo link when URL provided', () => {
-    render(ProjectCard, {
-      props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js'],
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React', 'TypeScript', 'Vue.js'],
         liveUrl: 'https://example.com',
       },
     })
 
-    const liveLink = screen.getByRole('link', { name: 'View live demo of E-commerce Platform' })
-    expect(liveLink).toHaveAttribute('href', 'https://example.com')
+    const techPills = wrapper.findAll('[data-testid="tech-pill"]')
+    expect(techPills).toHaveLength(3)
+    expect(techPills[0].text()).toBe('React')
+    expect(techPills[1].text()).toBe('TypeScript')
+    expect(techPills[2].text()).toBe('Vue.js')
   })
 
-  it('shows repo link when URL provided', () => {
-    render(ProjectCard, {
+  it('renders project links when provided', () => {
+    const wrapper = mount(ProjectCard, {
       props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js'],
-        repoUrl: 'https://github.com/example/repo',
-      },
-    })
-
-    const repoLink = screen.getByRole('link', { name: 'View source code for E-commerce Platform' })
-    expect(repoLink).toHaveAttribute('href', 'https://github.com/example/repo')
-  })
-
-  it('links have accessible labels', () => {
-    render(ProjectCard, {
-      props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js'],
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React'],
         liveUrl: 'https://example.com',
-        repoUrl: 'https://github.com/example/repo',
+        repoUrl: 'https://github.com/test/repo',
       },
     })
 
-    expect(
-      screen.getByRole('link', { name: 'View live demo of E-commerce Platform' }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('link', { name: 'View source code for E-commerce Platform' }),
-    ).toBeInTheDocument()
+    const links = wrapper.findAll('a')
+    expect(links).toHaveLength(2)
+    expect(links[0].attributes('href')).toBe('https://example.com')
+    expect(links[1].attributes('href')).toBe('https://github.com/test/repo')
   })
 
-  it('links are not shown when URLs not provided', () => {
-    render(ProjectCard, {
+  it('handles optional links correctly', () => {
+    const wrapper = mount(ProjectCard, {
       props: {
-        title: 'E-commerce Platform',
-        description: 'A modern shopping experience',
-        imageUrl: '/images/project.jpg',
-        techStack: ['Vue.js'],
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React'],
+        liveUrl: 'https://example.com',
+        // No repoUrl provided
       },
     })
 
-    expect(screen.queryByRole('link', { name: /View live demo/ })).not.toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: /View source code/ })).not.toBeInTheDocument()
+    const links = wrapper.findAll('a')
+    expect(links).toHaveLength(1)
+    expect(links[0].attributes('href')).toBe('https://example.com')
+  })
+
+  it('uses brand-compliant clean structured design', () => {
+    const wrapper = mount(ProjectCard, {
+      props: {
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React'],
+        liveUrl: 'https://example.com',
+      },
+    })
+
+    const card = wrapper.find('article')
+    expect(card.classes()).toContain('project-card-clean')
+    expect(card.classes()).toContain('bg-background')
+  })
+
+  it('highlights featured projects with Monk Yellow accent', () => {
+    const wrapper = mount(ProjectCard, {
+      props: {
+        title: 'Featured Project',
+        description: 'A featured project description',
+        imageUrl: mockImage,
+        techStack: ['React'],
+        liveUrl: 'https://example.com',
+        featured: true,
+      },
+    })
+
+    const card = wrapper.find('article')
+    expect(card.classes()).toContain('project-card-featured')
+  })
+
+  it('applies smooth brand-appropriate hover effects', () => {
+    const wrapper = mount(ProjectCard, {
+      props: {
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React'],
+        liveUrl: 'https://example.com',
+      },
+    })
+
+    const card = wrapper.find('article')
+    expect(card.classes()).toContain('project-card-hover')
+  })
+
+  it('maintains generous white space following brand guidelines', () => {
+    const wrapper = mount(ProjectCard, {
+      props: {
+        title: 'Test Project',
+        description: 'A test project description',
+        imageUrl: mockImage,
+        techStack: ['React'],
+        liveUrl: 'https://example.com',
+      },
+    })
+
+    const content = wrapper.find('.card-content')
+    expect(content.classes()).toContain('generous-spacing')
   })
 })

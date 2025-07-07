@@ -54,7 +54,7 @@ export const capitalize = (text: string): string => {
 
 export const truncate = (text: string, maxLength: number): string => {
   if (text.length <= maxLength) return text
-  return text.slice(0, maxLength).replace(/\s+\S*$/, '') + '...'
+  return `${text.slice(0, maxLength).replace(/\s+\S*$/, '')}...`
 }
 
 // Array utilities
@@ -86,7 +86,7 @@ export const scrollToElement = (elementId: string, offset = 0): void => {
 
 export const copyToClipboard = async (text: string): Promise<boolean> => {
   try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+    if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(text)
       return true
     }

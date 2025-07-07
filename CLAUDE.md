@@ -291,6 +291,60 @@ When suggesting or making changes:
 - [Kent C. Dodds Testing JavaScript](https://testingjavascript.com/)
 - [Functional Programming in TypeScript](https://gcanti.github.io/fp-ts/)
 
+## UI/UX Development - NON-NEGOTIABLE RULES
+
+**VERIFICATION-FIRST DEVELOPMENT**: Never claim something is "fixed" without:
+1. Using browser dev tools to verify computed styles
+2. Taking Playwright screenshots in both light AND dark modes  
+3. Testing actual functionality in the browser
+4. Getting user confirmation before proceeding
+
+**ONE CHANGE AT A TIME**: Make single, small CSS/UI changes and verify each one before proceeding.
+
+**ROOT CAUSE FIRST**: Always investigate and understand WHY something isn't working before implementing solutions. Use browser inspector to see which CSS rules are actually being applied.
+
+**NO ASSUMPTIONS**: Don't assume CSS changes will work - verify them. Don't assume a framework feature works a certain way - test it first.
+
+For detailed UI/UX processes and troubleshooting guides, see CLAUDE_UI_PROCESS.md
+
+## LIGHTWEIGHT UI VERIFICATION
+
+### Session Setup (Smart Start):
+1. Check if UI server already running:
+   ```bash
+   lsof -i :4322 || pnpm dev:ui
+   ```
+2. This runs AI verification server on port 4322
+3. Keeps human dev server (4321) untouched
+4. Browser stays open between verifications
+
+### UI Verification Flow:
+1. Make change → Save → HMR auto-reloads
+2. Navigate: `mcp__playwright__browser_navigate({ url: "http://localhost:4322" })`
+3. Light screenshot: `mcp__playwright__browser_take_screenshot({ filename: "ai-workspace/screenshots/light.png" })`
+4. Toggle theme: `mcp__playwright__browser_click({ element: "theme toggle", ref: "#theme-toggle" })`
+5. Dark screenshot: `mcp__playwright__browser_take_screenshot({ filename: "ai-workspace/screenshots/dark.png" })`
+
+### Port Management:
+- 4321: Human dev work (don't touch)
+- 4322: AI verification (dedicated)
+- Check before starting: `lsof -i :4322`
+- If running, just use it; if not, start it
+
+### Cleanup:
+- Screenshots: `ai-workspace/screenshots/`
+- Browser tab: Reuse same tab
+- Server: Leave running for session
+- End of session: Close browser, Ctrl+C server
+
+### Debug Tools:
+- DOM: `mcp__playwright__browser_snapshot()`
+- Responsive: `mcp__playwright__browser_resize({ width: 375, height: 667 })`
+- Console: `mcp__playwright__browser_console_messages()`
+
+### Quick Command:
+Use `/project:verify-ui` to run the full verification process automatically.
+
 ## Summary
 
 The key is to write clean, testable, functional code that evolves through small, safe increments. Every change should be driven by a test that describes the desired behavior, and the implementation should be the simplest thing that makes that test pass. When in doubt, favor simplicity and readability over cleverness.

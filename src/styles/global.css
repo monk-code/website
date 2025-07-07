@@ -37,15 +37,15 @@
 
   /* SEMANTIC THEME TOKENS */
   /* These will generate text-primary, bg-primary, border-primary, etc. */
-  --color-primary: var(--color-monk-yellow-dark); /* Use contrast-enhanced yellow for light mode text */
-  --color-primary-bg: var(--color-monk-yellow-dark); /* Bright yellow for backgrounds */
+  --color-primary: var(--color-monk-yellow); /* Use pure brand yellow */
+  --color-primary-bg: var(--color-monk-yellow); /* Pure yellow for backgrounds */
   --color-primary-foreground: var(--color-code-black);
-  --color-accent: var(--color-monk-yellow-dark); /* Use contrast-enhanced yellow for light mode text */
-  --color-accent-bg: var(--color-monk-yellow-dark); /* Bright yellow for backgrounds */
+  --color-accent: var(--color-monk-yellow); /* Use pure brand yellow */
+  --color-accent-bg: var(--color-monk-yellow); /* Pure yellow for backgrounds */
   --color-accent-foreground: var(--color-code-black);
 
   /* Button and interaction colors */
-  --color-button-primary: var(--color-monk-yellow-dark); /* Lighter yellow for better visual appeal in light mode */
+  --color-button-primary: var(--color-monk-yellow); /* Pure brand yellow */
   --color-button-primary-text: var(--color-code-black); /* Black text on yellow buttons */
 
   /* Base background/foreground colors */
@@ -54,12 +54,14 @@
 
   /* Enhanced semantic colors for better accessibility */
   --color-secondary: var(--color-rhythm-grey); /* Now uses the improved contrast grey */
-  --color-muted: #6b7280; /* Better contrast than neutral-500 for light mode */
-  --color-muted-foreground: #374151; /* Even better contrast for important secondary text */
+  --color-muted: #71717a; /* Better contrast for borders and subtle elements */
+  --color-muted-foreground: #52525b; /* Strong contrast for secondary text */
 
   /* Light mode enhancements */
   --color-emphasis-bg: #f5e6d3; /* Warm sand - complements monk yellow */
   --color-card-border: #e5e7eb; /* Better than neutral-200 */
+  --color-card-shadow: rgba(0, 0, 0, 0.06); /* Subtle shadow for depth */
+  --color-card-bg: var(--color-background); /* Card background same as page in light mode */
 }
 
 /* Dark mode overrides */
@@ -80,12 +82,14 @@
 
   /* Dark mode semantic colors */
   --color-secondary: #9ca3af; /* Lighter grey for dark mode */
-  --color-muted: #6b7280; /* Same as light mode */
-  --color-muted-foreground: #d1d5db; /* Light grey for dark mode secondary text */
+  --color-muted: rgba(255, 255, 255, 0.12); /* Better for dark mode borders */
+  --color-muted-foreground: #a1a1aa; /* Improved contrast for dark mode secondary text */
 
   /* Dark mode enhancements */
   --color-emphasis-bg: rgba(255, 222, 10, 0.1); /* Subtle yellow glow for dark mode */
-  --color-card-border: #374151; /* Darker border for dark mode */
+  --color-card-border: rgba(255, 255, 255, 0.12); /* Visible border for dark mode */
+  --color-card-shadow: rgba(0, 0, 0, 0.3); /* Stronger shadow for dark mode */
+  --color-card-bg: #1a1a1a; /* Elevated card background for dark mode */
 }
 
 /* Base Styles */
