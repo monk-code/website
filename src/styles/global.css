@@ -82,14 +82,20 @@
 
   /* Dark mode semantic colors */
   --color-secondary: #9ca3af; /* Lighter grey for dark mode */
-  --color-muted: rgba(255, 255, 255, 0.12); /* Better for dark mode borders */
+  --color-muted: #6b7280; /* Same as light mode - no transparency to avoid overlay issues */
   --color-muted-foreground: #a1a1aa; /* Improved contrast for dark mode secondary text */
 
   /* Dark mode enhancements */
   --color-emphasis-bg: rgba(255, 222, 10, 0.1); /* Subtle yellow glow for dark mode */
-  --color-card-border: rgba(255, 255, 255, 0.12); /* Visible border for dark mode */
+  --color-card-border: #374151; /* Solid border for dark mode */
   --color-card-shadow: rgba(0, 0, 0, 0.3); /* Stronger shadow for dark mode */
   --color-card-bg: #1a1a1a; /* Elevated card background for dark mode */
+
+  /* Filter count dark mode colors */
+  --filter-count-bg: rgba(255, 255, 255, 0.2);
+  --filter-count-color: var(--color-foreground);
+  --filter-count-active-bg: rgba(0, 0, 0, 0.3);
+  --filter-count-active-color: var(--color-primary);
 }
 
 /* Base Styles */
@@ -196,6 +202,33 @@
   @container (min-width: 20rem) {
     .project-card-content {
       @apply grid-cols-2;
+    }
+  }
+}
+
+/* Fade-in Animation Styles */
+@layer utilities {
+  /* Initial state for fade-in elements */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  /* Visible state after intersection observer triggers */
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Reduced motion: instant visibility */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 }

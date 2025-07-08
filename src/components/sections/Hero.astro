@@ -4,9 +4,9 @@ import meImage from '@/assets/images/me-no-background.webp'
 import CTAButton from '@/components/ui/CTAButton.vue'
 ---
 
-<section id="hero" class="min-h-screen flex items-center pt-20 pb-24 md:pb-32 lg:pb-20 relative overflow-hidden">
+<section id="hero" class="min-h-screen flex items-center pt-20 pb-24 md:pb-32 lg:pb-20 relative">
   <!-- Background Elements -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
+  <div class="absolute inset-0">
     <!-- Animated Geometric Shapes -->
     <div class="absolute top-1/4 -left-20 w-32 h-32 border border-primary/20 rounded-lg animate-geometric-float transform rotate-12"></div>
     <div class="absolute top-1/2 -right-16 w-24 h-24 bg-primary/5 rounded-full animate-geometric-pulse" style="animation-delay: 1s;"></div>
@@ -90,7 +90,7 @@ import CTAButton from '@/components/ui/CTAButton.vue'
           <div class="absolute inset-0 rounded-2xl brand-pattern-overlay opacity-40 dark:opacity-20"></div>
           
           <!-- Main Image with sophisticated styling -->
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] group gradient-border">
+          <div class="relative image-wrapper rounded-2xl overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] group gradient-border">
             <!-- Enhanced gradient border with glow effect -->
             <div class="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 glow-effect"></div>
             
@@ -116,7 +116,7 @@ import CTAButton from '@/components/ui/CTAButton.vue'
           </div>
           
           <!-- Floating Badge - improved positioning and styling -->
-          <div class="absolute bottom-2 right-2 bg-background/95 backdrop-blur-sm border border-card-border rounded-xl px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-200 dark:bg-neutral-900/95 dark:border-neutral-700 floating-element z-10">
+          <div class="absolute bottom-2 right-2 bg-background/95 border border-card-border rounded-xl px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-200 dark:bg-neutral-900/95 dark:border-neutral-700 floating-element z-10">
             <div class="flex items-center gap-2">
               <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
               <span class="text-xs font-semibold text-foreground tracking-wide">Available for Projects</span>
@@ -249,8 +249,6 @@ import CTAButton from '@/components/ui/CTAButton.vue'
   /* Enhanced image container styling */
   .enhanced-image-container {
     position: relative;
-    overflow: hidden;
-    border-radius: 2rem;
   }
   
   .enhanced-image-container::before {
@@ -267,14 +265,14 @@ import CTAButton from '@/components/ui/CTAButton.vue'
 
   /* Dark mode override for enhanced image container */
   [data-theme="dark"] .enhanced-image-container::before {
-    background: radial-gradient(circle at 30% 30%, var(--color-monk-yellow, #FFDE0A) 0%, transparent 70%);
-    opacity: 0.03;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 222, 10, 0.03) 0%, transparent 70%);
+    opacity: 0.08;
   }
   
   /* Light mode enhancement - Subtle warm accent */
   html:not([data-theme="dark"]) .enhanced-image-container::before {
     background: linear-gradient(135deg, rgba(255, 222, 10, 0.05) 0%, transparent 50%);
-    opacity: 1;
+    opacity: 0.08;
   }
 
   /* Removed additional depth layer to prevent overflow */
@@ -375,7 +373,6 @@ import CTAButton from '@/components/ui/CTAButton.vue'
   
   /* Geometric accent styling */
   .geometric-accent {
-    backdrop-filter: blur(10px);
     background: rgba(161, 161, 170, 0.1);
     border-color: var(--color-light-neutral-400, #a1a1aa);
   }

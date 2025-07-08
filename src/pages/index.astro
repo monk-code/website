@@ -1,7 +1,5 @@
 ---
 import Hero from '@/components/sections/Hero.astro'
-import Projects from '@/components/sections/Projects.vue'
-import { projects } from '@/data/projects'
 import Layout from '@/layouts/Layout.astro'
 ---
 
@@ -11,11 +9,6 @@ import Layout from '@/layouts/Layout.astro'
 >
   <!-- Hero Section -->
   <Hero />
-  
-  <!-- Projects Section -->
-  <section id="projects" class="fade-in">
-    <Projects projects={projects} client:load />
-  </section>
   
   <!-- About Section (placeholder) -->
   <section id="about" class="py-20 fade-in bg-background-light">

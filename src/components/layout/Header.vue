@@ -1,5 +1,5 @@
 <template>
-  <header role="banner" class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-neutral-800">
+  <header role="banner" class="fixed top-0 left-0 right-0 z-50 bg-background/95 border-b border-neutral-800">
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <!-- Brand -->
