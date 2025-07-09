@@ -2,9 +2,9 @@
   <section
     id="projects"
     :aria-labelledby="'projects-title'"
-    class="projects-section fade-in py-16 md:py-24 lg:py-32"
+    class="projects-section section-spacing"
   >
-    <div class="container mx-auto px-4 md:px-6">
+    <div class="content-container">
       <!-- Section Header -->
       <div class="text-center mb-12 md:mb-16">
         <h2
@@ -21,6 +21,7 @@
 
       <!-- Projects Grid -->
       <BentoGrid
+        :class="{ 'has-hover': hoveredProjectId !== null }"
         :cols="{
           default: 1,
           md: 2,
@@ -33,6 +34,11 @@
           <div
             v-if="featuredProject"
             :data-featured="'true'"
+            :class="{
+              'blur-effect': hoveredProjectId !== null && hoveredProjectId !== featuredProject.id
+            }"
+            @mouseenter="handleProjectHover(featuredProject.id)"
+            @mouseleave="handleProjectHover(null)"
           >
             <ProjectCard
               :project="featuredProject"
@@ -47,6 +53,11 @@
           v-for="project in regularProjects"
           :key="project.id"
           :data-featured="'false'"
+          :class="{
+            'blur-effect': hoveredProjectId !== null && hoveredProjectId !== project.id
+          }"
+          @mouseenter="handleProjectHover(project.id)"
+          @mouseleave="handleProjectHover(null)"
         >
           <ProjectCard
             :project="project"
@@ -60,25 +71,29 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import ProjectCard from '@/components/ui/ProjectCard.vue'
+import { computed, ref } from 'vue'
 import BentoGrid from '@/components/ui/BentoGrid.vue'
-import { projects } from '../../../ai-workspace/projects-data-backup'
+import ProjectCard from '@/components/ui/ProjectCard.vue'
 import type { Project } from '@/types/index.js'
+import { projects } from '../../../ai-workspace/projects-data-backup'
+
+// Track hovered card
+const hoveredProjectId = ref<string | null>(null)
 
 // Separate featured and regular projects
-const featuredProject = computed(() => 
-  projects.find(p => p.id === 'bright-energy')
-)
+const featuredProject = computed(() => projects.find((p) => p.id === 'bright-energy'))
 
-const regularProjects = computed(() => 
-  projects.filter(p => p.id !== 'bright-energy')
-)
+const regularProjects = computed(() => projects.filter((p) => p.id !== 'bright-energy'))
 
 // Handle project click events (for future analytics or navigation)
 const handleProjectClick = (project: Project) => {
   // Could emit to parent or track analytics here
   console.log('Project clicked:', project.id)
+}
+
+// Handle hover events
+const handleProjectHover = (projectId: string | null) => {
+  hoveredProjectId.value = projectId
 }
 </script>
 
@@ -89,6 +104,8 @@ const handleProjectClick = (project: Project) => {
 .projects-section {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Add subtle background pattern */
@@ -128,6 +145,31 @@ const handleProjectClick = (project: Project) => {
 @container (min-width: 1024px) {
   #projects-title {
     font-size: 3.75rem;
+  }
+}
+
+/* Blur effect for non-hovered cards - constrained to prevent overflow */
+.blur-effect {
+  transition: all 0.3s ease;
+  filter: blur(2px);
+  opacity: 0.7;
+  transform: scale(0.98);
+  contain: layout;
+  overflow: hidden;
+}
+
+/* Ensure smooth transitions */
+.has-hover > div {
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  contain: layout;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .blur-effect {
+    filter: none;
+    opacity: 0.8;
+    transform: none;
   }
 }
 </style>

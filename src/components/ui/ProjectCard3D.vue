@@ -107,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { Project } from '@/types/index.js'
 
 const props = withDefaults(
@@ -116,8 +116,8 @@ const props = withDefaults(
     size?: 'normal' | 'large'
   }>(),
   {
-    size: 'normal'
-  }
+    size: 'normal',
+  },
 )
 
 const emit = defineEmits<{

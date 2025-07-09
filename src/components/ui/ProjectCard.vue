@@ -81,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { Project } from '@/types/index.js'
 
 const props = withDefaults(
@@ -90,8 +90,8 @@ const props = withDefaults(
     size?: 'normal' | 'large'
   }>(),
   {
-    size: 'normal'
-  }
+    size: 'normal',
+  },
 )
 
 const emit = defineEmits<{
@@ -110,10 +110,11 @@ const getProjectNumber = (id: string): string => {
     'bright-energy': '01',
     'bricsys-247': '02',
     'groepspraktijk-paviljoen': '03',
-    'dietiste-hanne': '04'
+    'dietiste-hanne': '04',
   }
   return projectNumbers[id] || '00'
 }
+
 </script>
 
 <style scoped>
@@ -123,6 +124,7 @@ const getProjectNumber = (id: string): string => {
 .project-card {
   position: relative;
   width: 100%;
+  max-width: 100%;
   background: #fff;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
@@ -134,7 +136,30 @@ const getProjectNumber = (id: string): string => {
 
 .project-card:hover {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-  transform: translateY(-5px);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Static glow effect on hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 222, 10, 0.15) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 /* Subtle brand accent */
@@ -187,6 +212,8 @@ const getProjectNumber = (id: string): string => {
   box-sizing: border-box;
   padding: 30px;
   align-items: flex-start;
+  z-index: 2;
+  position: relative;
 }
 
 .face1 .content {
@@ -226,6 +253,18 @@ const getProjectNumber = (id: string): string => {
   color: var(--color-code-black);
   border-radius: 20px;
   font-weight: 500;
+  transition: all 0.2s ease;
+  transform: translateZ(0);
+}
+
+.project-card:hover .tech-pill {
+  transform: translateY(-1px) scale(1.05);
+}
+
+.tech-pill:hover {
+  background: var(--color-code-black);
+  color: var(--color-monk-yellow);
+  transform: translateY(-2px) scale(1.1) !important;
 }
 
 /* CTA Buttons */
@@ -251,9 +290,31 @@ const getProjectNumber = (id: string): string => {
   color: var(--color-code-black);
 }
 
+.cta-button.primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button.primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
 .cta-button.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 222, 10, 0.4);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 5px 20px rgba(255, 222, 10, 0.6);
+}
+
+.cta-button.primary:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .cta-button.secondary {
@@ -262,18 +323,43 @@ const getProjectNumber = (id: string): string => {
   border: 2px solid var(--color-code-black);
 }
 
-.cta-button.secondary:hover {
+.cta-button.secondary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cta-button.secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
   background: var(--color-code-black);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.cta-button.secondary:hover {
   color: var(--color-silent-white);
+  transform: translateY(-2px) scale(1.05);
+  border-color: var(--color-code-black);
+}
+
+.cta-button.secondary:hover::before {
+  left: 0;
 }
 
 /* Face 2 - Image and Title */
 .face.face2 {
   background: #111;
-  transition: 0.5s;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 15px;
   flex-direction: column;
   justify-content: center;
+  z-index: 3;
+  will-change: height, transform;
 }
 
 /* Subtle gradient overlay for better text readability */
@@ -292,17 +378,26 @@ const getProjectNumber = (id: string): string => {
   border-radius: 15px;
 }
 
-/* Glass effect */
+/* Glass effect with animated sweep */
 .face2::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  width: 50%;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px 0 0 15px;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 60%
+  );
   pointer-events: none;
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .face2::before {
+  left: 100%;
 }
 
 /* Face 2 Content Layout */
@@ -391,6 +486,19 @@ const getProjectNumber = (id: string): string => {
 /* Dark Mode Adjustments */
 [data-theme='dark'] .project-card {
   background: var(--color-code-black);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .project-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='dark'] .project-card::before {
+  background: radial-gradient(
+    circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+    rgba(255, 222, 10, 0.1) 0%,
+    transparent 50%
+  );
 }
 
 [data-theme='dark'] .face1 {
@@ -410,17 +518,32 @@ const getProjectNumber = (id: string): string => {
   border-color: var(--color-silent-white);
 }
 
-[data-theme='dark'] .cta-button.secondary:hover {
+[data-theme='dark'] .cta-button.secondary::before {
   background: var(--color-silent-white);
+}
+
+[data-theme='dark'] .cta-button.secondary:hover {
   color: var(--color-code-black);
 }
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+  .project-card,
   .face2,
   .face2-title,
-  .cta-button {
+  .cta-button,
+  .tech-pill {
     transition: none !important;
+  }
+  
+  .project-card::before,
+  .face2::before,
+  .cta-button::before {
+    display: none !important;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-2px) !important;
   }
 }
 

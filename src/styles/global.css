@@ -100,16 +100,24 @@
 
 /* Base Styles */
 @layer base {
-  /* Smooth scrolling */
+  /* Root element setup with overflow control */
   html {
     scroll-behavior: smooth;
+    /* Prevent horizontal overflow while allowing vertical scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
-  /* Typography setup */
+  /* Typography setup with overflow protection */
   body {
     font-family: var(--font-family-body);
     /* Apply semantic background/foreground colors */
     @apply bg-background text-foreground antialiased;
+    /* Ensure body doesn't create horizontal overflow */
+    overflow-x: hidden;
+    /* Prevent text from breaking layout */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   h1,
@@ -160,6 +168,29 @@
 
   /* Let Tailwind handle focus styles with focus-visible: utilities */
 
+  /* Image overflow prevention */
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent long strings from breaking layout */
+  pre,
+  code,
+  kbd,
+  samp {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  /* Table overflow handling */
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
   /* Reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -190,10 +221,150 @@
   [data-theme="dark"] .focus-ring {
     --tw-ring-offset-color: var(--color-code-black);
   }
+
+  /* Modern layout utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  /* Responsive grid utilities */
+  .grid-responsive {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+
+  .grid-responsive-sm {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  }
+
+  .grid-responsive-lg {
+    @apply grid gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  }
+
+  /* Safe area utilities for mobile */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Aspect ratio utilities */
+  .aspect-golden {
+    aspect-ratio: 1.618;
+  }
+
+  .aspect-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aspect-hero {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Scroll margin utilities for smooth scrolling with fixed headers */
+  .scroll-mt-header {
+    scroll-margin-top: 4rem;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .text-responsive-xl {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  /* Modern stacking utilities */
+  .stack > * + * {
+    margin-top: 1rem;
+  }
+
+  .stack-sm > * + * {
+    margin-top: 0.5rem;
+  }
+
+  .stack-lg > * + * {
+    margin-top: 1.5rem;
+  }
+
+  /* Fluid spacing utilities */
+  .space-fluid-sm {
+    gap: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .space-fluid {
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .space-fluid-lg {
+    gap: clamp(1.5rem, 4vw, 2rem);
+  }
 }
 
-/* Container Query Support */
+/* Layout Utilities - Modern responsive containers and spacing */
 @layer components {
+  /* 
+   * Container utilities for consistent max-widths and padding
+   * Based on 2025 best practices:
+   * - content-container: 1280px max-width (max-w-7xl) for general content
+   * - text-container: ~65ch for optimal reading (~896px on prose)
+   * - wide-container: 1536px max-width (max-w-screen-2xl) for full-width sections
+   * - narrow-container: 672px max-width (max-w-2xl) for forms and compact content
+   */
+  .content-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Text container for optimal reading width (~65ch) */
+  .text-container {
+    @apply max-w-prose mx-auto;
+  }
+
+  /* Wide container for full-width sections */
+  .wide-container {
+    @apply max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Narrow container for forms and compact content */
+  .narrow-container {
+    @apply max-w-2xl mx-auto px-4 sm:px-6;
+  }
+
+  /* Section spacing utilities */
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-spacing-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .section-spacing-lg {
+    @apply py-20 md:py-32 lg:py-40;
+  }
+
+  /* Container Query Support */
   .project-card {
     container-type: inline-size;
   }

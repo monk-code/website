@@ -40,10 +40,10 @@ const props = withDefaults(
     cols: () => ({
       default: 1,
       md: 2,
-      lg: 3
+      lg: 3,
     }),
-    autoFit: false
-  }
+    autoFit: false,
+  },
 )
 
 const gridClasses = computed(() => {
@@ -51,7 +51,7 @@ const gridClasses = computed(() => {
     'grid',
     'container-type-inline-size',
     props.gap ? `gap-${props.gap}` : 'gap-4',
-    !props.gap || props.gap === '4' ? 'lg:gap-6' : ''
+    !props.gap || props.gap === '4' ? 'lg:gap-6' : '',
   ]
 
   // Apply column configuration
@@ -93,10 +93,19 @@ const gridClasses = computed(() => {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Ensure proper stacking context for 3D transforms */
+/* Container overflow control */
+.bento-grid {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Ensure grid items stay within bounds */
 .bento-grid > * {
   position: relative;
   z-index: 1;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Featured item styling */
