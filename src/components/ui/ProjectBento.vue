@@ -114,7 +114,7 @@ onMounted(async () => {
 
 .project-bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 32px;
   width: 100%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -147,6 +147,7 @@ onMounted(async () => {
   transform: translateY(15px) scale(0.98);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: var(--animation-delay);
+  isolation: isolate;
 }
 
 .project-bento-item.fade-in {
@@ -181,10 +182,6 @@ onMounted(async () => {
   z-index: 10;
 }
 
-/* Magnetic effect - subtle attraction between adjacent items */
-.project-bento-item:hover + .project-bento-item {
-  transform: translateY(-2px) scale(1.01);
-}
 
 /* Stagger animation for initial load */
 .project-bento-item:nth-child(1) { --animation-delay: 0.1s; }
