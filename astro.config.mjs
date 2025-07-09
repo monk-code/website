@@ -15,6 +15,12 @@ export default defineConfig({
     format: 'directory',
     inlineStylesheets: 'auto',
   },
+  image: {
+    // Enable image optimization
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
     // Merge with Vitest config

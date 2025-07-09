@@ -1,0 +1,320 @@
+---
+import ProjectsApp from '@/components/ui/ProjectsApp.vue'
+---
+
+<section id="projects" class="projects-section">
+  <!-- Background Elements -->
+  <div class="section-background">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+    <div class="gradient-overlay"></div>
+  </div>
+  
+  <div class="content-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="header-content">
+        <h2 class="section-title">
+          <span class="title-main">Featured Projects</span>
+          <span class="title-accent">& Recent Work</span>
+        </h2>
+        <p class="section-description">
+          Discover my latest projects spanning enterprise platforms, energy management systems, 
+          and healthcare solutions. Each project demonstrates cutting-edge technology and 
+          user-centered design principles.
+        </p>
+      </div>
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="stat-value">4</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Industries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">15+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Projects Container -->
+    <div class="projects-container">
+      <ProjectsApp client:load />
+    </div>
+  </div>
+</section>
+
+
+<style>
+.projects-section {
+  position: relative;
+  padding: 50px 0 80px;
+  overflow: hidden;
+  background: var(--color-background);
+  min-height: 80vh;
+}
+
+/* Background Elements */
+.section-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), transparent);
+  opacity: 0.1;
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: -3%;
+  animation-delay: 5s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  left: 70%;
+  animation-delay: 10s;
+}
+
+.shape-4 {
+  width: 250px;
+  height: 250px;
+  bottom: -5%;
+  left: 20%;
+  animation-delay: 15s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 222, 10, 0.05) 0%, transparent 70%);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  font-family: var(--font-family-heading);
+}
+
+.title-main {
+  display: block;
+  color: var(--color-foreground);
+}
+
+.title-accent {
+  display: block;
+  color: var(--color-primary);
+  position: relative;
+}
+
+.title-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.section-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+  margin: 0;
+}
+
+.header-stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+  font-family: var(--font-family-heading);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--color-muted-foreground);
+  font-weight: 500;
+}
+
+/* Projects Container */
+.projects-container {
+  position: relative;
+  z-index: 1;
+  min-height: 600px;
+}
+
+/* Vue App Container */
+.project-app {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-stats {
+    gap: 16px;
+  }
+  
+  .stat-item {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 40px 0 60px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .header-stats {
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .stat-item {
+    flex: 1;
+    padding: 12px 8px;
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .stat-item {
+    width: 100%;
+  }
+  
+  .shape {
+    display: none;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .stat-item {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .stat-item:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shape {
+    animation: none;
+  }
+  
+  .stat-item {
+    transition: none;
+  }
+  
+  .stat-item:hover {
+    transform: none;
+  }
+}
+</style>
