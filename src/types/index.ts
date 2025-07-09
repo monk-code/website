@@ -14,12 +14,43 @@ export interface NavigationItem {
 export interface Project {
   id: string
   title: string
+  type: string
   description: string
   imageUrl: ImageMetadata
   techStack: string[]
   liveUrl?: string
   repoUrl?: string
   featured?: boolean
+  dateRange: string
+  keyFeatures?: string[]
+  role?: {
+    level: string
+    responsibilities: string[]
+  }
+  impact?: string[]
+  targetAudience?: string[]
+  screenshots?: {
+    description: string
+    url?: string
+  }[]
+  technologyStack?: {
+    frontend?: string[]
+    backend?: string[]
+    mobile?: string[]
+    infrastructure?: string[]
+    integrations?: string[]
+    languages?: string[]
+    frameworks?: string[]
+    databases?: string[]
+    tools?: string[]
+  }
+  links?: {
+    main?: string
+    marketing?: string
+    application?: string
+    company?: string
+    github?: string
+  }
 }
 
 // Button component types

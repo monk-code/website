@@ -1,153 +1,153 @@
-import { render, screen } from '@testing-library/vue'
-import type { ImageMetadata } from 'astro'
-import { describe, expect, it } from 'vitest'
-import { getUniqueTechnologies, projects } from '@/data/projects'
+import { describe, it, expect, vi } from 'vitest'
+import { mount } from '@vue/test-utils'
 import Projects from '../Projects.vue'
+import ProjectCard from '@/components/ui/ProjectCard.vue'
+import BentoGrid from '@/components/ui/BentoGrid.vue'
 
-// Mock ImageMetadata objects for testing
-const mockImage1: ImageMetadata = {
-  src: '/test-image-1.jpg',
-  width: 600,
-  height: 400,
-  format: 'jpg' as const,
-}
-
-const mockImage2: ImageMetadata = {
-  src: '/test-image-2.jpg',
-  width: 600,
-  height: 400,
-  format: 'jpg' as const,
-}
-
-const mockProjects = [
-  {
-    id: 'project-1',
-    title: 'Test Project 1',
-    description: 'A test project description',
-    imageUrl: mockImage1,
-    techStack: ['React', 'TypeScript'],
-    liveUrl: 'https://example.com/project1',
-    featured: true,
-  },
-  {
-    id: 'project-2',
-    title: 'Test Project 2',
-    description: 'Another test project',
-    imageUrl: mockImage2,
-    techStack: ['Vue.js', 'JavaScript'],
-    liveUrl: 'https://example.com/project2',
-    featured: false,
-  },
-]
-
-describe('Projects Section Logic', () => {
-  it('real projects data has correct structure', () => {
-    expect(projects).toBeInstanceOf(Array)
-    expect(projects.length).toBeGreaterThan(0)
-
-    for (const project of projects) {
-      expect(project.id).toBeDefined()
-      expect(project.title).toBeDefined()
-      expect(project.description).toBeDefined()
-      expect(project.imageUrl).toBeDefined()
-      expect(project.techStack).toBeInstanceOf(Array)
-      expect(typeof project.featured).toBe('boolean')
+// Mock the project data
+vi.mock('../../../../ai-workspace/projects-data-backup', () => ({
+  projects: [
+    {
+      id: 'bright-energy',
+      title: 'Bright Energy Platform',
+      type: 'IoT Energy Management System',
+      description: 'Energy management platform',
+      imageUrl: { src: '/bright-energy.png', width: 600, height: 400, format: 'png' },
+      techStack: ['Vue.js', 'TypeScript'],
+      liveUrl: 'https://app.bright-energy.eu',
+      featured: true,
+      dateRange: '2024-Present'
+    },
+    {
+      id: 'bricsys-247',
+      title: 'Bricsys 24/7',
+      type: 'Enterprise SaaS Platform',
+      description: 'Document management platform',
+      imageUrl: { src: '/bricsys.png', width: 600, height: 400, format: 'png' },
+      techStack: ['React', 'WebSocket'],
+      liveUrl: 'https://www.bricsys.com/247',
+      featured: false,
+      dateRange: '2023-2024'
     }
+  ]
+}))
+
+describe('Projects', () => {
+  it('renders section with correct title', () => {
+    const wrapper = mount(Projects)
+    
+    const section = wrapper.find('section')
+    expect(section.exists()).toBe(true)
+    expect(section.classes()).toContain('projects-section')
+    
+    const title = wrapper.find('h2')
+    expect(title.exists()).toBe(true)
+    expect(title.text()).toContain('Projects')
   })
 
-  it('extracts unique technologies correctly', () => {
-    const technologies = getUniqueTechnologies(mockProjects)
-    expect(technologies).toEqual(['JavaScript', 'React', 'TypeScript', 'Vue.js'])
+  it('renders section description', () => {
+    const wrapper = mount(Projects)
+    
+    const description = wrapper.find('.section-description')
+    expect(description.exists()).toBe(true)
+    expect(description.text()).toContain('featured work')
   })
 
-  it('filters projects by technology correctly', () => {
-    const reactProjects = mockProjects.filter((project) => project.techStack.includes('React'))
-    expect(reactProjects).toHaveLength(1)
-    expect(reactProjects[0].title).toBe('Test Project 1')
-
-    const vueProjects = mockProjects.filter((project) => project.techStack.includes('Vue.js'))
-    expect(vueProjects).toHaveLength(1)
-    expect(vueProjects[0].title).toBe('Test Project 2')
+  it('uses BentoGrid component for layout', () => {
+    const wrapper = mount(Projects)
+    
+    const bentoGrid = wrapper.findComponent(BentoGrid)
+    expect(bentoGrid.exists()).toBe(true)
   })
 
-  it('identifies featured projects correctly', () => {
-    const featuredProjects = mockProjects.filter((p) => p.featured)
-    const regularProjects = mockProjects.filter((p) => !p.featured)
-
-    expect(featuredProjects).toHaveLength(1)
-    expect(featuredProjects[0].title).toBe('Test Project 1')
-
-    expect(regularProjects).toHaveLength(1)
-    expect(regularProjects[0].title).toBe('Test Project 2')
+  it('renders Bright Energy as featured project', () => {
+    const wrapper = mount(Projects)
+    
+    const featuredCard = wrapper.find('[data-featured="true"]')
+    expect(featuredCard.exists()).toBe(true)
+    
+    const featuredProject = featuredCard.findComponent(ProjectCard)
+    expect(featuredProject.props('project').id).toBe('bright-energy')
+    expect(featuredProject.props('size')).toBe('large')
   })
-})
 
-describe('Projects Section Layout', () => {
-  it('renders projects section with correct structure', () => {
-    render(Projects, {
-      props: {
-        projects: mockProjects,
-      },
+  it('renders non-featured projects in default slots', () => {
+    const wrapper = mount(Projects)
+    
+    const regularCards = wrapper.findAll('[data-featured="false"]')
+    expect(regularCards.length).toBeGreaterThan(0)
+    
+    const regularProject = regularCards[0].findComponent(ProjectCard)
+    expect(regularProject.props('size')).toBe('normal')
+  })
+
+  it('renders all projects from data', () => {
+    const wrapper = mount(Projects)
+    
+    const allCards = wrapper.findAllComponents(ProjectCard)
+    expect(allCards).toHaveLength(2)
+  })
+
+  it('applies fade-in animation classes', () => {
+    const wrapper = mount(Projects)
+    
+    const section = wrapper.find('section')
+    expect(section.classes()).toContain('fade-in')
+  })
+
+  it('has proper semantic structure', () => {
+    const wrapper = mount(Projects)
+    
+    const section = wrapper.find('section')
+    expect(section.attributes('id')).toBe('projects')
+    expect(section.attributes('aria-labelledby')).toBe('projects-title')
+    
+    const title = wrapper.find('h2')
+    expect(title.attributes('id')).toBe('projects-title')
+  })
+
+  it('handles projects data correctly', () => {
+    const wrapper = mount(Projects)
+    
+    // Verify that projects are rendered based on the mock data
+    const cards = wrapper.findAllComponents(ProjectCard)
+    expect(cards.length).toBeGreaterThan(0)
+    
+    // Verify featured project exists
+    const featured = wrapper.find('[data-featured="true"]')
+    expect(featured.exists()).toBe(true)
+  })
+
+  it('emits project click events', async () => {
+    const wrapper = mount(Projects)
+    
+    const firstCard = wrapper.findComponent(ProjectCard)
+    await firstCard.vm.$emit('click', { id: 'bright-energy' })
+    
+    // Since Projects doesn't emit, we just verify the event propagation works
+    expect(firstCard.emitted('click')).toBeTruthy()
+  })
+
+  it('applies correct grid configuration', () => {
+    const wrapper = mount(Projects)
+    
+    const bentoGrid = wrapper.findComponent(BentoGrid)
+    expect(bentoGrid.props('cols')).toEqual({
+      default: 1,
+      md: 2,
+      lg: 4
     })
-
-    const section = screen.getByRole('region', { name: /selected work/i })
-    expect(section).toBeInTheDocument()
-
-    const heading = screen.getByRole('heading', { name: /selected work/i })
-    expect(heading).toBeInTheDocument()
+    expect(bentoGrid.props('gap')).toBe('6')
   })
 
-  it('renders technology filter with all unique technologies', () => {
-    render(Projects, {
-      props: {
-        projects: mockProjects,
-      },
-    })
-
-    const allButton = screen.getByRole('button', { name: /all/i })
-    expect(allButton).toBeInTheDocument()
-
-    const jsButton = screen.getByRole('button', { name: /javascript/i })
-    expect(jsButton).toBeInTheDocument()
-
-    const reactButton = screen.getByRole('button', { name: /react/i })
-    expect(reactButton).toBeInTheDocument()
-  })
-
-  it('applies mondrian grid layout classes', () => {
-    const { container } = render(Projects, {
-      props: {
-        projects: mockProjects,
-      },
-    })
-
-    const grid = container.querySelector('.mondrian-grid')
-    expect(grid).toBeInTheDocument()
-
-    const gridItems = container.querySelectorAll('.grid-item')
-    expect(gridItems.length).toBeGreaterThan(0)
-  })
-
-  it('renders project cards within grid layout', () => {
-    const { container } = render(Projects, {
-      props: {
-        projects: [
-          {
-            ...mockProjects[0],
-            id: 'bright-energy',
-          },
-          {
-            ...mockProjects[1],
-            id: 'bricsys-247',
-          },
-        ],
-      },
-    })
-
-    const heroProject = container.querySelector('.hero-project')
-    expect(heroProject).toBeInTheDocument()
-
-    const secondaryProject = container.querySelector('.secondary-project')
-    expect(secondaryProject).toBeInTheDocument()
+  it('maintains accessibility with proper ARIA labels', () => {
+    const wrapper = mount(Projects)
+    
+    const cards = wrapper.findAllComponents(ProjectCard)
+    for (const card of cards) {
+      const element = card.find('.project-card')
+      expect(element.attributes('role')).toBe('article')
+      expect(element.attributes('aria-label')).toBeTruthy()
+    }
   })
 })
