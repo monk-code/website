@@ -1,0 +1,249 @@
+---
+import PhilosophyCard from '@/components/ui/PhilosophyCard.vue'
+---
+
+<section id="philosophy" class="philosophy-section">
+  <!-- Background Elements -->
+  <div class="section-background">
+    <div class="floating-shapes">
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+  
+  <div class="content-container relative z-10">
+    <!-- Section Header -->
+    <div class="section-header fade-in">
+      <h2 class="section-title">
+        <span class="title-main">The Monk</span>
+        <span class="title-accent">& The Rhythm</span>
+      </h2>
+      <p class="section-description">
+        My approach balances disciplined engineering with creative problem-solving
+      </p>
+    </div>
+    
+    <!-- Philosophy Cards -->
+    <div class="philosophy-grid">
+      <div class="fade-in" style="animation-delay: 0.1s;">
+        <PhilosophyCard
+          title="The Monk"
+          description="Focused, methodical development. Clean architecture, maintainable code, and proven best practices."
+          icon="monk"
+          client:visible
+        />
+      </div>
+      <div class="fade-in" style="animation-delay: 0.2s;">
+        <PhilosophyCard
+          title="The Rhythm"
+          description="Fluid problem-solving and elegant design. Finding innovative solutions that feel natural to use."
+          icon="rhythm"
+          client:visible
+        />
+      </div>
+    </div>
+    
+    <!-- Closing Statement -->
+    <div class="closing-statement fade-in" style="animation-delay: 0.3s;">
+      <p class="tagline">I code with rhythm.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fade-in animation on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all fade-in elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.philosophy-section .fade-in')
+    fadeElements.forEach(el => observer.observe(el))
+  })
+</script>
+
+<style>
+.philosophy-section {
+  position: relative;
+  padding: 80px 0;
+  /* Removed isolation and contain to allow page-level gradients to flow through */
+}
+
+/* Background Elements */
+.section-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.1;
+  animation: gentle-float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -100px;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  border-radius: 50%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -50px;
+  left: -50px;
+  background: linear-gradient(45deg, var(--color-primary) 0%, transparent 60%);
+  transform: rotate(45deg);
+  animation-delay: 7s;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 10%;
+  border: 2px solid var(--color-primary);
+  border-radius: 20px;
+  transform: rotate(15deg);
+  animation-delay: 14s;
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-30px) translateX(10px) rotate(5deg);
+  }
+  66% {
+    transform: translateY(20px) translateX(-10px) rotate(-3deg);
+  }
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 20%, rgba(255, 222, 10, 0.03) 0%, transparent 50%);
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  font-family: var(--font-family-heading);
+}
+
+.title-main {
+  color: var(--color-foreground);
+}
+
+.title-accent {
+  color: var(--color-primary);
+}
+
+.section-description {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Philosophy Grid */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Closing Statement */
+.closing-statement {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  color: var(--color-foreground);
+  position: relative;
+  display: inline-block;
+}
+
+.tagline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding: 60px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 48px;
+  }
+  
+  .philosophy-grid {
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  
+  .section-description {
+    font-size: 1.125rem;
+  }
+  
+  .tagline {
+    font-size: 1.25rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shape {
+    animation: none;
+  }
+}
+</style>

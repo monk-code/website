@@ -103,8 +103,7 @@
   /* Root element setup with overflow control */
   html {
     scroll-behavior: smooth;
-    /* Prevent horizontal overflow while allowing vertical scroll */
-    overflow-x: hidden;
+    /* Allow vertical scroll without restricting horizontal overflow */
     overflow-y: auto;
   }
 
@@ -400,6 +399,250 @@
       opacity: 1;
       transform: none;
       transition: none;
+    }
+  }
+}
+
+/* Global Gradient Layer System */
+@layer components {
+  /* Page-level gradient container */
+  .page-gradient-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+    /* Ensure gradients don't interfere with scrolling */
+    will-change: transform;
+  }
+  
+  /* Individual gradient orbs */
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    transition: all 20s ease-in-out infinite;
+    mix-blend-mode: screen;
+  }
+  
+  /* Light mode gradient colors and positions */
+  .gradient-orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at center, var(--color-monk-yellow) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    animation: gentle-drift-1 30s ease-in-out infinite;
+  }
+  
+  .gradient-orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at center, var(--color-monk-yellow-light) 0%, transparent 60%);
+    bottom: 10vh;
+    left: -150px;
+    animation: gentle-drift-2 25s ease-in-out infinite;
+  }
+  
+  .gradient-orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center, var(--color-light-neutral-200) 0%, transparent 50%);
+    top: 50vh;
+    left: 60vw;
+    animation: gentle-drift-3 35s ease-in-out infinite;
+  }
+  
+  .gradient-orb-4 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at center, var(--color-monk-yellow-light) 0%, transparent 60%);
+    top: 30vh;
+    right: 20vw;
+    animation: gentle-drift-4 28s ease-in-out infinite;
+  }
+  
+  /* Dark mode adjustments */
+  [data-theme="dark"] .gradient-orb {
+    mix-blend-mode: lighten;
+    opacity: 0.08;
+    filter: blur(100px);
+  }
+  
+  [data-theme="dark"] .gradient-orb-1 {
+    background: radial-gradient(circle at center, var(--color-monk-yellow) 0%, transparent 50%);
+    opacity: 0.1;
+  }
+  
+  [data-theme="dark"] .gradient-orb-2 {
+    background: radial-gradient(circle at center, var(--color-monk-yellow) 0%, transparent 40%);
+    opacity: 0.06;
+  }
+  
+  [data-theme="dark"] .gradient-orb-3 {
+    background: radial-gradient(circle at center, var(--color-monk-yellow) 0%, transparent 30%);
+    opacity: 0.05;
+  }
+  
+  [data-theme="dark"] .gradient-orb-4 {
+    background: radial-gradient(circle at center, var(--color-monk-yellow) 0%, transparent 40%);
+    opacity: 0.08;
+  }
+  
+  /* Hero section gradients at page level */
+  .hero-gradient {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(3xl);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .hero-gradient-left {
+    width: 24rem; /* w-96 = 384px */
+    height: 24rem;
+    background: rgba(255, 222, 10, 0.08); /* bg-primary/8 */
+    top: 5rem; /* top-20 = 80px */
+    left: -10rem; /* -left-40 = -160px */
+    filter: blur(120px);
+    opacity: 0.6;
+  }
+  
+  .hero-gradient-right {
+    width: 30rem; /* Slightly larger for better visibility */
+    height: 30rem;
+    background: rgba(255, 222, 10, 0.15); /* Increased opacity for visibility */
+    top: 10%; /* Position in top area of viewport */
+    right: -15rem; /* Adjust for better placement */
+    filter: blur(150px);
+    opacity: 0.6;
+    animation-delay: 3s;
+  }
+  
+  /* Dark mode adjustments for hero gradients */
+  [data-theme="dark"] .hero-gradient-left {
+    background: rgba(255, 222, 10, 0.06);
+    opacity: 0.4;
+  }
+  
+  [data-theme="dark"] .hero-gradient-right {
+    background: rgba(255, 222, 10, 0.08); /* Increased for better visibility */
+    opacity: 0.5;
+  }
+  
+  /* Gradient animations */
+  @keyframes gentle-drift-1 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(-50px, 100px) scale(1.1);
+    }
+    50% {
+      transform: translate(30px, 50px) scale(0.95);
+    }
+    75% {
+      transform: translate(-20px, -30px) scale(1.05);
+    }
+  }
+  
+  @keyframes gentle-drift-2 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(80px, -60px) scale(1.15);
+    }
+    66% {
+      transform: translate(40px, -100px) scale(0.9);
+    }
+  }
+  
+  @keyframes gentle-drift-3 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    20% {
+      transform: translate(-60px, -40px) scale(1.1);
+    }
+    40% {
+      transform: translate(-30px, 60px) scale(0.95);
+    }
+    60% {
+      transform: translate(40px, 30px) scale(1.05);
+    }
+    80% {
+      transform: translate(20px, -50px) scale(0.98);
+    }
+  }
+  
+  @keyframes gentle-drift-4 {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-70px, 80px) scale(1.2);
+    }
+  }
+  
+  /* Ensure main content has proper z-index */
+  main {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Ensure sections are above gradient layer */
+  section {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .gradient-orb {
+      filter: blur(60px);
+    }
+    
+    .gradient-orb-1 {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .gradient-orb-2 {
+      width: 350px;
+      height: 350px;
+    }
+    
+    .gradient-orb-3 {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .gradient-orb-4 {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
+  /* Performance optimization for mobile */
+  @media (max-width: 480px) {
+    .gradient-orb-3,
+    .gradient-orb-4 {
+      display: none;
+    }
+  }
+  
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-orb {
+      animation: none !important;
+    }
+  }
+  
+  /* High contrast mode - hide decorative gradients */
+  @media (prefers-contrast: high) {
+    .page-gradient-layer {
+      display: none;
     }
   }
 }

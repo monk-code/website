@@ -65,6 +65,15 @@ const { title, description, ogImage, noindex = false } = Astro.props
   </script>
 </head>
 <body class="transition-theme">
+  <!-- Global gradient layer for decorative elements -->
+  <div class="page-gradient-layer" aria-hidden="true">
+    <div class="gradient-orb gradient-orb-1"></div>
+    <div class="gradient-orb gradient-orb-2"></div>
+    <!-- Hero section gradients moved to page level -->
+    <div class="hero-gradient hero-gradient-left"></div>
+    <div class="hero-gradient hero-gradient-right"></div>
+  </div>
+  
   <!-- Skip to main content for keyboard users -->
   <a 
     href="#main" 
