@@ -3,45 +3,93 @@
 ---
 
 <section id="about" class="about-section">
-  <!-- Background Elements -->
+  <!-- Subtle background element -->
   <div class="section-background">
-    <div class="floating-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-    </div>
+    <div class="background-accent"></div>
   </div>
   
-  <div class="content-container relative z-10">
+  <div class="content-container">
     <!-- Section Header -->
     <div class="section-header fade-in">
       <h2 class="section-title">
         <span class="title-main">About</span>
         <span class="title-accent">Gregory</span>
       </h2>
+      <p class="section-subtitle">Senior Frontend Developer</p>
     </div>
     
     <!-- Main Content -->
-    <div class="about-content fade-in" style="animation-delay: 0.1s;">
-      <p class="about-text">
-        I'm <span class="name-highlight">Gregory</span>. I studied history before getting into code—still love a good history documentary. 
-        Been doing frontend development for over 10 years now, mostly helping scale enterprise applications with Vue.js and modern tools.
-      </p>
+    <div class="about-content">
+      <!-- Introduction Block -->
+      <div class="intro-block fade-in" style="animation-delay: 0.1s;">
+        <div class="content-accent"></div>
+        <div class="intro-content">
+          <p class="intro-lead">
+            Been doing frontend development for over <span class="years-highlight">10 years</span> now, 
+            mostly helping scale enterprise applications with Vue.js and modern tools.
+          </p>
+          <p class="intro-text">
+            I studied history before getting into code—still love a good history documentary.
+          </p>
+        </div>
+      </div>
       
-      <p class="about-text">
-        I really enjoy what I do. There's something satisfying about making complex systems work smoothly and keeping code 
-        maintainable for the long haul. I've learned that taking time to get things right pays off every time.
-      </p>
+      <!-- Philosophy Block -->
+      <div class="philosophy-block fade-in" style="animation-delay: 0.2s;">
+        <p class="philosophy-text">
+          I really enjoy what I do. There's something satisfying about making complex systems work smoothly 
+          and keeping code maintainable for the long haul.
+        </p>
+      </div>
       
-      <p class="about-text">
-        When I'm not coding, I'm probably listening to Thelonious Monk (hence MONKCODE) or diving into classical music. 
-        Love catching MMA fights, getting lost in games like Bloodborne, or laughing at British comedy from the 2000s. 
-        Always looking for good film and series recommendations too.
-      </p>
+      <!-- Interests Block -->
+      <div class="interests-block fade-in" style="animation-delay: 0.3s;">
+        <div class="interests-header">
+          <h3 class="interests-label">When I'm not coding</h3>
+          <div class="interests-divider"></div>
+        </div>
+        <div class="interests-content">
+          <div class="interests-grid">
+            <div class="interest-item">
+              <span class="interest-icon">♪</span>
+              <p>Listening to jazz (can not get enough of <span class="hover-jazz">thelonious monk</span> - hence the name)</p>
+            </div>
+            <div class="interest-item">
+              <span class="interest-icon">📚</span>
+              <p>Reading (books by nassim taleb changed my way of thinking)</p>
+            </div>
+            <div class="interest-item">
+              <span class="interest-icon">📺</span>
+              <p>2000s british comedy series</p>
+            </div>
+            <div class="interest-item">
+              <span class="interest-icon">🎹</span>
+              <p>Playing a little piano</p>
+            </div>
+            <div class="interest-item">
+              <span class="interest-icon">🎮</span>
+              <p>Getting lost in games like Bloodborne and Dark Souls</p>
+            </div>
+            <div class="interest-item">
+              <span class="interest-icon">📽️</span>
+              <p>I've seen IASIP and The Office more times than I'd like to admit</p>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <p class="about-text">
-        I believe in doing solid work and being someone people can rely on. If you need help with a project, I'd be happy to chat.
-      </p>
+      <!-- Call to Action -->
+      <div class="cta-block fade-in" style="animation-delay: 0.4s;">
+        <div class="cta-content">
+          <p class="cta-lead">I believe in doing solid work and being someone people can rely on.</p>
+          <div class="cta-action">
+            <p class="cta-text">If you need help with a project, I'd be happy to chat.</p>
+            <a href="#contact" class="contact-button">
+              Let's Talk
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -72,84 +120,42 @@
 <style>
 .about-section {
   position: relative;
-  padding: 80px 0;
-  /* Allow page-level gradients to flow through */
+  padding: 120px 0;
 }
 
-/* Background Elements */
+/* Background Element */
 .section-background {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.floating-shapes {
+.background-accent {
   position: absolute;
-  inset: 0;
-}
-
-.shape {
-  position: absolute;
-  opacity: 0.08;
-  animation: gentle-float 20s infinite ease-in-out;
-}
-
-.shape-1 {
-  width: 200px;
-  height: 200px;
-  top: 10%;
-  right: 10%;
-  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  top: 20%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, rgba(255, 222, 10, 0.03) 0%, transparent 70%);
   border-radius: 50%;
-  animation-delay: 0s;
-}
-
-.shape-2 {
-  width: 150px;
-  height: 150px;
-  bottom: 20%;
-  left: 5%;
-  background: linear-gradient(45deg, var(--color-primary) 0%, transparent 60%);
-  transform: rotate(45deg);
-  animation-delay: 7s;
-}
-
-.shape-3 {
-  width: 100px;
-  height: 100px;
-  top: 60%;
-  right: 20%;
-  border: 2px solid var(--color-primary);
-  border-radius: 20px;
-  transform: rotate(15deg);
-  animation-delay: 14s;
-}
-
-@keyframes gentle-float {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  33% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  66% {
-    transform: translateY(10px) translateX(-10px);
-  }
+  filter: blur(60px);
 }
 
 /* Section Header */
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 80px;
   position: relative;
   z-index: 1;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-size: clamp(3rem, 6vw, 4.5rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 0.9;
   font-family: var(--font-family-heading);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
 }
 
 .title-main {
@@ -158,53 +164,406 @@
 
 .title-accent {
   color: var(--color-primary);
+  display: inline-block;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-family-body);
+  margin: 0;
+  letter-spacing: 0.02em;
 }
 
 /* Main Content */
 .about-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 48px;
   position: relative;
   z-index: 1;
-  max-width: 700px;
-  margin: 0 auto;
 }
 
-.about-text {
-  font-size: 1.125rem;
-  line-height: 1.7;
+/* Introduction Block */
+.intro-block {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.content-accent {
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--color-primary), transparent);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.intro-content {
+  display: grid;
+  gap: 24px;
+}
+
+.intro-lead {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--color-foreground);
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  margin: 0;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
   color: var(--color-muted-foreground);
-  margin-bottom: 24px;
+  font-family: var(--font-family-body);
+  margin: 0;
+}
+
+.years-highlight {
+  color: var(--color-primary);
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.years-highlight:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 20px rgba(255, 222, 10, 0.3);
+}
+
+/* Philosophy Block */
+.philosophy-block {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.about-text:last-child {
-  margin-bottom: 0;
+.philosophy-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-family-body);
+  margin: 0;
 }
 
-.name-highlight {
-  color: var(--color-primary);
+/* Interests Block */
+.interests-block {
+  position: relative;
+}
+
+.interests-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.interests-label {
+  font-size: 1rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-muted-foreground);
+  margin: 0;
+  font-family: var(--font-family-heading);
+}
+
+.interests-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary), transparent);
+  border-radius: 1px;
+}
+
+.interests-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.interest-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.interest-item:hover {
+  background: rgba(255, 222, 10, 0.02);
+  border-color: rgba(255, 222, 10, 0.1);
+  transform: translateY(-2px);
+}
+
+.interest-icon {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.interest-item p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-family-body);
+}
+
+/* Jazz Hover Effect */
+.hover-jazz {
+  cursor: pointer;
+  color: var(--color-foreground);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.hover-jazz:hover {
+  color: var(--color-primary);
+}
+
+.hover-jazz:hover::after {
+  content: '♪';
+  position: absolute;
+  top: -25px;
+  right: -15px;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  animation: music-note 1s ease;
+}
+
+@keyframes music-note {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Call to Action */
+.cta-block {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-content {
+  display: grid;
+  gap: 32px;
+}
+
+.cta-lead {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-foreground);
+  font-weight: 500;
+  font-family: var(--font-family-body);
+  margin: 0;
+}
+
+.cta-action {
+  display: grid;
+  gap: 24px;
+  justify-items: center;
+}
+
+.cta-text {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-family-body);
+  margin: 0;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  background: var(--color-primary);
+  color: var(--color-code-black);
+  font-family: var(--font-family-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.contact-button:hover {
+  background: transparent;
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 222, 10, 0.2);
+}
+
+.contact-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.3);
 }
 
 /* Responsive Design */
+/* Tablet - 2 columns */
+@media (max-width: 1024px) {
+  .interests-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .about-section {
-    padding: 60px 0;
+    padding: 80px 0;
   }
   
   .section-header {
-    margin-bottom: 36px;
+    margin-bottom: 48px;
   }
   
-  .about-text {
-    font-size: 1rem;
-    margin-bottom: 20px;
+  .about-content {
+    gap: 40px;
   }
+  
+  .intro-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  
+  .content-accent {
+    width: 60px;
+    height: 4px;
+    margin: 0 auto;
+  }
+  
+  .interests-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .interests-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  
+  .interest-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 20px;
+  }
+  
+  .intro-lead {
+    font-size: 1.25rem;
+  }
+  
+  .intro-text {
+    font-size: 1.125rem;
+  }
+  
+  .philosophy-text {
+    font-size: 1.125rem;
+  }
+  
+  .cta-lead {
+    font-size: 1.125rem;
+  }
+  
+  .cta-text {
+    font-size: 1.125rem;
+  }
+  
+  .contact-button {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content {
+    gap: 32px;
+  }
+  
+  .section-header {
+    margin-bottom: 32px;
+  }
+  
+  .background-accent {
+    display: none;
+  }
+  
+  .interests-grid {
+    gap: 16px;
+  }
+  
+  .interest-item {
+    padding: 18px;
+    gap: 12px;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .interest-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .interest-item:hover {
+  background: rgba(255, 222, 10, 0.05);
+  border-color: rgba(255, 222, 10, 0.15);
+}
+
+[data-theme="dark"] .contact-button {
+  background: var(--color-primary);
+  color: var(--color-code-black);
+}
+
+[data-theme="dark"] .contact-button:hover {
+  background: transparent;
+  color: var(--color-primary);
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .shape {
+  .years-highlight,
+  .hover-jazz,
+  .hover-jazz::after,
+  .interest-item,
+  .contact-button {
+    transition: none;
     animation: none;
+    transform: none;
+  }
+  
+  .years-highlight:hover,
+  .interest-item:hover,
+  .contact-button:hover {
+    transform: none;
   }
 }
 </style>
