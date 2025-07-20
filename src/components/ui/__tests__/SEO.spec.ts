@@ -107,4 +107,30 @@ describe('SEO Component', () => {
     expect(result).toContain('<meta name="geo.position" content="51.0500;3.7167"')
     expect(result).toContain('<meta name="ICBM" content="51.0500, 3.7167"')
   })
+
+  it('should include LocalBusiness structured data for local SEO', async () => {
+    const container = await AstroContainer.create()
+    const result = await container.renderToString(SEO)
+
+    // Should include LocalBusiness JSON-LD (JSON is minified)
+    expect(result).toContain('<script type="application/ld+json">')
+    expect(result).toContain('"@type":"LocalBusiness"')
+    expect(result).toContain('"name":"MONKCODE"')
+    expect(result).toContain('"address"')
+    expect(result).toContain('"addressLocality":"Gent"')
+    expect(result).toContain('"addressCountry":"BE"')
+  })
+
+  it('should include Person structured data for professional SEO', async () => {
+    const container = await AstroContainer.create()
+    const result = await container.renderToString(SEO)
+
+    // Should include Person JSON-LD (JSON is minified)
+    expect(result).toContain('"@type":"Person"')
+    expect(result).toContain('"name":"Gregory Deseck"')
+    expect(result).toContain('"jobTitle":"Frontend Developer"')
+    expect(result).toContain('"knowsAbout"')
+    expect(result).toContain('"Vue.js"')
+    expect(result).toContain('"website laten maken"')
+  })
 })

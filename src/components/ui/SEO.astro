@@ -18,6 +18,60 @@ const fullTitle = title ? `${title} | MONKCODE` : 'MONKCODE | Gregory Deseck - F
 
 // Build canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://monkcode.dev')
+
+// Structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": `${canonicalURL}#business`,
+      "name": "MONKCODE",
+      "description": "Frontend development services in Gent, Belgium. Specializing in Vue.js, React, and modern web applications.",
+      "url": canonicalURL.toString(),
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gent",
+        "addressRegion": "Oost-Vlaanderen",
+        "addressCountry": "BE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.0500",
+        "longitude": "3.7167"
+      },
+      "founder": {
+        "@id": `${canonicalURL}#person`
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": `${canonicalURL}#person`,
+      "name": "Gregory Deseck",
+      "jobTitle": "Frontend Developer",
+      "description": "Freelance frontend developer specializing in Vue.js, React, and modern web development.",
+      "url": canonicalURL.toString(),
+      "knowsAbout": [
+        "Vue.js",
+        "React", 
+        "TypeScript",
+        "Jamstack",
+        "Frontend Development",
+        "website laten maken",
+        "app maken",
+        "web applicatie ontwikkeling"
+      ],
+      "workLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gent",
+          "addressCountry": "BE"
+        }
+      }
+    }
+  ]
+}
 ---
 
 <!-- Primary Meta Tags -->
@@ -66,3 +120,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://monkcode
 <meta name="geo.placename" content="Gent" />
 <meta name="geo.position" content="51.0500;3.7167" />
 <meta name="ICBM" content="51.0500, 3.7167" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
