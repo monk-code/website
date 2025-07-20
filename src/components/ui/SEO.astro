@@ -55,3 +55,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://monkcode
 <!-- Theme Color -->
 <meta name="theme-color" content="#121212" />
 <meta name="theme-color" content="#FFDE0A" media="(prefers-color-scheme: dark)" />
+
+<!-- Hreflang for Multi-language Support -->
+<link rel="alternate" hreflang="nl-BE" href={canonicalURL} />
+<link rel="alternate" hreflang="en" href={canonicalURL} />
+<link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+<!-- Geographic Targeting for Gent, Belgium -->
+<meta name="geo.region" content="BE-VLG" />
+<meta name="geo.placename" content="Gent" />
+<meta name="geo.position" content="51.0500;3.7167" />
+<meta name="ICBM" content="51.0500, 3.7167" />

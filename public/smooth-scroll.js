@@ -4,7 +4,7 @@
   document.addEventListener('click', (e) => {
     // Ensure we only handle actual clicks (not programmatic triggers)
     if (!e.isTrusted) return
-    
+
     // Check if clicked element is an anchor with hash
     const link = e.target.closest('a[href^="#"]')
     if (!link) return
@@ -24,7 +24,8 @@
     // Calculate scroll position (account for fixed header if exists)
     const header = document.querySelector('header') || document.querySelector('[role="banner"]')
     const headerHeight = header ? header.offsetHeight : 0
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20 // 20px extra padding
+    const targetPosition =
+      target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20 // 20px extra padding
 
     // Smooth scroll to target
     window.scrollTo({
@@ -40,11 +41,15 @@
     // Set focus for accessibility (remove outline)
     target.setAttribute('tabindex', '-1')
     target.focus({ preventScroll: true })
-    
+
     // Remove tabindex after focus to maintain natural tab order
-    target.addEventListener('blur', () => {
-      target.removeAttribute('tabindex')
-    }, { once: true })
+    target.addEventListener(
+      'blur',
+      () => {
+        target.removeAttribute('tabindex')
+      },
+      { once: true },
+    )
   })
 
   // Handle browser back/forward with smooth scroll

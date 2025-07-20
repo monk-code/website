@@ -148,7 +148,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { ModernProject } from '@/data/projects.js'
 
 interface Props {
@@ -166,12 +166,12 @@ const mouseY = ref(50)
 const cardStyle = computed(() => ({
   transform: `scale(${isHovered.value ? 1.02 : 1})`,
   '--accent-color': props.project.accentColor,
-  '--gradient': props.project.gradient
+  '--gradient': props.project.gradient,
 }))
 
 const imageStyle = computed(() => ({
   // Remove scaling to prevent blurriness
-  transform: 'translate3d(0, 0, 0)'
+  transform: 'translate3d(0, 0, 0)',
 }))
 
 const onMouseEnter = () => {
@@ -186,11 +186,11 @@ const onMouseLeave = () => {
 
 const onMouseMove = (event: MouseEvent) => {
   if (!cardRef.value) return
-  
+
   const rect = cardRef.value.getBoundingClientRect()
   const x = event.clientX - rect.left
   const y = event.clientY - rect.top
-  
+
   mouseX.value = (x / rect.width) * 100
   mouseY.value = (y / rect.height) * 100
 }

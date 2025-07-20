@@ -44,7 +44,7 @@ describe('About Section', () => {
       const container = await AstroContainer.create()
       const result = await container.renderToString(About)
 
-      expect(result).toContain('Monk')
+      expect(result).toContain('thelonious monk')
       expect(result).toContain('comedy')
     })
   })
@@ -65,7 +65,7 @@ describe('About Section', () => {
       const result = await container.renderToString(About)
 
       expect(result).toContain('section-background')
-      expect(result).toContain('floating-shapes')
+      expect(result).toContain('background-accent')
     })
   })
 

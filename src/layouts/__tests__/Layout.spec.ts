@@ -85,7 +85,15 @@ describe('Layout Component', () => {
     const container = await AstroContainer.create()
     const result = await container.renderToString(Layout)
 
-    expect(result).toContain('class="min-h-screen transition-theme"')
+    expect(result).toContain('<body class="transition-theme"')
+  })
+
+  it('should have min-height layout structure', async () => {
+    const container = await AstroContainer.create()
+    const result = await container.renderToString(Layout)
+
+    expect(result).toContain('class="min-h-screen flex flex-col"')
+    expect(result).toContain('class="flex-grow"')
   })
 
   it('should include favicon links', async () => {
@@ -94,5 +102,13 @@ describe('Layout Component', () => {
 
     expect(result).toContain('rel="icon"')
     expect(result).toContain('/favicon.svg')
+  })
+
+  it('should include Footer component', async () => {
+    const container = await AstroContainer.create()
+    const result = await container.renderToString(Layout)
+
+    expect(result).toContain('<footer')
+    expect(result).toContain('role="contentinfo"')
   })
 })

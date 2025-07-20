@@ -17,6 +17,9 @@
           >
             {{ item.label }}
           </a>
+          
+          <!-- Theme Toggle -->
+          <ThemeToggle class="ml-4" />
         </nav>
         
         <!-- Mobile Menu Button -->
@@ -48,12 +51,18 @@
         >
           {{ item.label }}
         </a>
+        
+        <!-- Theme Toggle in Mobile Menu -->
+        <div class="mt-4 pt-4 border-t border-neutral-800">
+          <ThemeToggle />
+        </div>
       </nav>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import ThemeToggle from '@/components/ui/ThemeToggle.vue'
 import { useMobileMenu } from '@/composables/useMobileMenu.js'
 import { NAVIGATION_ITEMS, SITE_CONFIG } from '@/utils/constants.js'
 

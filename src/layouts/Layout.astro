@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css'
+import Footer from '@/components/layout/Footer.astro'
+import BackToTop from '@/components/ui/BackToTop.vue'
 import SEO from '@/components/ui/SEO.astro'
 
 export interface Props {
@@ -82,9 +84,16 @@ const { title, description, ogImage, noindex = false } = Astro.props
     Skip to main content
   </a>
   
-  <main id="main">
-    <slot />
-  </main>
+  <div class="min-h-screen flex flex-col">
+    <main id="main" class="flex-grow">
+      <slot />
+    </main>
+    
+    <Footer />
+  </div>
+  
+  <!-- Back to Top Button -->
+  <BackToTop client:idle />
   
   <!-- Theme persistence -->
   <script>

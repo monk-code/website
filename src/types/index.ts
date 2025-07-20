@@ -134,3 +134,37 @@ export interface ProjectCardProps {
   liveUrl?: string
   repoUrl?: string
 }
+
+// Contact Link component types
+export type ContactLinkType = 'email' | 'github' | 'linkedin'
+
+export interface ContactLinkProps {
+  type: ContactLinkType
+  label: string
+  value: string
+}
+
+// Form Input component types
+export type FormInputType = 'text' | 'email' | 'password' | 'tel' | 'url'
+
+export interface FormInputProps {
+  label: string
+  modelValue: string
+  type: FormInputType
+  required?: boolean
+  error?: string
+  placeholder?: string
+  disabled?: boolean
+}
+
+// Form Textarea component types
+export interface FormTextareaProps {
+  label: string
+  modelValue: string
+  required?: boolean
+  error?: string
+  placeholder?: string
+  disabled?: boolean
+  maxLength?: number
+  rows?: number
+}

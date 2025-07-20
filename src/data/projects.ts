@@ -2,29 +2,27 @@ import type { ImageMetadata } from 'astro'
 
 // Original images (for fallback)
 import bricsysImage from '@/assets/images/bricsys-247.png'
-import brightEnergyImage from '@/assets/images/bright-energy.png'
-import groepspraktijkImage from '@/assets/images/groepspraktijk-paviljoen.png'
-import dietisteImage from '@/assets/images/dietiste-hanne-van-nuffel.png'
-
 // Optimized images - 400x255
 import bricsys400png from '@/assets/images/bricsys-247_400_255.png'
 import bricsys400webp from '@/assets/images/bricsys-247_400_255.webp'
-import brightEnergy400png from '@/assets/images/bright-energy_400_255.png'
-import brightEnergy400webp from '@/assets/images/bright-energy_400_255.webp'
-import groepspraktijk400png from '@/assets/images/groepspraktijk-paviljoen_400_255.png'
-import groepspraktijk400webp from '@/assets/images/groepspraktijk-paviljoen_400_255.webp'
-import dietiste400png from '@/assets/images/dietiste-hanne-van-nuffel_400_255.png'
-import dietiste400webp from '@/assets/images/dietiste-hanne-van-nuffel_400_255.webp'
-
 // Optimized images - 800x450 (retina)
 import bricsys800png from '@/assets/images/bricsys-247_800_450.png'
 import bricsys800webp from '@/assets/images/bricsys-247_800_450.webp'
+import brightEnergyImage from '@/assets/images/bright-energy.png'
+import brightEnergy400png from '@/assets/images/bright-energy_400_255.png'
+import brightEnergy400webp from '@/assets/images/bright-energy_400_255.webp'
 import brightEnergy800png from '@/assets/images/bright-energy_800_450.png'
 import brightEnergy800webp from '@/assets/images/bright-energy_800_450.webp'
-import groepspraktijk800png from '@/assets/images/groepspraktijk-paviljoen_800_450.png'
-import groepspraktijk800webp from '@/assets/images/groepspraktijk-paviljoen_800_450.webp'
+import dietisteImage from '@/assets/images/dietiste-hanne-van-nuffel.png'
+import dietiste400png from '@/assets/images/dietiste-hanne-van-nuffel_400_255.png'
+import dietiste400webp from '@/assets/images/dietiste-hanne-van-nuffel_400_255.webp'
 import dietiste800png from '@/assets/images/dietiste-hanne-van-nuffel_800_450.png'
 import dietiste800webp from '@/assets/images/dietiste-hanne-van-nuffel_800_450.webp'
+import groepspraktijkImage from '@/assets/images/groepspraktijk-paviljoen.png'
+import groepspraktijk400png from '@/assets/images/groepspraktijk-paviljoen_400_255.png'
+import groepspraktijk400webp from '@/assets/images/groepspraktijk-paviljoen_400_255.webp'
+import groepspraktijk800png from '@/assets/images/groepspraktijk-paviljoen_800_450.png'
+import groepspraktijk800webp from '@/assets/images/groepspraktijk-paviljoen_800_450.webp'
 
 export type ProjectCategory = 'enterprise' | 'energy' | 'healthcare' | 'opensource'
 
@@ -75,19 +73,20 @@ export const projects: ModernProject[] = [
     id: 'bricsys-247',
     title: 'Bricsys 24/7',
     subtitle: 'Enterprise SaaS Platform',
-    description: 'Cloud-based Common Data Environment (CDE) for construction document management. Built real-time collaboration features, 3D model viewing, and automated workflows for architecture and engineering teams.',
+    description:
+      'Cloud-based Common Data Environment (CDE) for construction document management. Built real-time collaboration features, 3D model viewing, and automated workflows for architecture and engineering teams.',
     image: {
       fallback: bricsysImage,
       sources: {
         webp: {
           '1x': bricsys400webp,
-          '2x': bricsys800webp
+          '2x': bricsys800webp,
         },
         png: {
           '1x': bricsys400png,
-          '2x': bricsys800png
-        }
-      }
+          '2x': bricsys800png,
+        },
+      },
     },
     tags: ['React', 'Vue.js', 'WebSocket', 'Cloud', 'Real-time', 'BIM'],
     category: 'enterprise',
@@ -97,11 +96,11 @@ export const projects: ModernProject[] = [
     stats: [
       { label: 'File Formats', value: '70+' },
       { label: 'Users', value: 'Unlimited' },
-      { label: 'Time Saved', value: '60%' }
+      { label: 'Time Saved', value: '60%' },
     ],
     links: [
       { type: 'live', url: 'https://www.bricsys.com/247', label: 'Live Platform' },
-      { type: 'company', url: 'https://www.bricsys.com', label: 'Company' }
+      { type: 'company', url: 'https://www.bricsys.com', label: 'Company' },
     ],
     dateRange: '2023-2024',
     keyFeatures: [
@@ -109,26 +108,27 @@ export const projects: ModernProject[] = [
       'Graphical workflow editor',
       '3D model & point cloud visualization',
       'Mobile field annotations',
-      'API integration with SharePoint'
-    ]
+      'API integration with SharePoint',
+    ],
   },
   {
     id: 'bright-energy',
     title: 'Bright Energy',
     subtitle: 'IoT Energy Management',
-    description: 'Comprehensive energy management platform combining smart battery systems, optimization algorithms, and energy trading. Replaces diesel generators with zero-emission mobile battery units.',
+    description:
+      'Comprehensive energy management platform combining smart battery systems, optimization algorithms, and energy trading. Replaces diesel generators with zero-emission mobile battery units.',
     image: {
       fallback: brightEnergyImage,
       sources: {
         webp: {
           '1x': brightEnergy400webp,
-          '2x': brightEnergy800webp
+          '2x': brightEnergy800webp,
         },
         png: {
           '1x': brightEnergy400png,
-          '2x': brightEnergy800png
-        }
-      }
+          '2x': brightEnergy800png,
+        },
+      },
     },
     tags: ['Vue.js', 'IoT', 'ML', 'Trading', 'Analytics', 'Mobile'],
     category: 'energy',
@@ -138,11 +138,11 @@ export const projects: ModernProject[] = [
     stats: [
       { label: 'Cost Reduction', value: '60%' },
       { label: 'Emissions', value: 'Zero' },
-      { label: 'Sites Managed', value: 'Multi' }
+      { label: 'Sites Managed', value: 'Multi' },
     ],
     links: [
       { type: 'marketing', url: 'https://www.bright-energy.eu', label: 'Marketing Site' },
-      { type: 'app', url: 'https://app.bright-energy.eu', label: 'Application' }
+      { type: 'app', url: 'https://app.bright-energy.eu', label: 'Application' },
     ],
     dateRange: '2024-Present',
     keyFeatures: [
@@ -150,26 +150,27 @@ export const projects: ModernProject[] = [
       'Smart optimization algorithms',
       'Energy market trading integration',
       'Predictive maintenance alerts',
-      'Multi-site management dashboard'
-    ]
+      'Multi-site management dashboard',
+    ],
   },
   {
     id: 'groepspraktijk-paviljoen',
     title: 'Groepspraktijk Paviljoen',
     subtitle: 'Healthcare Practice Website',
-    description: 'Professional website for Belgian multidisciplinary healthcare practice. Features online appointment booking, team showcases, and service specialization for dietetics and therapy.',
+    description:
+      'Professional website for Belgian multidisciplinary healthcare practice. Features online appointment booking, team showcases, and service specialization for dietetics and therapy.',
     image: {
       fallback: groepspraktijkImage,
       sources: {
         webp: {
           '1x': groepspraktijk400webp,
-          '2x': groepspraktijk800webp
+          '2x': groepspraktijk800webp,
         },
         png: {
           '1x': groepspraktijk400png,
-          '2x': groepspraktijk800png
-        }
-      }
+          '2x': groepspraktijk800png,
+        },
+      },
     },
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Booking API', 'Responsive'],
     category: 'healthcare',
@@ -179,37 +180,36 @@ export const projects: ModernProject[] = [
     stats: [
       { label: 'Services', value: '2 Core' },
       { label: 'Booking', value: 'Integrated' },
-      { label: 'Design', value: 'Responsive' }
+      { label: 'Design', value: 'Responsive' },
     ],
-    links: [
-      { type: 'live', url: 'https://www.groepspraktijkpaviljoen.be', label: 'Live Site' }
-    ],
+    links: [{ type: 'live', url: 'https://www.groepspraktijkpaviljoen.be', label: 'Live Site' }],
     dateRange: '2023',
     keyFeatures: [
       'Online appointment booking system',
       'Multi-practitioner profiles',
       'Service specialization showcase',
       'Insurance information integration',
-      'Google Maps integration'
-    ]
+      'Google Maps integration',
+    ],
   },
   {
     id: 'dietiste-hanne',
     title: 'Dietiste Hanne',
     subtitle: 'Personal Nutrition Practice',
-    description: 'Personal branding website for independent dietitian practice. Showcases collaborative team of nutrition specialists with diverse expertise and personal storytelling approach.',
+    description:
+      'Personal branding website for independent dietitian practice. Showcases collaborative team of nutrition specialists with diverse expertise and personal storytelling approach.',
     image: {
       fallback: dietisteImage,
       sources: {
         webp: {
           '1x': dietiste400webp,
-          '2x': dietiste800webp
+          '2x': dietiste800webp,
         },
         png: {
           '1x': dietiste400png,
-          '2x': dietiste800png
-        }
-      }
+          '2x': dietiste800png,
+        },
+      },
     },
     tags: ['HTML5', 'CSS3', 'CMS', 'SEO', 'Mobile', 'Branding'],
     category: 'healthcare',
@@ -219,39 +219,45 @@ export const projects: ModernProject[] = [
     stats: [
       { label: 'Languages', value: 'Multi' },
       { label: 'SEO', value: 'Optimized' },
-      { label: 'Specialties', value: 'Diverse' }
+      { label: 'Specialties', value: 'Diverse' },
     ],
-    links: [
-      { type: 'live', url: 'https://www.dietistehannevannuffel.be', label: 'Live Site' }
-    ],
+    links: [{ type: 'live', url: 'https://www.dietistehannevannuffel.be', label: 'Live Site' }],
     dateRange: '2023',
     keyFeatures: [
       'Individual practitioner showcases',
       'Specialization matching system',
       'Professional photography gallery',
       'Personal storytelling approach',
-      'Multi-language support'
-    ]
-  }
+      'Multi-language support',
+    ],
+  },
 ]
 
 export const projectCategories = [
   { id: 'all', label: 'All Projects', count: projects.length },
-  { id: 'enterprise', label: 'Enterprise', count: projects.filter(p => p.category === 'enterprise').length },
-  { id: 'energy', label: 'Energy', count: projects.filter(p => p.category === 'energy').length },
-  { id: 'healthcare', label: 'Healthcare', count: projects.filter(p => p.category === 'healthcare').length }
+  {
+    id: 'enterprise',
+    label: 'Enterprise',
+    count: projects.filter((p) => p.category === 'enterprise').length,
+  },
+  { id: 'energy', label: 'Energy', count: projects.filter((p) => p.category === 'energy').length },
+  {
+    id: 'healthcare',
+    label: 'Healthcare',
+    count: projects.filter((p) => p.category === 'healthcare').length,
+  },
 ]
 
 export const getAllTags = (): string[] => {
-  const allTags = projects.flatMap(project => project.tags)
+  const allTags = projects.flatMap((project) => project.tags)
   return [...new Set(allTags)].sort()
 }
 
 export const getProjectsByCategory = (category: ProjectCategory | 'all'): ModernProject[] => {
   if (category === 'all') return projects
-  return projects.filter(project => project.category === category)
+  return projects.filter((project) => project.category === category)
 }
 
 export const getFeaturedProjects = (): ModernProject[] => {
-  return projects.filter(project => project.featured)
+  return projects.filter((project) => project.featured)
 }

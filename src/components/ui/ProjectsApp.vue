@@ -23,11 +23,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import type { ModernProject, ProjectCategory } from '@/data/projects.js'
+import { getProjectsByCategory, projects } from '@/data/projects.js'
 import ProjectBento from './ProjectBento.vue'
 import ProjectFilter from './ProjectFilter.vue'
-import { projects, getProjectsByCategory } from '@/data/projects.js'
-import type { ModernProject, ProjectCategory } from '@/data/projects.js'
 
 // Reactive state
 const allProjects = ref<ModernProject[]>(projects)
@@ -43,20 +43,20 @@ const totalCount = computed(() => allProjects.value.length)
 // Methods
 const filterProjects = async () => {
   isLoading.value = true
-  
+
   // Add slight delay for smooth transitions
-  await new Promise(resolve => setTimeout(resolve, 150))
-  
+  await new Promise((resolve) => setTimeout(resolve, 150))
+
   // Start with category filter
   let filtered = getProjectsByCategory(selectedCategory.value)
-  
+
   // Apply tag filters
   if (selectedTags.value.length > 0) {
-    filtered = filtered.filter(project => 
-      selectedTags.value.every(tag => project.tags.includes(tag))
+    filtered = filtered.filter((project) =>
+      selectedTags.value.every((tag) => project.tags.includes(tag)),
     )
   }
-  
+
   // Sort: featured first, then by date
   filtered.sort((a, b) => {
     if (a.featured && !b.featured) return -1
@@ -66,7 +66,7 @@ const filterProjects = async () => {
     const bYear = parseInt(b.dateRange.split('-')[0])
     return bYear - aYear
   })
-  
+
   filteredProjects.value = filtered
   isLoading.value = false
 }
@@ -84,7 +84,7 @@ const onTagsChange = (tags: string[]) => {
 const onProjectClick = (project: ModernProject) => {
   // Optional: Handle project click (could open modal, navigate, etc.)
   console.log('Project clicked:', project)
-  
+
   // Could emit event to parent or handle navigation
   // For now, we'll just log it
 }

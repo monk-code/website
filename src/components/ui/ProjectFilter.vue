@@ -91,9 +91,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-import { projectCategories, getAllTags } from '@/data/projects.js'
+import { computed, ref, watch } from 'vue'
 import type { ProjectCategory } from '@/data/projects.js'
+import { getAllTags, projectCategories } from '@/data/projects.js'
 
 interface Props {
   selectedCategory?: ProjectCategory | 'all'
@@ -110,7 +110,7 @@ interface Emits {
 
 const props = withDefaults(defineProps<Props>(), {
   selectedCategory: 'all',
-  selectedTags: () => []
+  selectedTags: () => [],
 })
 
 const emit = defineEmits<Emits>()
@@ -150,18 +150,24 @@ const clearAllFilters = () => {
 }
 
 const getCategoryLabel = (categoryId: ProjectCategory | 'all') => {
-  const category = categories.value.find(c => c.id === categoryId)
+  const category = categories.value.find((c) => c.id === categoryId)
   return category?.label || 'All'
 }
 
 // Watch for prop changes
-watch(() => props.selectedCategory, (newVal) => {
-  selectedCategory.value = newVal
-})
+watch(
+  () => props.selectedCategory,
+  (newVal) => {
+    selectedCategory.value = newVal
+  },
+)
 
-watch(() => props.selectedTags, (newVal) => {
-  selectedTags.value = [...newVal]
-})
+watch(
+  () => props.selectedTags,
+  (newVal) => {
+    selectedTags.value = [...newVal]
+  },
+)
 </script>
 
 <style scoped>

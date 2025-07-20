@@ -1,0 +1,384 @@
+---
+import ContactLink from '@/components/ui/ContactLink.vue'
+import ConversationalForm from '@/components/ui/ConversationalForm.vue'
+import { CONTACT_INFO } from '@/utils/constants.js'
+---
+
+<section id="contact" class="contact-section">
+  <!-- Background elements -->
+  <div class="section-background">
+    <div class="background-accent"></div>
+    <div class="geometric-pattern"></div>
+  </div>
+
+  <div class="content-container">
+    <!-- Section Header -->
+    <div class="section-header fade-in">
+      <h2 class="section-title">
+        <span class="title-main">Let's Build</span>
+        <span class="title-accent">Something Together</span>
+      </h2>
+      <p class="section-subtitle">Ready to collaborate on your next project</p>
+    </div>
+
+    <!-- Contact Content -->
+    <div class="contact-content">
+      <!-- Availability Badge -->
+      <div class="availability-section fade-in" style="animation-delay: 0.1s;">
+        <div class="availability-badge">
+          <div class="pulse-indicator"></div>
+          <span class="availability-text">Open to side projects</span>
+        </div>
+      </div>
+
+      <!-- Conversational Form -->
+      <div class="contact-form-section fade-in" style="animation-delay: 0.2s;">
+        <ConversationalForm 
+          client:load 
+          onSubmit={(data) => console.log('Form submitted:', data)}
+        />
+      </div>
+
+      <!-- Contact Links -->
+      <div class="contact-links-section fade-in" style="animation-delay: 0.3s;">
+        <div class="divider-line"></div>
+        <p class="alternative-text">Or reach out directly</p>
+        <div class="contact-links">
+          <ContactLink
+            client:load
+            type="email"
+            label="Email"
+            value={CONTACT_INFO.email}
+            iconOnly={true}
+          />
+          <ContactLink
+            client:load
+            type="github"
+            label="GitHub"
+            value={CONTACT_INFO.github}
+            iconOnly={true}
+          />
+          <ContactLink
+            client:load
+            type="linkedin"
+            label="LinkedIn"
+            value={CONTACT_INFO.linkedin}
+            iconOnly={true}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fade-in animation on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all fade-in elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.contact-section .fade-in')
+    fadeElements.forEach(el => observer.observe(el))
+  })
+</script>
+
+<style>
+.contact-section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Background Element */
+.section-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.background-accent {
+  position: absolute;
+  top: 30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(45deg, rgba(255, 222, 10, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.geometric-pattern {
+  position: absolute;
+  top: 20%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  opacity: 0.02;
+  background-image: 
+    repeating-linear-gradient(45deg, var(--color-primary) 0, var(--color-primary) 2px, transparent 2px, transparent 20px),
+    repeating-linear-gradient(-45deg, var(--color-primary) 0, var(--color-primary) 2px, transparent 2px, transparent 20px);
+  transform: rotate(15deg);
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  font-family: var(--font-family-heading);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.title-main {
+  color: var(--color-foreground);
+}
+
+.title-accent {
+  color: var(--color-primary);
+  display: inline-block;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-family-body);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Contact Content */
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Availability Section */
+.availability-section {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Contact Form Section */
+.contact-form-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contact Links Section */
+.contact-links-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.divider-line {
+  width: 100px;
+  height: 1px;
+  background: var(--color-muted);
+  opacity: 0.3;
+}
+
+.alternative-text {
+  font-size: 1rem;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-family-body);
+  text-align: center;
+  margin: 0;
+}
+
+/* Availability Badge */
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #22c55e;
+  font-family: var(--font-family-body);
+  width: fit-content;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.availability-badge:hover {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  transform: scale(1.02);
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.availability-text {
+  color: #22c55e;
+}
+
+/* Contact Links */
+.contact-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-links :global(.contact-link) {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-links :global(.contact-link:hover) {
+  transform: translateY(-2px);
+}
+
+.contact-links :global(.contact-link.icon-only) {
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.contact-links :global(.contact-link.icon-only:hover) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 222, 10, 0.2);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .background-accent {
+  background: linear-gradient(45deg, rgba(255, 222, 10, 0.02) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .geometric-pattern {
+  opacity: 0.01;
+}
+
+[data-theme="dark"] .availability-badge {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+[data-theme="dark"] .form-toggle-button {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .form-toggle-button:hover {
+  background: rgba(255, 222, 10, 0.08);
+  border-color: rgba(255, 222, 10, 0.15);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contact-content {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 48px;
+  }
+  
+  .contact-content {
+    gap: 48px;
+  }
+  
+  
+  .background-accent {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-content {
+    gap: 40px;
+  }
+  
+  
+  .background-accent {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pulse-indicator {
+    animation: none;
+  }
+  
+  .toggle-icon {
+    transition: none;
+  }
+  
+  .contact-form-container {
+    animation: none;
+  }
+}
+</style>

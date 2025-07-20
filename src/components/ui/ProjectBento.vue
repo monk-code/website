@@ -41,9 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from 'vue'
-import ProjectShowcase from './ProjectShowcase.vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import type { ModernProject } from '@/data/projects.js'
+import ProjectShowcase from './ProjectShowcase.vue'
 
 interface Props {
   projects: ModernProject[]
@@ -74,17 +74,17 @@ const onProjectClick = (project: ModernProject) => {
 
 const animateLayout = async () => {
   if (!gridRef.value) return
-  
+
   isAnimating.value = true
   showAnimation.value = false
-  
+
   await nextTick()
-  
+
   // Trigger layout animation
   setTimeout(() => {
     showAnimation.value = true
   }, 50)
-  
+
   // Reset animation flag
   setTimeout(() => {
     isAnimating.value = false
@@ -92,9 +92,13 @@ const animateLayout = async () => {
 }
 
 // Watch for projects changes and animate
-watch(() => props.projects, async () => {
-  await animateLayout()
-}, { deep: true })
+watch(
+  () => props.projects,
+  async () => {
+    await animateLayout()
+  },
+  { deep: true },
+)
 
 onMounted(async () => {
   await nextTick()

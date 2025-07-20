@@ -86,4 +86,25 @@ describe('SEO Component', () => {
 
     expect(result).toContain('<link rel="canonical"')
   })
+
+  it('should include hreflang tags for multi-language support', async () => {
+    const container = await AstroContainer.create()
+    const result = await container.renderToString(SEO)
+
+    // Should include Dutch (primary) and English hreflang tags
+    expect(result).toContain('<link rel="alternate" hreflang="nl-BE"')
+    expect(result).toContain('<link rel="alternate" hreflang="en"')
+    expect(result).toContain('<link rel="alternate" hreflang="x-default"')
+  })
+
+  it('should include geo-targeting meta tags for Gent location', async () => {
+    const container = await AstroContainer.create()
+    const result = await container.renderToString(SEO)
+
+    // Geographic targeting for Gent, Belgium
+    expect(result).toContain('<meta name="geo.region" content="BE-VLG"')
+    expect(result).toContain('<meta name="geo.placename" content="Gent"')
+    expect(result).toContain('<meta name="geo.position" content="51.0500;3.7167"')
+    expect(result).toContain('<meta name="ICBM" content="51.0500, 3.7167"')
+  })
 })
