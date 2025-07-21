@@ -217,27 +217,31 @@
     @apply focus:outline-none;
     transition: box-shadow 0.15s ease;
   }
-  
+
   .focus-ring:focus {
     box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.25);
   }
-  
+
   /* Enhanced focus for buttons and interactive elements */
   .focus-ring-primary {
     @apply focus:outline-none;
     transition: box-shadow 0.15s ease;
   }
-  
+
   .focus-ring-primary:focus {
-    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.3), 0 0 12px rgba(255, 222, 10, 0.2);
+    box-shadow:
+      0 0 0 3px rgba(255, 222, 10, 0.3),
+      0 0 12px rgba(255, 222, 10, 0.2);
   }
-  
+
   /* Subtle focus for inputs and form elements */
   .focus-ring-subtle {
     @apply focus:outline-none;
-    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    transition:
+      box-shadow 0.15s ease,
+      border-color 0.15s ease;
   }
-  
+
   .focus-ring-subtle:focus {
     box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.2);
     border-color: var(--color-primary);
@@ -247,11 +251,13 @@
   [data-theme="dark"] .focus-ring:focus {
     box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.15);
   }
-  
+
   [data-theme="dark"] .focus-ring-primary:focus {
-    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.2), 0 0 16px rgba(255, 222, 10, 0.15);
+    box-shadow:
+      0 0 0 3px rgba(255, 222, 10, 0.2),
+      0 0 16px rgba(255, 222, 10, 0.15);
   }
-  
+
   [data-theme="dark"] .focus-ring-subtle:focus {
     box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.15);
   }

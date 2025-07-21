@@ -8,10 +8,12 @@
     @apply transition-all duration-200 ease-in-out;
     transition-property: transform, box-shadow, background-color, border-color, color;
   }
-  
+
   /* Beautiful focus state for buttons */
   .btn:focus {
-    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.3), 0 0 12px rgba(255, 222, 10, 0.2);
+    box-shadow:
+      0 0 0 3px rgba(255, 222, 10, 0.3),
+      0 0 12px rgba(255, 222, 10, 0.2);
   }
 
   /* Button sizes */
@@ -93,7 +95,9 @@
 
 /* Dark mode adjustments */
 [data-theme="dark"] .btn:focus {
-  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.2), 0 0 16px rgba(255, 222, 10, 0.15);
+  box-shadow:
+    0 0 0 3px rgba(255, 222, 10, 0.2),
+    0 0 16px rgba(255, 222, 10, 0.15);
 }
 
 /* Respect reduced motion preferences */
