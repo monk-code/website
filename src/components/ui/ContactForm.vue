@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="contact-form">
+  <form @submit.prevent="handleSubmit" class="contact-form" role="form" aria-label="Contact form">
     <div class="form-header">
       <h3 class="form-title">Send me a message</h3>
       <p class="form-description">I'll get back to you as soon as possible.</p>

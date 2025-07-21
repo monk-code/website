@@ -6,6 +6,7 @@
         'group inline-flex h-10 w-10 items-center justify-center rounded-md border',
         'border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-900',
         'dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-100',
+        'focus:outline-none focus:border-primary focus:scale-105 focus-ring-primary',
         'transition-all duration-200 cursor-pointer',
         className
       ]"
@@ -109,3 +110,20 @@ onMounted(() => {
   })
 })
 </script>
+
+<style scoped>
+/* Enhanced accessibility - respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .group {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .group:hover {
+    transform: none; /* Remove scaling animations */
+  }
+  
+  svg {
+    transition: opacity 0.2s ease; /* Simplified transitions */
+  }
+}
+</style>

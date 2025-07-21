@@ -412,11 +412,22 @@ onUnmounted(() => {
   cursor: pointer;
   padding: 2px 0;
   margin-top: 2px;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, box-shadow 0.15s ease;
+  outline: none;
+  border-radius: 2px;
 }
 
 .expand-button:hover {
   opacity: 0.8;
+}
+
+.expand-button:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.3);
+}
+
+/* Dark mode focus for expand button */
+[data-theme="dark"] .expand-button:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.2);
 }
 
 /* Tech stack */
@@ -500,11 +511,21 @@ onUnmounted(() => {
   text-decoration: none;
   transition: all 0.2s ease;
   backdrop-filter: blur(4px);
+  outline: none;
 }
 
 .card-link:hover {
   background: var(--hover-bg) !important;
   transform: translateY(-1px);
+}
+
+.card-link:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.3);
+}
+
+/* Dark mode focus for card links */
+[data-theme="dark"] .card-link:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.2);
 }
 
 /* Hover glow effect */

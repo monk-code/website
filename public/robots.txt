@@ -1,0 +1,11 @@
+# Robots.txt for MONKCODE Portfolio Website
+# Allow all bots to crawl everything (portfolio site)
+
+User-agent: *
+Allow: /
+
+# Reference to XML sitemap for better indexing
+Sitemap: https://monkcode.dev/sitemap-index.xml
+
+# Crawl delay to be respectful to servers
+Crawl-delay: 1

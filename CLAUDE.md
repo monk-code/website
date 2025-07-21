@@ -21,6 +21,10 @@ I follow Test-Driven Development (TDD) with a strong emphasis on behavior-driven
 - TypeScript strict mode always
 - Use const instead of function
 
+## 🚨 Debugging Rules
+- After 2 failed attempts at the same issue, STOP and use WebSearch for "[framework/library] [specific issue]" before continuing
+- When user says "wrong track" or shows frustration, completely pivot approach - don't iterate on the same solution
+
 ## 📂 Development File Management
 
 - Use the `ai-workspace` or `ai` folder for temporary files that won't be tracked by git

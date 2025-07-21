@@ -20,13 +20,10 @@
         'transition-all',
         'duration-base',
         'focus:outline-none',
-        'focus:ring-2',
-        'focus:ring-primary',
-        'focus:ring-offset-2',
+        'focus-ring-subtle',
         {
           'error': !!error,
           'border-red-500': !!error,
-          'focus:ring-red-500': !!error,
         }
       ]"
       @input="handleInput"

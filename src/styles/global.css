@@ -5,8 +5,8 @@
 @import "./utils/transitions.css";
 
 /* Import component styles */
-/* @import "./components/button.css"; */
-/* @import "./components/card.css"; */
+@import "./components/button.css";
+@import "./components/card.css";
 
 /* Configure Tailwind to use data-theme instead of media queries */
 @variant dark ([data-theme="dark"] &);
@@ -212,13 +212,48 @@
     @apply transition-[color,background-color,border-color] duration-150 ease-in-out;
   }
 
-  /* Custom focus utilities */
+  /* Custom focus utilities - Beautiful, subtle focus indicators */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+    @apply focus:outline-none;
+    transition: box-shadow 0.15s ease;
+  }
+  
+  .focus-ring:focus {
+    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.25);
+  }
+  
+  /* Enhanced focus for buttons and interactive elements */
+  .focus-ring-primary {
+    @apply focus:outline-none;
+    transition: box-shadow 0.15s ease;
+  }
+  
+  .focus-ring-primary:focus {
+    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.3), 0 0 12px rgba(255, 222, 10, 0.2);
+  }
+  
+  /* Subtle focus for inputs and form elements */
+  .focus-ring-subtle {
+    @apply focus:outline-none;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  
+  .focus-ring-subtle:focus {
+    box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.2);
+    border-color: var(--color-primary);
   }
 
-  [data-theme="dark"] .focus-ring {
-    --tw-ring-offset-color: var(--color-code-black);
+  /* Dark mode adjustments for focus rings */
+  [data-theme="dark"] .focus-ring:focus {
+    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.15);
+  }
+  
+  [data-theme="dark"] .focus-ring-primary:focus {
+    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.2), 0 0 16px rgba(255, 222, 10, 0.15);
+  }
+  
+  [data-theme="dark"] .focus-ring-subtle:focus {
+    box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.15);
   }
 
   /* Modern layout utilities */

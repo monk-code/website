@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="404 - Page Not Found" description="The page you're looking for doesn't exist. Let's get you back on track!" noindex={true}>
+  <main class="min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      
+      <!-- Playful but Professional 404 Illustration -->
+      <div class="mb-8 relative">
+        <div class="text-9xl md:text-[12rem] font-heading font-bold text-primary/20 select-none">
+          404
+        </div>
+        
+        <!-- Floating Code Elements for Visual Interest -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="grid grid-cols-3 gap-4 text-xs md:text-sm font-mono text-muted-foreground/30 transform -rotate-12">
+            <div class="floating-element">const&nbsp;page&nbsp;=</div>
+            <div class="floating-element animation-delay-200">undefined;</div>
+            <div class="floating-element animation-delay-400">if(!found)</div>
+            <div class="floating-element animation-delay-600">return&nbsp;404;</div>
+            <div class="floating-element animation-delay-800">console.log</div>
+            <div class="floating-element animation-delay-1000">("lost?")</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engaging, Brand-Appropriate Messaging -->
+      <div class="mb-8 space-y-4">
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-foreground">
+          Looks like this page went on vacation
+        </h1>
+        
+        <p class="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto leading-relaxed">
+          Don't worry, even the best developers create broken links sometimes. 
+          Let's navigate you back to something awesome.
+        </p>
+      </div>
+
+      <!-- Smart Navigation Options -->
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="/" 
+            class="btn btn-lg btn-primary"
+            aria-label="Return to homepage"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Back to Home
+          </a>
+          
+          <a 
+            href="/#projects" 
+            class="btn btn-lg btn-secondary"
+            aria-label="View my projects"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            View Projects
+          </a>
+        </div>
+
+        <!-- Helpful Suggestions -->
+        <div class="text-sm text-muted-foreground space-y-2">
+          <p>Looking for something specific? Try:</p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <a href="/#about" 
+               class="inline-flex items-center px-3 py-1 rounded-full bg-muted text-muted-foreground hover:text-primary transition-colors duration-200 text-xs focus:outline-none focus:ring-2 focus:ring-primary/30"
+               aria-label="Learn about Gregory">
+              About me
+            </a>
+            <a href="/#contact" 
+               class="inline-flex items-center px-3 py-1 rounded-full bg-muted text-muted-foreground hover:text-primary transition-colors duration-200 text-xs focus:outline-none focus:ring-2 focus:ring-primary/30"
+               aria-label="Get in touch">
+              Contact
+            </a>
+            <a href="/design-system" 
+               class="inline-flex items-center px-3 py-1 rounded-full bg-muted text-muted-foreground hover:text-primary transition-colors duration-200 text-xs focus:outline-none focus:ring-2 focus:ring-primary/30"
+               aria-label="View design system">
+              Design System
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtle Brand Touch -->
+      <div class="mt-12 text-xs text-muted-foreground/60">
+        <p>Built with attention to detail by MONKCODE</p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+/* Floating animation for code elements */
+.floating-element {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-600 { animation-delay: 0.6s; }
+.animation-delay-800 { animation-delay: 0.8s; }
+.animation-delay-1000 { animation-delay: 1s; }
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(-12deg); 
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-10px) rotate(-12deg); 
+    opacity: 0.5;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .floating-element {
+    animation: none;
+    opacity: 0.3;
+  }
+}
+
+/* Enhanced hover states for navigation pills */
+.bg-muted:hover {
+  background-color: rgba(255, 222, 10, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Beautiful responsive spacing */
+@media (min-width: 768px) {
+  .floating-element {
+    font-size: 0.875rem;
+  }
+}
+</style>

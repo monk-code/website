@@ -3,7 +3,9 @@
 @layer components {
   /* Base card styles */
   .card {
-    @apply bg-background border border-card-border rounded-lg shadow-sm;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-card-border);
+    @apply rounded-lg shadow-sm;
     @apply transition-all duration-200 ease-in-out;
   }
 
@@ -22,7 +24,8 @@
   }
 
   .card-flat {
-    @apply shadow-none border-card-border;
+    @apply shadow-none;
+    border-color: var(--color-card-border);
   }
 
   .card-outline {
@@ -32,7 +35,8 @@
 
   /* Card content areas */
   .card-header {
-    @apply p-6 border-b border-card-border;
+    @apply p-6 border-b;
+    border-bottom-color: var(--color-card-border);
   }
 
   .card-body {
@@ -40,7 +44,8 @@
   }
 
   .card-footer {
-    @apply p-6 border-t border-card-border;
+    @apply p-6 border-t;
+    border-top-color: var(--color-card-border);
   }
 
   /* Card sizes */
@@ -60,8 +65,12 @@
   .card-interactive {
     @apply cursor-pointer;
     @apply hover:border-primary/30;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply focus:outline-none;
     @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .card-interactive:focus {
+    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.25);
   }
 
   .card-interactive:hover {
@@ -71,10 +80,20 @@
 
   /* Project card specific styles */
   .project-card {
-    @apply card card-hover;
+    /* Inherit from .card styles */
+    background-color: var(--color-background);
+    border: 1px solid var(--color-card-border);
+    @apply rounded-lg shadow-sm;
+    @apply transition-all duration-200 ease-in-out;
+    
+    /* Additional project card styles */
     @apply bg-neutral-900/40 backdrop-blur-sm;
     @apply border-neutral-800;
     container-type: inline-size;
+    
+    /* Card hover effects */
+    @apply hover:shadow-md hover:border-primary/20;
+    @apply hover:-translate-y-0.5;
   }
 
   .project-card:hover {
@@ -91,7 +110,8 @@
   }
 
   .project-card-title {
-    @apply text-xl font-heading font-semibold text-foreground;
+    @apply text-xl font-semibold text-foreground;
+    font-family: var(--font-family-heading);
   }
 
   .project-card-description {
@@ -128,7 +148,7 @@
 }
 
 [data-theme="dark"] .card-interactive:focus {
-  --tw-ring-offset-color: var(--color-code-black);
+  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.15);
 }
 
 /* Container query responsive design for project cards */

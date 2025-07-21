@@ -1,14 +1,17 @@
+import sitemap from '@astrojs/sitemap'
 import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://monkcode.dev',
   integrations: [
     vue({
       jsx: false, // We use templates, not JSX
       devtools: false, // Temporarily disabled due to conflict with Tailwind CSS v4
     }),
+    sitemap(),
   ],
   output: 'static', // Portfolio site is static
   build: {

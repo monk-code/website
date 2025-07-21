@@ -6,7 +6,7 @@
         <button
           data-testid="project-option"
           @click="selectPurpose('project')"
-          class="flex items-center gap-4 px-6 py-5 bg-card-bg border-2 border-card-border rounded-xl font-body text-lg font-medium text-foreground cursor-pointer transition-all duration-200 text-left hover:border-primary hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+          class="flex items-center gap-4 px-6 py-5 bg-card-bg border-2 border-card-border rounded-xl font-body text-lg font-medium text-foreground cursor-pointer transition-all duration-200 text-left hover:border-primary hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 focus:outline-none focus-ring-primary"
         >
           <span class="text-2xl flex-shrink-0">💼</span>
           <span class="flex-1">I have a project in mind</span>
@@ -14,7 +14,7 @@
         <button
           data-testid="hello-option"
           @click="selectPurpose('hello')"
-          class="flex items-center gap-4 px-6 py-5 bg-card-bg border-2 border-card-border rounded-xl font-body text-lg font-medium text-foreground cursor-pointer transition-all duration-200 text-left hover:border-primary hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+          class="flex items-center gap-4 px-6 py-5 bg-card-bg border-2 border-card-border rounded-xl font-body text-lg font-medium text-foreground cursor-pointer transition-all duration-200 text-left hover:border-primary hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 focus:outline-none focus-ring-primary"
         >
           <span class="text-2xl flex-shrink-0">👋</span>
           <span class="flex-1">Just want to say hello</span>
@@ -22,7 +22,7 @@
         <button
           data-testid="collaboration-option"
           @click="selectPurpose('collaboration')"
-          class="flex items-center gap-4 px-6 py-5 bg-card-bg border-2 border-card-border rounded-xl font-body text-lg font-medium text-foreground cursor-pointer transition-all duration-200 text-left hover:border-primary hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+          class="flex items-center gap-4 px-6 py-5 bg-card-bg border-2 border-card-border rounded-xl font-body text-lg font-medium text-foreground cursor-pointer transition-all duration-200 text-left hover:border-primary hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 focus:outline-none focus-ring-primary"
         >
           <span class="text-2xl flex-shrink-0">🤝</span>
           <span class="flex-1">Interested in collaboration</span>
@@ -58,7 +58,7 @@
             type="text"
             required
             :placeholder="namePlaceholder"
-            class="px-4 py-3 bg-card-bg border-2 border-card-border rounded-lg font-body text-base text-foreground transition-all duration-200 placeholder:text-muted-foreground placeholder:opacity-70 focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(255,222,10,0.1)]"
+            class="px-4 py-3 bg-card-bg border-2 border-card-border rounded-lg font-body text-base text-foreground transition-all duration-200 placeholder:text-muted-foreground placeholder:opacity-70 focus:outline-none focus:border-primary focus:shadow-[0_0_0_2px_rgba(255,222,10,0.2)]"
           />
         </div>
 
@@ -70,7 +70,7 @@
             type="email"
             required
             :placeholder="emailPlaceholder"
-            class="px-4 py-3 bg-card-bg border-2 border-card-border rounded-lg font-body text-base text-foreground transition-all duration-200 placeholder:text-muted-foreground placeholder:opacity-70 focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(255,222,10,0.1)]"
+            class="px-4 py-3 bg-card-bg border-2 border-card-border rounded-lg font-body text-base text-foreground transition-all duration-200 placeholder:text-muted-foreground placeholder:opacity-70 focus:outline-none focus:border-primary focus:shadow-[0_0_0_2px_rgba(255,222,10,0.2)]"
           />
         </div>
 

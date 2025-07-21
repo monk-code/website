@@ -7,7 +7,7 @@
     :aria-label="ariaLabel"
     :title="tooltipText"
     @click="handleClick"
-    class="contact-link inline-flex items-center group transition-all duration-base"
+    class="contact-link inline-flex items-center group transition-all duration-base focus:outline-none"
     :class="{ 'icon-only': iconOnly }"
   >
     <div class="icon-container">
@@ -166,6 +166,18 @@ const showCopiedFeedback = () => {
   border-bottom: none;
 }
 
+/* Enhanced focus styles for beautiful keyboard navigation */
+.contact-link:focus {
+  border-radius: 8px;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.25);
+}
+
+.contact-link.icon-only:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.3), 0 0 12px rgba(255, 222, 10, 0.2);
+}
+
 /* Icon-only mode styles */
 .contact-link.icon-only {
   width: auto;
@@ -302,5 +314,14 @@ const showCopiedFeedback = () => {
 
 [data-theme="dark"] .contact-link.icon-only:hover .icon-container {
   background: rgba(255, 222, 10, 0.15);
+}
+
+/* Dark mode focus enhancements */
+[data-theme="dark"] .contact-link:focus {
+  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.15);
+}
+
+[data-theme="dark"] .contact-link.icon-only:focus {
+  box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.2), 0 0 16px rgba(255, 222, 10, 0.15);
 }
 </style>

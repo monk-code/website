@@ -1,15 +1,19 @@
 <template>
-  <component
-    :is="tag"
-    :href="href"
-    :to="to"
-    :class="buttonClasses"
-    @click="handleClick"
-  >
+  <a v-if="href" :href="href" :class="buttonClasses" :tabindex="0" @click="handleClick">
     <span class="relative z-10">
       <slot />
     </span>
-  </component>
+  </a>
+  <router-link v-else-if="to" :to="to" :class="buttonClasses" :tabindex="0" @click="handleClick">
+    <span class="relative z-10">
+      <slot />
+    </span>
+  </router-link>
+  <button v-else :class="buttonClasses" :tabindex="0" @click="handleClick">
+    <span class="relative z-10">
+      <slot />
+    </span>
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -29,12 +33,6 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
 })
 
-const tag = computed((): string => {
-  if (props.href) return 'a'
-  if (props.to) return 'router-link'
-  return 'button'
-})
-
 const handleClick = (event: MouseEvent): void => {
   if (props.onClick) {
     props.onClick(event)
@@ -43,7 +41,7 @@ const handleClick = (event: MouseEvent): void => {
 
 const buttonClasses = computed((): string => {
   const baseClasses =
-    'inline-flex items-center justify-center font-semibold transition-all duration-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-md relative overflow-hidden group'
+    'inline-flex items-center justify-center font-semibold transition-all duration-base focus:outline-none focus-ring-primary rounded-md relative overflow-hidden group'
 
   const sizeClasses: Record<ButtonSize, string> = {
     sm: 'px-4 py-2 text-sm',
@@ -53,7 +51,7 @@ const buttonClasses = computed((): string => {
 
   const variantClasses: Record<ButtonVariant, string> = {
     primary:
-      'bg-button-primary text-button-primary-text hover:shadow-lg hover:shadow-primary/20 transform hover:-translate-y-0.5',
+      'bg-button-primary text-button-primary-text shadow-lg hover:shadow-xl hover:shadow-primary/25 transform hover:-translate-y-0.5',
     secondary:
       'bg-transparent text-primary border-2 border-primary hover:bg-button-primary hover:text-button-primary-text transform hover:-translate-y-0.5',
     ghost:
@@ -94,5 +92,28 @@ const buttonClasses = computed((): string => {
 
 .group:hover::after {
   opacity: 0.3;
+}
+
+/* Focus handled by Tailwind utilities: focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background */
+
+/* Respect reduced motion preferences with elegant alternatives */
+@media (prefers-reduced-motion: reduce) {
+  .group {
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .group:hover {
+    transform: none; /* Remove transform animations */
+  }
+  
+  .group::before,
+  .group::after {
+    display: none; /* Remove complex animations */
+  }
+  
+  /* Enhanced focus for reduced motion users */
+  .group:focus {
+    box-shadow: 0 0 0 3px rgba(255, 222, 10, 0.4);
+  }
 }
 </style>

@@ -3,7 +3,7 @@
     v-show="isVisible"
     aria-label="Back to top"
     @click="scrollToTop"
-    class="fixed bottom-6 right-6 bg-primary rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-primary-foreground shadow-lg hover:scale-105 transition-all duration-200 z-50"
+    class="fixed bottom-6 right-6 bg-primary rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-primary-foreground shadow-lg hover:scale-105 focus:outline-none focus:scale-110 transition-all duration-200 z-50 focus-ring-primary"
   >
     <svg 
       class="w-5 h-5" 

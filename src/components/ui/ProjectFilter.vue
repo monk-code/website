@@ -224,6 +224,12 @@ watch(
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(4px);
+  outline: none;
+}
+
+.filter-pill:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.25);
+  border-color: rgba(255, 222, 10, 0.3);
 }
 
 .filter-pill:hover {
@@ -294,10 +300,15 @@ watch(
   padding: 4px 8px;
   border-radius: 6px;
   transition: all 0.2s ease;
+  outline: none;
 }
 
 .clear-filters:hover {
   background: rgba(255, 222, 10, 0.1);
+}
+
+.clear-filters:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.25);
 }
 
 .active-filter-pills {
@@ -330,11 +341,16 @@ watch(
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 
 .remove-filter:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--color-foreground);
+}
+
+.remove-filter:focus {
+  box-shadow: 0 0 0 2px rgba(255, 222, 10, 0.2);
 }
 
 /* Results count */
