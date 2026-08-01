@@ -23,8 +23,9 @@
     "quick-fix": "pnpm lint:fix && pnpm format"
   },
   "engines": {
-    "node": ">=18.20.8"
+    "node": "24.x"
   },
+  "packageManager": "pnpm@10.34.5",
   "devDependencies": {
     "@biomejs/biome": "^2.0.6",
     "@mswjs/data": "^0.16.2",
